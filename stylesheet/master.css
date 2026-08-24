@@ -1,0 +1,59 @@
+@import 'tailwindcss';
+
+@layer base{
+       @font-face {
+              font-family:inter ;
+              src: url(../font/Inter/Inter-VariableFont_opsz\,wght.ttf);
+       }
+       body{
+              font-family: inter;
+       }
+}
+
+@layer utilities{
+       .row{
+              @apply flex flex-wrap w-full
+       }
+}
+
+@layer components{
+       .topHeader{
+              @apply fixed top-0 left-0 h-16 md:h-20 bg-black w-full z-100 flex duration-200
+       }
+       .header-bg{
+              @apply bg-darkGray
+       }
+       .navItems{
+              @apply text-[14px] md:text-[16px] font-normal text-white capitalize 
+              duration-200 hover:text-gray
+       }
+       .searchBar{
+              @apply h-8 w-62.5 border-gray bg-darkGray/90 backdrop-blur-2xl border-[0.5px] rounded-[5px] pl-2.5 text-white outline-none placeholder:text-white/60 placeholder:text-[14px]
+       }
+       .sideMenu{
+              @apply w-50 md:w-1/5 fixed left-0 top-16 md:top-20 h-screen bg-darkGray
+       }
+       .sec{
+              @apply w-full ml-50 md:ml-[20%] 
+       }
+
+       .heroSection{
+              @apply pt-16 md:pt-20
+       }
+      
+       
+}
+
+
+
+
+@theme{
+       --color-black:#121212;
+       --color-white:#F2F2F7;
+       --color-gray:#696969;
+       --color-lightGray:#666666;
+       --color-darkGray:#212121;
+       --color-green:#58B660;
+       --color-blue:#066AFF;
+       --color-red:#FF0034;
+}
