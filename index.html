@@ -7,10 +7,10 @@
        <link rel="stylesheet" href="stylesheet/out.css">
 </head>
 <body class="bg-black">
-       <header class="topHeader *:h-full px-5 ">
+       <header class="topHeader *:h-full px-2.5 lg:px-5 ">
        <!-- //////header top part 1 _______+++++++++++________+_++_+++_+_+_+_++_++_+<>?<?<?<?<?<?<?< -->
               <div class="w-fit flex items-center justify-start ">
-                     <i class="w-16 md:w-20 h-full flex items-center justify-center ">
+                     <i class="w-10 md:w-20 h-full flex items-center justify-center ">
                             <!-- <img src="images/logo.png" alt="logo" class="h-1/2 object-cover rounded-[5px]"> -->
                              <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="#FF0034" class="size-7">
   <path stroke-linecap="round" stroke-linejoin="round" d="m9 9 10.5-3m0 6.553v3.75a2.25 2.25 0 0 1-1.632 2.163l-1.32.377a1.803 1.803 0 1 1-.99-3.467l2.31-.66a2.25 2.25 0 0 0 1.632-2.163Zm0 0V2.25L9 5.25v10.303m0 0v3.75a2.25 2.25 0 0 1-1.632 2.163l-1.32.377a1.803 1.803 0 0 1-.99-3.467l2.31-.66A2.25 2.25 0 0 0 9 15.553Z" />
@@ -18,7 +18,7 @@
 
                      </i>
                     <!-- ////ham -->
-                            <i class="cursor-pointer ham w-16 md:w-20 h-full flex items-center justify-start hover:scale-90 duration-300">
+                            <i class="cursor-pointer ham w-10 md:w-20 h-full flex items-center justify-start hover:scale-90 duration-300">
                                    <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="white" class="size-8">
   <path stroke-linecap="round" stroke-linejoin="round" d="M3.75 5.25h16.5m-16.5 4.5h16.5m-16.5 4.5h16.5m-16.5 4.5h16.5" />
 </svg>
@@ -26,7 +26,7 @@
                             </i>
               </div>
               <!-- //////navbar _______+++++++++++________+_++_+++_+_+_+_++_++_+<>?<?<?<?<?<?<?<?< -->
-              <nav class="grow pl-2.5 ">
+              <nav class="grow lg:pl-2.5 ">
                      <ul class="w-full h-full gap-3 flex items-center justify-start">
                             <li class="navItems"><a href="">Music</a></li>
                             <li class="navItems"><a href="">Playlist</a></li>
@@ -43,8 +43,8 @@
        <main class="w-full flex">
 
        <!-- //////sidebar _______+++++++++++________+_++_+++_+_+_+_++_++_+<>?<?<?<?<?<?<?<?< -->
-             <div class="side" >
-              <div class="row *:w-full content-start justify-center p-5">
+             <div class="side" data-stat="close" >
+              <div class="row *:w-full h-full content-between justify-center pl-2.5 py-5 ">
                      <ul class="sideMenu gap-2.5 row  ">
                             <li class="sideItems"><i class="sideiCons">
                                    <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1" stroke="white" class="size-5">
@@ -81,7 +81,7 @@
                      </ul>
 
 <!-- /////login part -->
-                     <div class="login mt-100 flex justify-start gap-2.5 items-center ">
+                     <div class="login  flex justify-start gap-2.5 items-center ">
                             <figure class="w-7 h-7 rounded-full  flex items-center justify-center overflow-hidden">
                                    <img src="images/user .png" alt="" class="w-full h-full object-cover">
                             </figure>
@@ -103,8 +103,88 @@
 
        <!-- //////hero section _______+++++++++++________+_++_+++_+_+_+_++_++_+<>?<?<?<?<?<?<?<?< -->
              <div class="sec heroSection">
-              <div class="box">
-                     
+              <div class="box carousel animate-animate">
+                     <div class="songCard md:transform-[rotateY(90deg)_translateZ(150px)] transform-[rotateY(90deg)_translateZ(100px)] lg:transform-[rotateY(0deg)_translateZ(350px)] origin-center ">
+                            <div class="cardTitle">
+                                   <h3 class="title">card big TiTle</h3>
+                                   <p class="textCard">Lorem ipsum dolor sit</p>
+                                   <h4 class="subtitle">card subtitle</h4>
+                            </div>
+                            <div class="cardMain bg-linear-to-bl from-red/40 to-red backdrop-blur-[5px]">
+                                   <img src="" alt="" class="border rounded-[10px]">
+                            </div>
+                     </div>
+                     <div class="songCard md:transform-[rotateY(180deg)_translateZ(150px)] transform-[rotateY(180deg)_translateZ(100px)] lg:transform-[rotateY(45deg)_translateZ(350px)] origin-center ">
+                            <div class="cardTitle">
+                                   <h3 class="title">card big TiTle</h3>
+                                   <p class="textCard">Lorem ipsum dolor sit</p>
+                                   <h4 class="subtitle">card subtitle</h4>
+                            </div>
+                            <div class="cardMain bg-linear-to-bl from-blue/40 to-blue backdrop-blur-[5px]">
+                                   <img src="" alt="" class="border rounded-[10px]">
+                            </div>
+                     </div>
+                     <div class="songCard md:transform-[rotateY(270deg)_translateZ(150px)] transform-[rotateY(270deg)_translateZ(100px)] lg:transform-[rotateY(90deg)_translateZ(350px)]  origin-center ">
+                            <div class="cardTitle">
+                                   <h3 class="title">card big TiTle</h3>
+                                   <p class="textCard">Lorem ipsum dolor sit</p>
+                                   <h4 class="subtitle">card subtitle</h4>
+                            </div>
+                            <div class="cardMain bg-linear-to-bl from-green/40 to-green backdrop-blur-[5px]">
+                                   <img src="" alt="" class="border rounded-[10px]">
+                            </div>
+                     </div>
+                     <div class="songCard md:transform-[rotateY(360deg)_translateZ(150px)] transform-[rotateY(360deg)_translateZ(100px)] lg:transform-[rotateY(135deg)_translateZ(350px)]   origin-center ">
+                            <div class="cardTitle">
+                                   <h3 class="title">card big TiTle</h3>
+                                   <p class="textCard">Lorem ipsum dolor sit</p>
+                                   <h4 class="subtitle">card subtitle</h4>
+                            </div>
+                            <div class="cardMain bg-linear-to-bl from-white/40 to-white backdrop-blur-[5px]">
+                                   <img src="" alt="" class="border rounded-[10px]">
+                            </div>
+                     </div>
+                     <div class="songCard hidden! lg:flex! transform-[rotateY(300deg)_translateZ(100px)] lg:transform-[rotateY(180deg)_translateZ(350px)]   origin-center ">
+                            <div class="cardTitle">
+                                   <h3 class="title">card big TiTle</h3>
+                                   <p class="textCard">Lorem ipsum dolor sit</p>
+                                   <h4 class="subtitle">card subtitle</h4>
+                            </div>
+                            <div class="cardMain  bg-linear-to-bl from-darkGray/40 to-darkGray backdrop-blur-[5px]">
+                                   <img src="" alt="" class="border rounded-[10px]">
+                            </div>
+                     </div>
+                     <div class="songCard hidden! lg:flex! transform-[rotateY(360deg)_translateZ(100px)] lg:transform-[rotateY(225deg)_translateZ(350px)]   origin-center ">
+                            <div class="cardTitle">
+                                   <h3 class="title">card big TiTle</h3>
+                                   <p class="textCard">Lorem ipsum dolor sit</p>
+                                   <h4 class="subtitle">card subtitle</h4>
+                            </div>
+                            <div class="cardMain bg-linear-to-bl from-lightGray/40 to-lightGray backdrop-blur-[5px]">
+                                   <img src="" alt="" class="border rounded-[10px]">
+                            </div>
+                     </div>
+                     <div class="songCard hidden! lg:flex!  lg:transform-[rotateY(270deg)_translateZ(350px)]   origin-center ">
+                            <div class="cardTitle">
+                                   <h3 class="title">card big TiTle</h3>
+                                   <p class="textCard">Lorem ipsum dolor sit</p>
+                                   <h4 class="subtitle">card subtitle</h4>
+                            </div>
+                            <div class="cardMain bg-linear-to-bl from-orange/40 to-orange backdrop-blur-[5px]">
+                                   <img src="" alt="" class="border rounded-[10px]">
+                            </div>
+                     </div>
+                     <div class="songCard hidden! lg:flex!  lg:transform-[rotateY(315deg)_translateZ(350px)]   origin-center ">
+                            <div class="cardTitle">
+                                   <h3 class="title">card big TiTle</h3>
+                                   <p class="textCard">Lorem ipsum dolor sit</p>
+                                   <h4 class="subtitle">card subtitle</h4>
+                            </div>
+                            <div class="cardMain  bg-linear-to-bl from-yellow/40 to-yellow backdrop-blur-[5px]">
+                                   <img src="images/charlie.jpg" alt="" class="border rounded-[10px] object-cover w-full h-full">
+                            </div>
+                     </div>
+                
               </div>
              </div>
        </main>

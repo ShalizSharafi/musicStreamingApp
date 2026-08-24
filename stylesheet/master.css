@@ -28,14 +28,16 @@
               @apply bg-darkGray
        }
        .navItems{
-              @apply text-[14px] md:text-[16px] font-normal text-white capitalize 
+              @apply text-[13px] md:text-[16px] font-normal text-white capitalize 
               duration-200 hover:text-gray
        }
        .searchBar{
               @apply h-8 w-62.5 border-gray bg-darkGray/90 backdrop-blur-2xl border-[0.5px] rounded-[5px] pl-2.5 text-white outline-none placeholder:text-white/60 placeholder:text-[14px]
        }
        .side{
-              @apply w-50 md:w-1/5 fixed py-5 left-0 top-16 md:top-20 h-screen bg-darkGray duration-500
+              @apply w-36 md:w-1/5 fixed left-0 top-0 h-full bg-darkGray duration-500
+              pt-16 md:pt-20 z-99 pb-10
+
        }
 
        .sideClose{
@@ -49,23 +51,44 @@
               @apply w-6 h-6 border border-white flex items-center justify-center
        }
        .sec{
-              @apply w-full ml-50 md:ml-[20%] duration-500
+              @apply w-full pl-20 md:pl-[20%] duration-500
 
        }
        .secWide{
-              @apply ml-0 
+              @apply  pl-5 md:pl-10 w-full
        }
 
        .heroSection{
-              @apply py-16 md:py-20 flex px-5 md:px-10 items-center justify-center *:border h-screen
-            bg-linear-to-t from-gray to-darkGray  duration-200
+              @apply py-16 md:py-20 flex pr-5 md:pr-10 items-center justify-center  h-screen
+            bg-black  duration-200 
        }
-       .hero-bg{
-              @apply  from-red to-darkGray
-       }
+       
        .box{
-              @apply w-50 md:w-62.5 h-87.5 border border-white mt-20 bg-white
+              @apply w-37.5 md:w-48 lg:w-52 h-75 mt-20 relative transform-3d cursor-grab touch-pan-y
+              
        }
+       .songCard{
+              @apply absolute top-0 left-0 w-full h-full flex flex-wrap *:w-full backface-hidden  transform-3d 
+       }
+
+       .cardTitle{
+              @apply flex flex-wrap w-full *:w-full *:flex h-1/4 content-center
+       }
+
+       .title{
+              @apply w-full flex items-center justify-center text-white font-bold capitalize text-xs
+       }
+       .textCard{
+              @apply w-full flex items-center justify-center text-white/90 font-normal capitalize text-[10px]
+       }
+       .subtitle{
+              @apply w-full flex items-center justify-center text-white font-bold capitalize text-[10px]
+       }
+       .cardMain{
+              @apply p-2.5 h-3/4 flex items-center justify-center *:w-full *:h-full  rounded-[10px] 
+       }
+      
+
        
 }
 
@@ -73,6 +96,7 @@
 
 
 @theme{
+       --animate-animate:animate 15s linear infinite;
        --color-black:#121212;
        --color-white:#F2F2F7;
        --color-gray:#696969;
@@ -81,4 +105,14 @@
        --color-green:#58B660;
        --color-blue:#066AFF;
        --color-red:#FF0034;
+       --color-yellow:#FFD23f;
+       --color-orange:#F18701;
+       /* @keyframes animate {
+  0% {
+    transform: perspective(1000px) rotateY(0deg);
+  }
+  100% {
+    transform: perspective(1000px) rotateY(360deg);
+  }
+} */
 }
