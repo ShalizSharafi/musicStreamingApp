@@ -8,6 +8,10 @@
        body{
               font-family: inter;
        }
+       @font-face {
+              font-family: interLight;
+              src: url(../font/Inter/static/Inter_18pt-Light.ttf);
+       }
 }
 
 @layer utilities{
@@ -30,17 +34,38 @@
        .searchBar{
               @apply h-8 w-62.5 border-gray bg-darkGray/90 backdrop-blur-2xl border-[0.5px] rounded-[5px] pl-2.5 text-white outline-none placeholder:text-white/60 placeholder:text-[14px]
        }
-       .sideMenu{
-              @apply w-50 md:w-1/5 fixed left-0 top-16 md:top-20 h-screen bg-darkGray
+       .side{
+              @apply w-50 md:w-1/5 fixed py-5 left-0 top-16 md:top-20 h-screen bg-darkGray duration-500
+       }
+
+       .sideClose{
+              @apply -left-full
+       }
+       .sideItems{
+              @apply w-full text-white capitalize text-[13px] md:text-[15px]   
+              duration-200 hover:text-gray flex gap-2.5 justify-start items-center font-[interLight]
+       }
+       .sideIcons{
+              @apply w-6 h-6 border border-white flex items-center justify-center
        }
        .sec{
-              @apply w-full ml-50 md:ml-[20%] 
+              @apply w-full ml-50 md:ml-[20%] duration-500
+
+       }
+       .secWide{
+              @apply ml-0 
        }
 
        .heroSection{
-              @apply pt-16 md:pt-20
+              @apply py-16 md:py-20 flex px-5 md:px-10 items-center justify-center *:border h-screen
+            bg-linear-to-t from-gray to-darkGray  duration-200
        }
-      
+       .hero-bg{
+              @apply  from-red to-darkGray
+       }
+       .box{
+              @apply w-50 md:w-62.5 h-87.5 border border-white mt-20 bg-white
+       }
        
 }
 
