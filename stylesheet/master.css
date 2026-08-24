@@ -1,113 +1,135 @@
-@import 'tailwindcss';
+@import "tailwindcss";
 
-@layer base{
-       @font-face {
-              font-family:inter ;
-              src: url(../font/Inter/Inter-VariableFont_opsz\,wght.ttf);
-       }
-       body{
-              font-family: inter;
-       }
-       @font-face {
-              font-family: interLight;
-              src: url(../font/Inter/static/Inter_18pt-Light.ttf);
-       }
+@layer base {
+  @font-face {
+    font-family: inter;
+    src: url(../font/Inter/Inter-VariableFont_opsz\,wght.ttf);
+  }
+  body {
+    font-family: inter;
+  }
+  @font-face {
+    font-family: interLight;
+    src: url(../font/Inter/static/Inter_18pt-Light.ttf);
+  }
 }
 
-@layer utilities{
-       .row{
-              @apply flex flex-wrap w-full
-       }
+@layer utilities {
+  .row {
+    @apply flex flex-wrap w-full
+  }
 }
 
-@layer components{
-       .topHeader{
-              @apply fixed top-0 left-0 h-16 md:h-20 bg-black w-full z-100 flex duration-200
-       }
-       .header-bg{
-              @apply bg-darkGray
-       }
-       .navItems{
-              @apply text-[13px] md:text-[16px] font-normal text-white capitalize 
-              duration-200 hover:text-gray
-       }
-       .searchBar{
-              @apply h-8 w-62.5 border-gray bg-darkGray/90 backdrop-blur-2xl border-[0.5px] rounded-[5px] pl-2.5 text-white outline-none placeholder:text-white/60 placeholder:text-[14px]
-       }
-       .side{
-              @apply w-36 md:w-1/5 fixed left-0 top-0 h-full bg-darkGray duration-500
-              pt-16 md:pt-20 z-99 pb-10
+@layer components {
+  .topHeader {
+    @apply fixed top-0 left-0 h-16 md:h-20 bg-black w-full z-100 flex duration-200 
+  }
+  .header-bg {
+    @apply bg-black/40 backdrop-blur-2xl;
+  }
+  .navItems {
+    @apply text-[13px] md:text-[16px] font-normal text-white capitalize 
+              duration-200 hover:text-gray;
+  }
+  .searchBar {
+    @apply h-8 w-62.5 border-gray bg-darkGray/90 backdrop-blur-2xl border-[0.5px] rounded-[5px] pl-2.5 text-white outline-none placeholder:text-white/60 placeholder:text-[14px];
+  }
+  .side {
+    @apply w-36 md:w-1/5 fixed left-0 top-0 h-full bg-black duration-500
+              pt-16 md:pt-20 z-99 pb-10 flex flex-wrap  content-between
+  }
+  .sideClose {
+    @apply -left-full;
+  }
+  .sideItems {
+    @apply w-full text-white capitalize text-[13px] md:text-[15px]   
+              duration-200 hover:text-gray flex gap-2.5 justify-start items-center font-[interLight];
+  }
+  .innerSideItem{
+       @apply w-fit px-1.5 bg-darkGray text-white rounded-[5px] hover:bg-white duration-200 hover:text-gray
+  }
+  .sideIcons {
+    @apply w-6 h-6  flex items-center justify-center;
+  }
+  
+  #heroSection {
+    @apply py-16 md:py-20 flex px-5  items-center justify-center  h-screen
+            bg-black  w-full  md:ml-[20%] duration-500 
+  }
+  .secWide {
+    @apply ml-0! w-full;
+  }
+  #newMusic{
+       @apply w-full bg-black md:ml-[20%] duration-500 p-5 flex gap-5 flex-wrap     
+  
+  }
 
-       }
+  .section-title{
+       @apply font-bold text-white text-sm md:text-lg w-full flex gap-2.5  items-center justify-start capitalize
+  }
+  .section-subTitle{
+       @apply font-light text-white/70 text-[11px] md:text-lg flex w-full items-center justify-start 
+  }
 
-       .sideClose{
-              @apply -left-full
-       }
-       .sideItems{
-              @apply w-full text-white capitalize text-[13px] md:text-[15px]   
-              duration-200 hover:text-gray flex gap-2.5 justify-start items-center font-[interLight]
-       }
-       .sideIcons{
-              @apply w-6 h-6 border border-white flex items-center justify-center
-       }
-       .sec{
-              @apply w-full pl-20 md:pl-[20%] duration-500
+  .card{
+       @apply w-1/3 md:w-1/7 grow  h-55 lg:h-62.5 p-2.5 flex flex-wrap
+       *:w-full content-between bg-blue/10 backdrop-blur-2xl rounded-[5px] relative overflow-hidden
+       *:nth-[1]:border
+  }
+  .cardCaption{
+       @apply h-16 lg:h-16 bg-black flex flex-wrap w-full *:text-white *:w-full  *:flex *:items-center *:justify-start  *:capitalize pl-2
+  }
+  .artist{
+       @apply text-xs font-[interLight] text-gray
+  }
+  .trackName{
+       @apply text-sm font-bold
+  }
+  .playBox{
+       @apply absolute bottom-0 right-0 translate-x-5 translate-y-5 h-16 w-16 lg:h-20  lg:w-20 flex items-center justify-center rounded-full bg-blue duration-200 hover:translate-y-4
+  }
+  .play{
+       @apply h-7 w-7 lg:w-10  lg:h-10 rounded-full bg-white lg:-translate-y-2 lg:-translate-x-2
+       -translate-y-1 -translate-x-1
+  }
+  
+  #popularSong{
+       @apply w-full bg-black md:ml-[20%] duration-500 p-5 flex gap-5 flex-wrap 
+  }
+  .overlay{
+       @apply w-full absolute h-2/3 bottom-0 left-0 bg-black/50 backdrop-blur-[1px] flex flex-wrap *:border
+       *:w-full p-5 content-end
+  }
 
-       }
-       .secWide{
-              @apply  pl-5 md:pl-10 w-full
-       }
-
-       .heroSection{
-              @apply py-16 md:py-20 flex pr-5 md:pr-10 items-center justify-center  h-screen
-            bg-black  duration-200 
-       }
-       
-       .box{
-              @apply w-37.5 md:w-48 lg:w-52 h-75 mt-20 relative transform-3d cursor-grab touch-pan-y
-              
-       }
-       .songCard{
-              @apply absolute top-0 left-0 w-full h-full flex flex-wrap *:w-full backface-hidden  transform-3d 
-       }
-
-       .cardTitle{
-              @apply flex flex-wrap w-full *:w-full *:flex h-1/4 content-center
-       }
-
-       .title{
-              @apply w-full flex items-center justify-center text-white font-bold capitalize text-xs
-       }
-       .textCard{
-              @apply w-full flex items-center justify-center text-white/90 font-normal capitalize text-[10px]
-       }
-       .subtitle{
-              @apply w-full flex items-center justify-center text-white font-bold capitalize text-[10px]
-       }
-       .cardMain{
-              @apply p-2.5 h-3/4 flex items-center justify-center *:w-full *:h-full  rounded-[10px] 
-       }
-      
-
-       
+  .nowPlaying{
+       @apply w-full p-5  gap-2.5  lg:flex flex-wrap
+  }
+  #trendingSongs{
+       @apply w-full bg-black md:ml-[20%] duration-500 p-5 flex gap-5 flex-wrap
+  }
+  .trendItem{
+       @apply py-2.5 rounded-[5px] backdrop-blur-[5px]  flex items-center duration-200 hover:translate-y-1 cursor-pointer  hover:bg-white 
+  }
+  #videos{
+       @apply w-full bg-black md:ml-[20%] duration-500 p-5 flex gap-5 flex-wrap
+  }
+  
+ 
 }
 
-
-
-
-@theme{
-       --animate-animate:animate 15s linear infinite;
-       --color-black:#121212;
-       --color-white:#F2F2F7;
-       --color-gray:#696969;
-       --color-lightGray:#666666;
-       --color-darkGray:#212121;
-       --color-green:#58B660;
-       --color-blue:#066AFF;
-       --color-red:#FF0034;
-       --color-yellow:#FFD23f;
-       --color-orange:#F18701;
-       /* @keyframes animate {
+@theme {
+  --animate-animate: animate 15s linear infinite;
+  --color-black: #121212;
+  --color-white: #f2f2f7;
+  --color-gray: #696969;
+  --color-lightGray: #666666;
+  --color-darkGray: #212121;
+  --color-green: #58b660;
+  --color-blue: #066aff;
+  --color-red: #ff0034;
+  --color-yellow: #ffd23f;
+  --color-orange: #f18701;
+  /* @keyframes animate {
   0% {
     transform: perspective(1000px) rotateY(0deg);
   }
