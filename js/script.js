@@ -30,7 +30,7 @@ card.forEach((val)=>{
 addEventListener('scroll',()=>{
        card.forEach((val)=>{
               let cardOffset = val.getAttribute('data-h')
-              let scrollT = scrollY + (innerHeight -100 )
+              let scrollT = scrollY + (innerHeight - 100 )
               if(scrollY > cardOffset) val.classList.remove(val.getAttribute('data-effect'))
        })
 })

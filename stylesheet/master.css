@@ -102,13 +102,20 @@
   }
 
   .nowPlaying{
-       @apply w-full p-5 gap-2.5 *:border *:border-white hidden lg:flex flex-wrap
+       @apply w-full p-5 gap-2.5  hidden lg:flex flex-wrap
   }
   #trendingSongs{
        @apply w-full bg-black md:ml-[20%] duration-500 p-5 flex gap-5 flex-wrap
   }
   .trendItem{
-       @apply p-2.5 rounded-[5px] backdrop-blur-[5px]  flex items-center duration-200 hover:translate-y-1 cursor-pointer  hover:bg-white 
+       @apply p-2.5 rounded-[5px] backdrop-blur-[5px]  flex items-center duration-200 hover:translate-y-1 cursor-pointer justify-between  bg-darkGray hover:text-white hover:bg-gray
+  }
+  .streamCount{
+       @apply text-xs font-mono text-white
+  }
+  .songName{
+       @apply text-xs font-bold capitalize text-white
+
   }
   #videos{
        @apply w-full bg-black md:ml-[20%] duration-500 p-5 flex gap-5 flex-wrap
@@ -120,7 +127,7 @@
               @apply w-full bg-black md:ml-[20%] duration-500 p-5 flex gap-5 flex-wrap
   }
   .quickPick{
-       @apply w-1/3 lg:w-1/4 grow p-2.5 flex items-center bg-black border border-white rounded-[5px] hover:backdrop-blur-[5px] hover:bg-white/20 duration-300
+       @apply w-1/3 lg:w-1/4 grow p-2.5 flex items-center bg-black border border-gray rounded-[5px] hover:backdrop-blur-[5px] hover:bg-white/20 duration-300
   }
 
   .op-0{
@@ -132,7 +139,6 @@
   
   #albums{
               @apply w-full bg-black md:ml-[20%] duration-500 p-5 flex gap-5 flex-wrap
-
   }
  
 }

@@ -44,7 +44,7 @@
 
        <!-- //////sidebar _______+++++++++++________+_++_+++_+_+_+_++_++_+<>?<?<?<?<?<?<?<?< -->
              <div class="side" data-stat="close" >
-              <div class="row *:w-full content-start justify-center pl-2.5 lg:px-5 py-5 ">
+              <div class="row *:w-full content-start justify-center p-2.5 lg:px-5 py-5 ">
                      <ul class="sideMenu gap-2.5 row  ">
                             <li class="sideItems"><i class="sideiCons">
                                    <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1" stroke="white" class="size-5">
@@ -81,9 +81,11 @@
                      </ul>
 
 <!-- /////login part -->
-                     <div class="login border-b-[0.5px] border-gray/50 mt-10 flex justify-between gap-2.5 items-center pb-2.5  ">
-                            <figure class="w-7 h-7 rounded-full  flex items-center justify-center overflow-hidden"></figure>
-                            <div class="flex gap-2 items-center justify-center">
+                     <div class="login border-b-[0.5px] border-gray/50 mt-10 flex justify-between lg:gap-2.5 items-center pb-2.5 flex-wrap gap-5 ">
+                            <figure class="w-7 h-7 rounded-full flex items-center justify-center overflow-hidden">
+                                   <img src="images/user .png" alt="">
+                            </figure>
+                            <div class="flex w-full lg:w-fit gap-2 items-center justify-start lg:justify-center">
                                    <i class="sideiCons cursor-pointer group">
                                           <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1" stroke="white" class="size-5 group-hover:stroke-gray">
   <path stroke-linecap="round" stroke-linejoin="round" d="M15.75 9V5.25A2.25 2.25 0 0 0 13.5 3h-6a2.25 2.25 0 0 0-2.25 2.25v13.5A2.25 2.25 0 0 0 7.5 21h6a2.25 2.25 0 0 0 2.25-2.25V15M12 9l-3 3m0 0 3 3m-3-3h12.75" />
@@ -125,9 +127,9 @@
              <section class="sec" id="newMusic">
               <div class="row ">
                      <ul class="w-full md:w-fit flex gap-2.5 ">
-                            <li class="grow px-1.5 py-1 flex items-center justify-center bg-white text-black text-sm rounded-[5px] capitalize font-normal cursor-pointer hover:bg-gray duration-300 hover:text-white">music</li>
-                            <li class="grow px-1.5 py-1 flex items-center justify-center bg-white text-black text-sm rounded-[5px] capitalize font-normal cursor-pointer hover:bg-gray duration-300 hover:text-white">music video</li>
-                            <li class="grow px-1.5 py-1 flex items-center justify-center bg-white text-black text-sm rounded-[5px] capitalize font-normal cursor-pointer hover:bg-gray duration-300 hover:text-white">podcast</li>
+                            <li class="grow px-1.5 py-1 flex items-center justify-center bg-white text-black text-sm rounded-[5px] capitalize font-normal  hover:bg-gray duration-300 hover:text-white">music</li>
+                            <li class="grow px-1.5 py-1 flex items-center justify-center bg-white text-black text-sm rounded-[5px] capitalize font-normal  hover:bg-gray duration-300 hover:text-white">music video</li>
+                            <li class="grow px-1.5 py-1 flex items-center justify-center bg-white text-black text-sm rounded-[5px] capitalize font-normal  hover:bg-gray duration-300 hover:text-white">podcasts</li>
                      </ul>
               </div>
               <div class="row mt-10 ">
@@ -342,35 +344,193 @@
 
 </i>Trending songs for you</h3>
               </div>
-              <div class="row bg-gray/40 backdrop-blur-2xl p-5 rounded-[5px] gap-2.5 *:w-full ">
+              <div class="row bg-black backdrop-blur-2xl p-1  lg:p-5 rounded-[5px] gap-2.5 *:w-full ">
                      <div class="trendItem ">
                             <div class="w-fit flex items-center gap-2.5 ">
-                                   <figure class="w-8 h-8 rounded-[5px] border-2 border-orange "></figure>
-                                   <span class="text-xs font-bold capitalize">song name</span>
+                                   <figure class="w-6 h-6 lg:w-8 lg:h-8 rounded-[5px] border-2 border-orange "></figure>
+                                   <span class=" songName">song name</span>
                             </div>
-                            <div class="w-fit">
-
+                            <div class="w-fit flex gap-2.5 items-center ">
+                                   <i>
+                                          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="#f18701" class="size-4"><path d="M12 4C7.58172 4 4 7.58172 4 12H7C8.10457 12 9 12.8954 9 14V19C9 20.1046 8.10457 21 7 21H4C2.89543 21 2 20.1046 2 19V12C2 6.47715 6.47715 2 12 2C17.5228 2 22 6.47715 22 12V19C22 20.1046 21.1046 21 20 21H17C15.8954 21 15 20.1046 15 19V14C15 12.8954 15.8954 12 17 12H20C20 7.58172 16.4183 4 12 4ZM4 14V19H7V14H4ZM17 14V19H20V14H17Z"></path></svg>
+                                   </i>
+                                   <span class="streamCount">stream count</span>
                             </div>
-                            <div class="w-fit">
+                            <div class="w-fit flex gap-2.5 items-center">
+                                   <i><svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="#f18701" class="size-4">
+  <path stroke-linecap="round" stroke-linejoin="round" d="M12 6v6h4.5m4.5 0a9 9 0 1 1-18 0 9 9 0 0 1 18 0Z" />
+</svg>
+</i>
+                                   <div class="duration text-white/70 text-xs font-mono">time</div>
+                            </div>
+                            <div class="w-fit flex  gap-1 lg:gap-2.5 items-center">
+                                   <i><svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="#f18701" class="size-4">
+  <path stroke-linecap="round" stroke-linejoin="round" d="M21 8.25c0-2.485-2.099-4.5-4.688-4.5-1.935 0-3.597 1.126-4.312 2.733-.715-1.607-2.377-2.733-4.313-2.733C5.1 3.75 3 5.765 3 8.25c0 7.22 9 12 9 12s9-4.78 9-12Z" />
+</svg>
+</i>
+                                   <i class="hidden lg:flex">
+                                          <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="#f18701" class="size-4">
+  <path stroke-linecap="round" stroke-linejoin="round" d="M6.75 12a.75.75 0 1 1-1.5 0 .75.75 0 0 1 1.5 0ZM12.75 12a.75.75 0 1 1-1.5 0 .75.75 0 0 1 1.5 0ZM18.75 12a.75.75 0 1 1-1.5 0 .75.75 0 0 1 1.5 0Z" />
+</svg>
 
+                                   </i>
                             </div>
                      </div>
                      <div class="trendItem ">
                             <div class="w-fit flex items-center gap-2.5 ">
-                                   <figure class="w-8 h-8 rounded-[5px] border-2 border-orange "></figure>
-                                   <span class="text-xs font-bold capitalize">song name</span>
+                                   <figure class="w-6 h-6 lg:w-8 lg:h-8 rounded-[5px] border-2 border-orange "></figure>
+                                   <span class=" songName">song name</span>
                             </div>
-                            <div class="w-fit">
-
+                            <div class="w-fit flex gap-2.5 items-center ">
+                                    <i>
+                                          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="#f18701" class="size-4"><path d="M12 4C7.58172 4 4 7.58172 4 12H7C8.10457 12 9 12.8954 9 14V19C9 20.1046 8.10457 21 7 21H4C2.89543 21 2 20.1046 2 19V12C2 6.47715 6.47715 2 12 2C17.5228 2 22 6.47715 22 12V19C22 20.1046 21.1046 21 20 21H17C15.8954 21 15 20.1046 15 19V14C15 12.8954 15.8954 12 17 12H20C20 7.58172 16.4183 4 12 4ZM4 14V19H7V14H4ZM17 14V19H20V14H17Z"></path></svg>
+                                   </i>
+                                   <span class="streamCount">stream count</span>
                             </div>
-                            <div class="w-fit">
+                            <div class="w-fit flex gap-2.5 items-center">
+                                   <i><svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="#f18701" class="size-4">
+  <path stroke-linecap="round" stroke-linejoin="round" d="M12 6v6h4.5m4.5 0a9 9 0 1 1-18 0 9 9 0 0 1 18 0Z" />
+</svg>
+</i>
+                                   <div class="duration text-white/70 text-xs font-mono">time</div>
+                            </div>
+                            <div class="w-fit flex  gap-1 lg:gap-2.5 items-center">
+                                   <i><svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="#f18701" class="size-4">
+  <path stroke-linecap="round" stroke-linejoin="round" d="M21 8.25c0-2.485-2.099-4.5-4.688-4.5-1.935 0-3.597 1.126-4.312 2.733-.715-1.607-2.377-2.733-4.313-2.733C5.1 3.75 3 5.765 3 8.25c0 7.22 9 12 9 12s9-4.78 9-12Z" />
+</svg>
+</i>
+                                   <i class="hidden lg:flex">
+                                          <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="#f18701" class="size-4">
+  <path stroke-linecap="round" stroke-linejoin="round" d="M6.75 12a.75.75 0 1 1-1.5 0 .75.75 0 0 1 1.5 0ZM12.75 12a.75.75 0 1 1-1.5 0 .75.75 0 0 1 1.5 0ZM18.75 12a.75.75 0 1 1-1.5 0 .75.75 0 0 1 1.5 0Z" />
+</svg>
 
+                                   </i>
                             </div>
                      </div>
-                     <div class="trendItem"></div>
-                     <div class="trendItem"></div>
-                     <div class="trendItem"></div>
-                     <div class="trendItem"></div>
+                     <div class="trendItem">
+                            <div class="w-fit flex items-center gap-2.5 ">
+                                   <figure class="w-6 h-6 lg:w-8 lg:h-8 rounded-[5px] border-2 border-orange "></figure>
+                                   <span class=" songName">song name</span>
+                            </div>
+                            <div class="w-fit flex gap-2.5 items-center ">
+                                    <i>
+                                          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="#f18701" class="size-4"><path d="M12 4C7.58172 4 4 7.58172 4 12H7C8.10457 12 9 12.8954 9 14V19C9 20.1046 8.10457 21 7 21H4C2.89543 21 2 20.1046 2 19V12C2 6.47715 6.47715 2 12 2C17.5228 2 22 6.47715 22 12V19C22 20.1046 21.1046 21 20 21H17C15.8954 21 15 20.1046 15 19V14C15 12.8954 15.8954 12 17 12H20C20 7.58172 16.4183 4 12 4ZM4 14V19H7V14H4ZM17 14V19H20V14H17Z"></path></svg>
+                                   </i>
+                                   <span class="streamCount">stream count</span>
+                            </div>
+                            <div class="w-fit flex gap-2.5 items-center">
+                                   <i><svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="#f18701" class="size-4">
+  <path stroke-linecap="round" stroke-linejoin="round" d="M12 6v6h4.5m4.5 0a9 9 0 1 1-18 0 9 9 0 0 1 18 0Z" />
+</svg>
+</i>
+                                   <div class="duration text-white/70 text-xs font-mono">time</div>
+                            </div>
+                            <div class="w-fit flex  gap-1 lg:gap-2.5 items-center">
+                                   <i><svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="#f18701" class="size-4">
+  <path stroke-linecap="round" stroke-linejoin="round" d="M21 8.25c0-2.485-2.099-4.5-4.688-4.5-1.935 0-3.597 1.126-4.312 2.733-.715-1.607-2.377-2.733-4.313-2.733C5.1 3.75 3 5.765 3 8.25c0 7.22 9 12 9 12s9-4.78 9-12Z" />
+</svg>
+</i>
+                                   <i class="hidden lg:flex">
+                                          <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="#f18701" class="size-4">
+  <path stroke-linecap="round" stroke-linejoin="round" d="M6.75 12a.75.75 0 1 1-1.5 0 .75.75 0 0 1 1.5 0ZM12.75 12a.75.75 0 1 1-1.5 0 .75.75 0 0 1 1.5 0ZM18.75 12a.75.75 0 1 1-1.5 0 .75.75 0 0 1 1.5 0Z" />
+</svg>
+
+                                   </i>
+                            </div>
+                     </div>
+                     <div class="trendItem">
+                            <div class="w-fit flex items-center gap-2.5 ">
+                                   <figure class="w-6 h-6 lg:w-8 lg:h-8 rounded-[5px] border-2 border-orange "></figure>
+                                   <span class=" songName">song name</span>
+                            </div>
+                            <div class="w-fit flex gap-2.5 items-center ">
+                                    <i>
+                                          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="#f18701" class="size-4"><path d="M12 4C7.58172 4 4 7.58172 4 12H7C8.10457 12 9 12.8954 9 14V19C9 20.1046 8.10457 21 7 21H4C2.89543 21 2 20.1046 2 19V12C2 6.47715 6.47715 2 12 2C17.5228 2 22 6.47715 22 12V19C22 20.1046 21.1046 21 20 21H17C15.8954 21 15 20.1046 15 19V14C15 12.8954 15.8954 12 17 12H20C20 7.58172 16.4183 4 12 4ZM4 14V19H7V14H4ZM17 14V19H20V14H17Z"></path></svg>
+                                   </i>
+                                   <span class="streamCount">stream count</span>
+                            </div>
+                            <div class="w-fit flex gap-2.5 items-center">
+                                   <i><svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="#f18701" class="size-4">
+  <path stroke-linecap="round" stroke-linejoin="round" d="M12 6v6h4.5m4.5 0a9 9 0 1 1-18 0 9 9 0 0 1 18 0Z" />
+</svg>
+</i>
+                                   <div class="duration text-white/70 text-xs font-mono">time</div>
+                            </div>
+                            <div class="w-fit flex  gap-1 lg:gap-2.5 items-center">
+                                   <i><svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="#f18701" class="size-4">
+  <path stroke-linecap="round" stroke-linejoin="round" d="M21 8.25c0-2.485-2.099-4.5-4.688-4.5-1.935 0-3.597 1.126-4.312 2.733-.715-1.607-2.377-2.733-4.313-2.733C5.1 3.75 3 5.765 3 8.25c0 7.22 9 12 9 12s9-4.78 9-12Z" />
+</svg>
+</i>
+                                   <i class="hidden lg:flex">
+                                          <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="#f18701" class="size-4">
+  <path stroke-linecap="round" stroke-linejoin="round" d="M6.75 12a.75.75 0 1 1-1.5 0 .75.75 0 0 1 1.5 0ZM12.75 12a.75.75 0 1 1-1.5 0 .75.75 0 0 1 1.5 0ZM18.75 12a.75.75 0 1 1-1.5 0 .75.75 0 0 1 1.5 0Z" />
+</svg>
+
+                                   </i>
+                            </div>
+                     </div>
+                     <div class="trendItem">
+                            <div class="w-fit flex items-center gap-2.5 ">
+                                   <figure class="w-6 h-6 lg:w-8 lg:h-8 rounded-[5px] border-2 border-orange "></figure>
+                                   <span class=" songName">song name</span>
+                            </div>
+                            <div class="w-fit flex gap-2.5 items-center ">
+                                    <i>
+                                          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="#f18701" class="size-4"><path d="M12 4C7.58172 4 4 7.58172 4 12H7C8.10457 12 9 12.8954 9 14V19C9 20.1046 8.10457 21 7 21H4C2.89543 21 2 20.1046 2 19V12C2 6.47715 6.47715 2 12 2C17.5228 2 22 6.47715 22 12V19C22 20.1046 21.1046 21 20 21H17C15.8954 21 15 20.1046 15 19V14C15 12.8954 15.8954 12 17 12H20C20 7.58172 16.4183 4 12 4ZM4 14V19H7V14H4ZM17 14V19H20V14H17Z"></path></svg>
+                                   </i>
+                                   <span class="streamCount">stream count</span>
+                            </div>
+                            <div class="w-fit flex gap-2.5 items-center">
+                                   <i><svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="#f18701" class="size-4">
+  <path stroke-linecap="round" stroke-linejoin="round" d="M12 6v6h4.5m4.5 0a9 9 0 1 1-18 0 9 9 0 0 1 18 0Z" />
+</svg>
+</i>
+                                   <div class="duration text-white/70 text-xs font-mono">time</div>
+                            </div>
+                            <div class="w-fit flex  gap-1 lg:gap-2.5 items-center">
+                                   <i><svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="#f18701" class="size-4">
+  <path stroke-linecap="round" stroke-linejoin="round" d="M21 8.25c0-2.485-2.099-4.5-4.688-4.5-1.935 0-3.597 1.126-4.312 2.733-.715-1.607-2.377-2.733-4.313-2.733C5.1 3.75 3 5.765 3 8.25c0 7.22 9 12 9 12s9-4.78 9-12Z" />
+</svg>
+</i>
+                                   <i class="hidden lg:flex">
+                                          <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="#f18701" class="size-4">
+  <path stroke-linecap="round" stroke-linejoin="round" d="M6.75 12a.75.75 0 1 1-1.5 0 .75.75 0 0 1 1.5 0ZM12.75 12a.75.75 0 1 1-1.5 0 .75.75 0 0 1 1.5 0ZM18.75 12a.75.75 0 1 1-1.5 0 .75.75 0 0 1 1.5 0Z" />
+</svg>
+
+                                   </i>
+                            </div>
+                     </div>
+                     <div class="trendItem">
+                            <div class="w-fit flex items-center gap-2.5 ">
+                                   <figure class="w-6 h-6 lg:w-8 lg:h-8 rounded-[5px] border-2 border-orange "></figure>
+                                   <span class=" songName">song name</span>
+                            </div>
+                            <div class="w-fit flex gap-2.5 items-center ">
+                                    <i>
+                                          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="#f18701" class="size-4"><path d="M12 4C7.58172 4 4 7.58172 4 12H7C8.10457 12 9 12.8954 9 14V19C9 20.1046 8.10457 21 7 21H4C2.89543 21 2 20.1046 2 19V12C2 6.47715 6.47715 2 12 2C17.5228 2 22 6.47715 22 12V19C22 20.1046 21.1046 21 20 21H17C15.8954 21 15 20.1046 15 19V14C15 12.8954 15.8954 12 17 12H20C20 7.58172 16.4183 4 12 4ZM4 14V19H7V14H4ZM17 14V19H20V14H17Z"></path></svg>
+                                   </i>
+                                   <span class="streamCount">stream count</span>
+                            </div>
+                            <div class="w-fit flex gap-2.5 items-center">
+                                   <i><svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="#f18701" class="size-4">
+  <path stroke-linecap="round" stroke-linejoin="round" d="M12 6v6h4.5m4.5 0a9 9 0 1 1-18 0 9 9 0 0 1 18 0Z" />
+</svg>
+</i>
+                                   <div class="duration text-white/70 text-xs font-mono">time</div>
+                            </div>
+                            <div class="w-fit flex  gap-1 lg:gap-2.5 items-center">
+                                   <i><svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="#f18701" class="size-4">
+  <path stroke-linecap="round" stroke-linejoin="round" d="M21 8.25c0-2.485-2.099-4.5-4.688-4.5-1.935 0-3.597 1.126-4.312 2.733-.715-1.607-2.377-2.733-4.313-2.733C5.1 3.75 3 5.765 3 8.25c0 7.22 9 12 9 12s9-4.78 9-12Z" />
+</svg>
+</i>
+                                   <i class="hidden lg:flex">
+                                          <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="#f18701" class="size-4">
+  <path stroke-linecap="round" stroke-linejoin="round" d="M6.75 12a.75.75 0 1 1-1.5 0 .75.75 0 0 1 1.5 0ZM12.75 12a.75.75 0 1 1-1.5 0 .75.75 0 0 1 1.5 0ZM18.75 12a.75.75 0 1 1-1.5 0 .75.75 0 0 1 1.5 0Z" />
+</svg>
+
+                                   </i>
+                            </div>
+                     </div>
               </div>
              </section>
              <!-- MUSIC VIDEOS +__+_+_+_+_+_+_+_+_+_+_+_+_+_+_+_+_+_+_+_+_+_+_+_+_+_+_+_+_+_+_+_+_+ +__+_+_+_+_+_+_+_+_+_+_+_+_+_+_+_+_+_+_+_+_+_+_+_+_+_+_+_+_+_+_+_+_+ -->
@@ -452,6 +612,17 @@
                      <h3 class="section-title"> <i><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="#ffd23f" class="size-6"><path d="M15 4.58152V12C15 13.6569 13.6569 15 12 15C10.3431 15 9 13.6569 9 12C9 10.3431 10.3431 9 12 9C12.3506 9 12.6872 9.06016 13 9.17071V2.04938C18.0533 2.5511 22 6.81465 22 12C22 17.5229 17.5228 22 12 22C6.47715 22 2 17.5229 2 12C2 6.81465 5.94668 2.5511 11 2.04938V4.0619C7.05369 4.55399 4 7.92038 4 12C4 16.4183 7.58172 20 12 20C16.4183 20 20 16.4183 20 12C20 8.64262 17.9318 5.76829 15 4.58152Z"></path></svg>
 
 </i>Albums for you</h3>
+              </div>
+              <div class="w-full  overflow-hidden overflow-x-auto ">
+                     <div class="w-fit lg:w-full flex gap-2.5 *:w-50 *:h-50 lg:*:w-1/8 lg:grow lg:*:h-62.5 *:shrink-0 *:bg-darkGray">
+                            <div class="card"></div>
+                            <div class="card"></div>
+                            <div class="card"></div>
+                            <div class="card"></div>
+                            <div class="card"></div>
+                            <div class="card"></div>
+                            <div class="card"></div>
+                     </div>
               </div>
              </section>
              
