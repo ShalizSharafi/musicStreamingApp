@@ -349,18 +349,18 @@ popularMusic = musicArray.slice(0,4)
 let x = ''
 popularMusic.forEach((val)=>{
        x+= `
-       <div class="card group duration-300 bg-green/10" data-id="${val.id} ">
-                            <figure class="w-full h-full border border-white rounded-[5px] group-hover:*:scale-110 duration-300">
-                            <img src="${val.imgSrc}" alt="" class="w-full h-full object-cover cursor-pointer duration-500">
+       <div class="card group duration-300 bg-green/10 overflow-hidden" data-id="${val.id}">
+                            <figure class="w-full h-full  rounded-[5px] group-hover:*:scale-110 duration-300">
+                            <img src="${val.imgSrc}" alt="" class="w-full h-full object-cover cursor-pointer duration-500 ">
                             </figure>
                             <div class="overlay group-hover:h-0 group-hover:opacity-0 duration-300">
-                                    <div class="cardCaption rounded-[5px] content-center gap-2.5 h-1/2 bg-white">
+                                    <div class="cardCaption rounded-[5px] content-center gap-2.5 h-1/2  backdrop-blur-2xl">
                                    <h6 class="artist">${val.artist}</h6>
                                    <h5 class="trackName text-green">${val.trackName}</h5>
                             </div>
                             </div>
                             <div class="playBox bg-green  duration-300 ">
-                                   <div class="play">
+                                   <div class="play" >
                                           <i class="w-full h-full playButton flex items-center justify-center cursor-pointer">
                                                  <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="3" stroke="#58b660" class="size-4 lg:size-6">
   <path stroke-linecap="round" stroke-linejoin="round" d="M5.25 5.653c0-.856.917-1.398 1.667-.986l11.54 6.347a1.125 1.125 0 0 1 0 1.972l-11.54 6.347a1.125 1.125 0 0 1-1.667-.986V5.653Z" />
@@ -369,10 +369,31 @@ popularMusic.forEach((val)=>{
                                           </i>
                                    </div>
                             </div>
+                            <audio src="${val.src}" class="audioLink"></audio>
                      </div>
 `
 })
-songfield[1].innerHTML += x
+songfield[1].innerHTML = x
 }
 ////popular music _______+++++++++++________+_++_+++_+_+_+_++_++_+<>?<?<?<?<?<?<?<?< --_______+++++++++++________+_++_+++_+_+_+_++_++_+<>?<?<?<?<?<?<?<?< --
- 
+
+
+
+////play the music (BTN) _______+++++++++++________+_++_+++_+_+_+_++_++_+<>?<?<?<?<?<?<?<?< --_______+++++++++++________+_++_+++_+_+_+_++_++_+<>?<?<?<?<?<?<?<?< --
+
+songfield.forEach((val)=>{
+       val.addEventListener('click',(e)=>{
+              let playBtn = e.target.closest('.play')
+              if(!playBtn) return
+              
+              const card = playBtn.closest('.card')
+              const cardId = card.getAttribute('data-id')
+              console.log('cardId: ', cardId)
+
+             
+       })
+})
+
+function playMusic(){
+
+}
