@@ -31,7 +31,6 @@
     --color-darkGray: #212121;
     --color-green: #ccc5b9;
     --color-blue: #066aff;
-    --color-red: #ff0034;
     --color-orange: #f18701;
   }
 }
@@ -192,6 +191,9 @@
   }
   .static {
     position: static;
+  }
+  .end {
+    inset-inline-end: var(--spacing);
   }
   .top-0 {
     top: calc(var(--spacing) * 0);
@@ -405,9 +407,6 @@
   }
   .bg-black {
     background-color: var(--color-black);
-  }
-  .bg-blue {
-    background-color: var(--color-blue);
   }
   .bg-darkGray {
     background-color: var(--color-darkGray);
@@ -746,6 +745,16 @@
   .md\:text-\[15px\] {
     @media (width >= 48rem) {
       font-size: 15px;
+    }
+  }
+  .lg\:invisible {
+    @media (width >= 64rem) {
+      visibility: hidden;
+    }
+  }
+  .lg\:visible {
+    @media (width >= 64rem) {
+      visibility: visible;
     }
   }
   .lg\:flex {

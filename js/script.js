@@ -10,11 +10,13 @@ const card = document.querySelectorAll('.card')
 const carouselItems = document.querySelectorAll('.carouselItems')
 const right = document.querySelector('.rightClick')
 const left = document.querySelector('.leftClick')
+const seeMore = document.querySelector('.seemore')
 /////main selects  _______+++++++++++________+_++_+++_+_+_+_++_++_+<>?<?<?<?<?<?<?<?< --
 
 const newMusicCard = document.querySelectorAll('.newMusicCard')
 const popularSongs = document.querySelector('.popularSongs')
 const songfield = document.querySelectorAll('.songfield')
+let flag = 1
 
 /////topHeader bg change while scrolling _______+++++++++++________+_++_+++_+_+_+_++_++_+<>?<?<?<?<?<?<?<?< --
 addEventListener('scroll',()=>{
@@ -344,13 +346,14 @@ document.addEventListener('DOMContentLoaded',()=>{
 
 function popular(){
        let popularMusic = []
-popularMusic = musicArray.slice(0,6)
+popularMusic = musicArray.slice(0,8)
 
 let x = ''
 popularMusic.forEach((val,i)=>{
        const visibility = i > 3 ? 'lg:hidden' : 'lg:flex'
+       const extraTag = i >3 ? 'extraTag' : ''
        x+= `
-       <div class="card group duration-300 bg-green/5 overflow-hidden w-1/3 sm:w-1/4 lg:w-1/5  ${visibility}" data-id="${val.id}">
+       <div class="card group duration-300 bg-green/5 overflow-hidden w-1/3 sm:w-1/4 lg:w-1/5  ${visibility} ${extraTag}" data-id="${val.id}">
                             <figure class="w-full h-full   songCover rounded-[5px] group-hover:*:scale-[1.2] duration-300 cursor-pointer">
                             <img src="${val.imgSrc}" alt="" class="w-full h-full object-cover  duration-500 rounded-[5px] object-center">
                             </figure>
@@ -382,6 +385,23 @@ popularMusic.forEach((val,i)=>{
 })
 songfield[1].innerHTML = x
 }
+
+seeMore.addEventListener('click',()=>{
+       const hiddenCards =songfield[1].querySelectorAll('.extraTag')
+        hiddenCards.forEach((one,i)=>{
+              if(flag % 2){
+              one.classList.add('lg:flex')
+              one.classList.remove('lg:hidden')
+              }else{
+              
+              one.classList.remove('lg:flex')
+              one.classList.add('lg:hidden')
+              }
+           
+       })
+          flag++
+})
+
 ////popular music _______+++++++++++________+_++_+++_+_+_+_++_++_+<>?<?<?<?<?<?<?<?< --_______+++++++++++________+_++_+++_+_+_+_++_++_+<>?<?<?<?<?<?<?<?< --
 
 
@@ -428,7 +448,7 @@ function resetPlayIcon(btn){
        `
 }
 
-let flag = 1
+
 function likeSong(){
        songfield.forEach((s)=>{
             
@@ -460,3 +480,11 @@ function likeSong(){
 }
 
 likeSong()
+
+
+
+////play the music (BTN) end _______+++++++++++________+_++_+++_+_+_+_++_++_+<>?<?<?<?<?<?<?<?< --_______+++++++++++________+_++_+++_+_+_+_++_++_+<>?<?<?<?<?<?<?<?< --
+
+
+////now playing _______+++++++++++________+_++_+++_+_+_+_++_++_+<>?<?<?<?<?<?<?<?< --_______+++++++++++________+_++_+++_+_+_+_++_++_+<>?<?<?<?<?<?<?<?< --
+

@@ -152,6 +152,7 @@
 
 
 
+
   /* /////add inside js script  */
   .iconReset{
        @apply animate-animate
@@ -164,6 +165,8 @@
   .likeIconShow{
        @apply flex!
   }
+
+  
  
 }
 
