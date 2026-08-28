@@ -117,9 +117,42 @@
 
        <!-- //////hero section _______+++++++++++________+_++_+++_+_+_+_++_++_+<>?<?<?<?<?<?<?<?< -->
              <section class="sec" id="heroSection">
-             
-              <div class="row h-full  rounded-[5px]">
+             <div class="carousel mt-10 relative transform-3d w-50 h-50 lg:w-62.5 lg:h-64 rounded-[10px]  [--persp:200px] [--depth:50px] [--push:5px]  lg:[--persp:800px] lg:[--depth:100px] lg:[--push:350px]
+     sm:[--persp:500px] sm:[--depth:70px] sm:[--push:150px] [transform:perspective(var(--persp))_translateZ(var(--push))] *:z-0" >
+              <div class="carouselItems  [transform:perspective(var(--persp))_translateZ(calc(var(--depth)*-1))] bg-green" data-index="0">
+                     <figure class="w-full bg-black rounded-[5px]"></figure>
+                     <div class="carouselCaption w-full *:items-center *:justify-start flex-wrap  bg-black grow px-1">
+                            <span class=" w-full text-white capitalize text-xs font-mono bg-amber-400">artist</span>
+                            <p class="w-full text-white text-[10px] font-light bg-pink-400 ">info about the artist</p>
+                     </div>
+              </div>
+              <div class="carouselItems  origin-left [transform:perspective(var(--persp))_rotateY(140deg)] bg-blue" data-index="1">
+                     <figure class="w-full bg-black rounded-[5px]"></figure>
+                     <div class="carouselCaption w-full *:items-center *:justify-start flex-wrap  bg-black grow px-1">
+                            <span class=" w-full text-white capitalize text-xs font-mono bg-amber-400">artist</span>
+                            <p class="w-full text-white text-[10px] font-light bg-pink-400 ">info about the artist</p>
+                     </div>
+              </div>
+              <div class="carouselItems  origin-right [transform:perspective(var(--persp))_rotateY(-140deg)] bg-red" data-index="2">
+                     <figure class="w-full bg-black rounded-[5px]"></figure>
+                     <div class="carouselCaption w-full *:items-center *:justify-start flex-wrap  bg-black grow px-1">
+                            <span class=" w-full text-white capitalize text-xs font-mono bg-amber-400">artist</span>
+                            <p class="w-full text-white text-[10px] font-light bg-pink-400 ">info about the artist</p>
+                     </div>
+              </div>
 
+              <div class="arrowBar">
+                     <span class="leftClick w-5 h-5 flex items-center justify-center">
+                            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="#696969" class="size-4 cursor-pointer"><path d="M20 3H4C3.44772 3 3 3.44772 3 4V20C3 20.5523 3.44772 21 4 21H20C20.5523 21 21 20.5523 21 20V4C21 3.44772 20.5523 3 20 3ZM5 19V5H19V19H5ZM6.3436 12.001L12.0005 6.34412L13.4147 7.75834L10.172 11.001H17.6573V13.001H10.172L13.4147 16.2436L12.0005 17.6578L6.3436 12.001Z"></path></svg>
+                     </span>
+                     <div class="detecter">
+
+                     </div>
+                     <span class="rightClick w-5 h-5 flex items-center justify-center">
+                            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="#696969" class="size-4 cursor-pointer"><path d="M20 3H4C3.44772 3 3 3.44772 3 4V20C3 20.5523 3.44772 21 4 21H20C20.5523 21 21 20.5523 21 20V4C21 3.44772 20.5523 3 20 3ZM5 19V5H19V19H5ZM17.6569 12L12 17.6568L10.5858 16.2426L13.8284 13H6.34315V11L13.8284 11L10.5858 7.75732L12 6.34311L17.6569 12Z"></path></svg>
+                     </span>
+              </div>
+             </div>
               </div>
              </section>
              <!--NEW MUSIC  +__+_+_+_+_+_+_+_+_+_+_+_+_+_+_+_+_+_+_+_+_+_+_+_+_+_+_+_+_+_+_+_+_+ +__+_+_+_+_+_+_+_+_+_+_+_+_+_+_+_+_+_+_+_+_+_+_+_+_+_+_+_+_+_+_+_+_+ -->
@@ -129,7 +162,7 @@
                      <ul class="w-full md:w-fit flex gap-2.5 ">
                             <li class="grow px-1.5 py-1 flex items-center justify-center bg-white text-black text-sm rounded-[5px] capitalize font-normal  hover:bg-gray duration-300 hover:text-white">music</li>
                             <li class="grow px-1.5 py-1 flex items-center justify-center bg-white text-black text-sm rounded-[5px] capitalize font-normal  hover:bg-gray duration-300 hover:text-white">music video</li>
-                            <li class="grow px-1.5 py-1 flex items-center justify-center bg-white text-black text-sm rounded-[5px] capitalize font-normal  hover:bg-gray duration-300 hover:text-white">podcasts</li>
+                            <li class="grow px-1.5 py-1 flex items-center justify-center bg-white text-black text-sm rounded-[5px] capitalize font-normal  hover:bg-gray duration-300 hover:text-white">Trends</li>
                      </ul>
               </div>
               <div class="row mt-10 ">
@@ -139,9 +172,9 @@
 </i> New Music</h3>
                      <p class="section-subTitle">New music based on your favorite artists</p>
               </div>
-              <div class="row gap-2.5 
+              <div class="row songfield gap-2.5 
               ">
-                     <div class="card " data-effect="op-0">
+                     <div class="card newMusicCard" data-effect="op-0">
                             <figure class="h-25 lg:h-37.5 rounded-[5px] overflow-hidden"></figure>
                             <div class="cardCaption ">
                                    <h6 class="artist">charlie puth</h6>
@@ -158,7 +191,7 @@
                                    </div>
                             </div>
                      </div>
-                     <div class="card " data-effect="op-0">
+                     <div class="card newMusicCard" data-effect="op-0">
                             <figure class="h-30 lg:h-37.5 rounded-[5px] overflow-hidden"></figure>
                             <div class="cardCaption">
                                    <h6 class="artist">charlie puth</h6>
@@ -175,7 +208,7 @@
                                    </div>
                             </div>
                      </div>
-                     <div class="card " data-effect="op-0">
+                     <div class="card newMusicCard" data-effect="op-0">
                             <figure class="h-30 lg:h-37.5 rounded-[5px] overflow-hidden"></figure>
                             <div class="cardCaption">
                                    <h6 class="artist">charlie puth</h6>
@@ -192,7 +225,7 @@
                                    </div>
                             </div>
                      </div>
-                     <div class="card " data-effect="op-0">
+                     <div class="card newMusicCard" data-effect="op-0">
                             <figure class="h-30 lg:h-37.5 rounded-[5px] overflow-hidden"></figure>
                             <div class="cardCaption">
                                    <h6 class="artist">charlie puth</h6>
@@ -208,7 +241,7 @@
                                    </div>
                             </div>
                      </div>
-                      <div class="card   hidden lg:flex" data-effect="op-0">
+                      <div class="card newMusicCard  hidden lg:flex" data-effect="op-0">
                             <figure class=" h-30 lg:h-37.5 rounded-[5px] overflow-hidden"></figure>
                             <div class="cardCaption">
                                    <h6 class="artist">charlie puth</h6>
@@ -225,7 +258,7 @@
                                    </div>
                             </div>
                      </div>
-                     <div class="card  hidden lg:flex" data-effect="op-0">
+                     <div class="card newMusicCard hidden lg:flex" data-effect="op-0">
                             <figure class="h-30 lg:h-37.5 rounded-[5px] overflow-hidden"></figure>
                             <div class="cardCaption">
                                    <h6 class="artist">charlie puth</h6>
@@ -254,29 +287,11 @@
 </svg>
 
 </i> popular songs</h3>
-                     <p class="section-subTitle">Popular releases based on top 50's in USA</p>
+                     <p class="section-subTitle">Popular releases based on top 50's in the wolrd</p>
               </div>
-              <div class="row gap-2.5 *:w-1/3 *:lg:w-1/5">
-                     <div class="card  group duration-300 bg-green/10">
-                            <figure class="w-full h-full border border-white rounded-[5px] group-hover:*:scale-110 duration-300"></figure>
-                            <div class="overlay group-hover:h-0 group-hover:opacity-0 duration-300">
-                            <div class="cardCaption rounded-[5px] h-1/2  content-center gap-2.5 bg-white">
-                                   <h6 class="artist">charlie puth</h6>
-                                   <h5 class="trackName text-green">voice</h5>
-                            </div>
-                            </div>
-                            <div class="playBox bg-green  duration-300 ">
-                                   <div class="play">
-                                          <i class="w-full h-full playButton flex items-center justify-center cursor-pointer">
-                                                 <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="3" stroke="#58b660" class="size-4 lg:size-6">
-  <path stroke-linecap="round" stroke-linejoin="round" d="M5.25 5.653c0-.856.917-1.398 1.667-.986l11.54 6.347a1.125 1.125 0 0 1 0 1.972l-11.54 6.347a1.125 1.125 0 0 1-1.667-.986V5.653Z" />
-</svg>
-
-                                          </i>
-                                   </div>
-                            </div>
-                     </div>
-                     <div class="card  group duration-300 bg-green/10">
+              <div class="row gap-2.5 *:w-1/3 *:lg:w-1/5 songfield">
+                     
+                     <!-- <div class="card  group duration-300 bg-green/10">
                             <figure class="w-full h-full border border-white rounded-[5px] group-hover:*:scale-110 duration-300"></figure>
                             <div class="overlay group-hover:h-0 group-hover:opacity-0 duration-300">
                                     <div class="cardCaption rounded-[5px] content-center gap-2.5 h-1/2 bg-white">
@@ -332,7 +347,7 @@
                                           </i>
                                    </div>
                             </div>
-                     </div>
+                     </div> -->
               </div>
 
              </section>
@@ -608,7 +623,7 @@
 
              <section class="sec" id="albums">
                <div class="row ">
-              @apply w-full bg-black md:ml-[20%] duration-500 p-5 flex gap-5 flex-wrap
+              
                      <h3 class="section-title"> <i><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="#ffd23f" class="size-6"><path d="M15 4.58152V12C15 13.6569 13.6569 15 12 15C10.3431 15 9 13.6569 9 12C9 10.3431 10.3431 9 12 9C12.3506 9 12.6872 9.06016 13 9.17071V2.04938C18.0533 2.5511 22 6.81465 22 12C22 17.5229 17.5228 22 12 22C6.47715 22 2 17.5229 2 12C2 6.81465 5.94668 2.5511 11 2.04938V4.0619C7.05369 4.55399 4 7.92038 4 12C4 16.4183 7.58172 20 12 20C16.4183 20 20 16.4183 20 12C20 8.64262 17.9318 5.76829 15 4.58152Z"></path></svg>
 
 </i>Albums for you</h3>

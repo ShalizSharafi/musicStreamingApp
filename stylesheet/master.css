@@ -54,15 +54,24 @@
   
   #heroSection {
     @apply py-16 md:py-20 flex px-5  items-center justify-center  h-screen
-            bg-black  w-full  md:ml-[20%] duration-500 
+            bg-black  w-full  md:ml-[20%] duration-500 overflow-hidden
+  }
+  .arrowBar{
+       @apply w-[200%] -bottom-10 h-5  right-1/2 translate-x-1/2 absolute
+       flex items-center justify-center gap-5
+  }
+  .carouselItems{
+       @apply w-full flex h-full top-0 left-0 absolute transform-3d rounded-[5px]  duration-1000 
+       bg-white p-5 gap-2 *:nth-[1]:h-3/5 *:nth-[1]:border-black *:nth-[2]:h-1/5  flex-wrap justify-between
   }
   .secWide {
     @apply ml-0! w-full;
   }
   #newMusic{
        @apply w-full bg-black md:ml-[20%] duration-500 p-5 flex gap-5 flex-wrap     
-  
   }
+
+  
 
   .section-title{
        @apply font-bold text-white text-sm md:text-lg w-full flex gap-2.5  items-center justify-start capitalize
