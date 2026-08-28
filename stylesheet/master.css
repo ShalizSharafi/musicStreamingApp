@@ -77,22 +77,22 @@
        @apply font-bold text-white text-sm md:text-lg w-full flex gap-2.5  items-center justify-start capitalize
   }
   .section-subTitle{
-       @apply font-light text-white/70 text-[11px] md:text-lg flex w-full items-center justify-start 
+       @apply font-light text-white/70 text-[11px] md:text-lg flex w-2/3 items-center justify-start 
   }
 
   .card{
        @apply w-1/3 md:w-1/7 grow  h-55 lg:h-62.5 p-3 flex flex-wrap
-       *:w-full content-between bg-blue/10 backdrop-blur-2xl rounded-[5px] relative overflow-hidden
+       *:w-full content-between bg-green/10 backdrop-blur-2xl rounded-[5px] relative overflow-hidden
        *:nth-[1]:border duration-300
   }
   .cardCaption{
        @apply h-16 lg:h-16 bg-black flex flex-wrap w-full *:text-white *:w-full  *:flex *:items-center *:justify-start  *:capitalize pl-2
   }
   .artist{
-       @apply text-xs font-[interLight] text-gray
+       @apply text-[2vw] sm:text-xs md:text-xs font-[interLight] text-gray
   }
   .trackName{
-       @apply text-sm font-bold
+       @apply text-[2vw] sm:text-xs md:text-sm font-bold
   }
   .playBox{
        @apply absolute bottom-0 right-0 translate-x-5 translate-y-5 h-16 w-16 lg:h-20  lg:w-20 flex items-center justify-center rounded-full bg-blue duration-200 hover:translate-y-4
@@ -150,8 +150,19 @@
               @apply w-full bg-black md:ml-[20%] duration-500 p-5 flex gap-5 flex-wrap
   }
 
+
+
+  /* /////add inside js script  */
   .iconReset{
        @apply animate-animate
+  }
+
+  .likeIcon{
+       @apply fill-green duration-500  
+  }
+
+  .likeIconShow{
+       @apply flex!
   }
  
 }
@@ -160,6 +171,7 @@
   --animate-animate: animate 3s linear infinite;
   --color-black: #121212;
   --color-white: #f2f2f7;
+  --color-milky:#fffcf2;
   --color-gray: #696969;
   --color-lightGray: #666666;
   --color-darkGray: #212121;

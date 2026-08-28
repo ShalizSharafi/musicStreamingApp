@@ -344,14 +344,15 @@ document.addEventListener('DOMContentLoaded',()=>{
 
 function popular(){
        let popularMusic = []
-popularMusic = musicArray.slice(0,4)
+popularMusic = musicArray.slice(0,6)
 
 let x = ''
-popularMusic.forEach((val)=>{
+popularMusic.forEach((val,i)=>{
+       const visibility = i > 3 ? 'lg:hidden' : 'lg:flex'
        x+= `
-       <div class="card group duration-300 bg-green/5 overflow-hidden" data-id="${val.id}">
+       <div class="card group duration-300 bg-green/5 overflow-hidden w-1/3 sm:w-1/4 lg:w-1/5  ${visibility}" data-id="${val.id}">
                             <figure class="w-full h-full   songCover rounded-[5px] group-hover:*:scale-[1.2] duration-300 cursor-pointer">
-                            <img src="${val.imgSrc}" alt="" class="w-full h-full object-cover  duration-500 rounded-[5px] ">
+                            <img src="${val.imgSrc}" alt="" class="w-full h-full object-cover  duration-500 rounded-[5px] object-center">
                             </figure>
                             <div class="overlay group-hover:h-0 group-hover:opacity-0 duration-300">
                                     <div class="cardCaption rounded-[5px] content-center gap-2.5 h-1/2  backdrop-blur-2xl">
@@ -369,6 +370,12 @@ popularMusic.forEach((val)=>{
                                           </i>
                                    </div>
                             </div>
+                            <i class="favorite hidden absolute z-10 w-fit h-fit right-0 top-0 p-1 rounded-full">
+                            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="#ccc5b9" class="size-6 cursor-pointer">
+  <path stroke-linecap="round" stroke-linejoin="round" d="M21 8.25c0-2.485-2.099-4.5-4.688-4.5-1.935 0-3.597 1.126-4.312 2.733-.715-1.607-2.377-2.733-4.313-2.733C5.1 3.75 3 5.765 3 8.25c0 7.22 9 12 9 12s9-4.78 9-12Z" />
+</svg>
+
+                            </i>
                             <audio src="${val.src}" class="audioLink"></audio>
                      </div>
 `
@@ -420,3 +427,36 @@ function resetPlayIcon(btn){
 </svg>
        `
 }
+
+let flag = 1
+function likeSong(){
+       songfield.forEach((s)=>{
+            
+              ///hovering to display the like btn
+              s.addEventListener('mouseover',(e)=>{
+                    let card = e.target.closest('.card')
+                    if (!card || card.contains(e.relatedTarget)) return
+                    let likeIcon = card.querySelector('.favorite')
+                    if(!likeIcon) return
+                    likeIcon.classList.add('likeIconShow')
+                    
+              })
+
+              s.addEventListener('mouseout',(e)=>{
+              let card = e.target.closest('.card')
+                    if (!card || card.contains(e.relatedTarget)) return
+                    let likeIcon = card.querySelector('.favorite')
+                    if(!likeIcon) return
+                    likeIcon.classList.remove('likeIconShow')
+              })
+              ///click on the like btn
+                s.addEventListener('click',(e)=>{
+                     let likeIcon = e.target.closest('.favorite')
+                     if(!likeIcon) return
+                     likeIcon.children[0].classList.toggle('likeIcon', flag%2)
+                    flag++
+              })
+       })
+}
+
+likeSong()
