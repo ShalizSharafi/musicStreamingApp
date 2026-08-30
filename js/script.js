@@ -266,6 +266,7 @@ function quickPickGenerator(item,container){
    let quickBlocks = document.createElement('div')
 quickBlocks.classList.add('pick-card')
 quickBlocks.setAttribute('data-id',item.id)
+quickBlocks.setAttribute('is-playing','false')
 quickBlocks.innerHTML=`
     <figure class="pick-cover cover-4 ">
     <img src="${item.imgSrc}" class="w-full h-full object-cover rounded-lg">
@@ -274,6 +275,7 @@ quickBlocks.innerHTML=`
       <div class="pick-title">${item.trackName}</div>
       <div class="pick-artist">${item.artist}</div>
     </div>
+    <audio src="${item.src}"></audio>
 `
 container.appendChild(quickBlocks)
 }
@@ -294,9 +296,32 @@ function quickNowPlaying(x){
  `
 }
 
+
+/////quick picks music play
 pickRow.addEventListener('click',(e)=>{
   let pickedCard = e.target.closest('.pick-card')
-  if(!pickedCard) return
- quickNowPlaying(pickedCard)
+    if(!pickedCard) return
+    let sound = pickedCard.querySelector('audio')
+    let allsounds = pickedCard.closest('#pickRow').querySelectorAll('audio')
+
+    allsounds.forEach((s)=>{
+    let pickedCard = s.closest('.pick-card')
+    pickedCard.setAttribute('is-playing','false')
+    if(s !== sound){
+      s.pause()
+    pickedCard.setAttribute('is-playing','false')
+    }else{
+      if(sound.paused){
+        sound.play()
+    pickedCard.setAttribute('is-playing','true')
+      }else{
+        sound.pause()
+        }
+    }
+   
+  })
+
+quickNowPlaying(pickedCard)
+
 })
 
