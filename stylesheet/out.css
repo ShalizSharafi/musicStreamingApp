@@ -9,6 +9,7 @@
     --color-amber-400: oklch(82.8% 0.189 84.429);
     --color-green-300: oklch(87.1% 0.15 154.449);
     --color-pink-400: oklch(71.8% 0.202 349.761);
+    --color-gray-800: oklch(27.8% 0.033 256.848);
     --color-black: #000;
     --color-white: #fff;
     --spacing: 0.25rem;
@@ -817,9 +818,9 @@
     @supports (color: color-mix(in lab, red, red)) {
       border-color: color-mix(in oklab, var(--color-white) 8%, transparent);
     }
-    background-color: color-mix(in srgb, #0d0d0d 90%, transparent);
+    background-color: color-mix(in srgb, oklch(27.8% 0.033 256.848) 10%, transparent);
     @supports (color: color-mix(in lab, red, red)) {
-      background-color: color-mix(in oklab, var(--color-ink) 90%, transparent);
+      background-color: color-mix(in oklab, var(--color-gray-800) 10%, transparent);
     }
   }
   .brand {
@@ -1806,6 +1807,7 @@
   }
   .pick-card {
     display: flex;
+    cursor: pointer;
     align-items: center;
     gap: calc(var(--spacing) * 3);
     border-radius: var(--radius-lg);
@@ -1817,8 +1819,8 @@
     }
     background-color: var(--color-panel);
     padding: calc(var(--spacing) * 2.5);
-    --tw-duration: 150ms;
-    transition-duration: 150ms;
+    --tw-duration: 300ms;
+    transition-duration: 300ms;
     &:hover {
       @media (hover: hover) {
         --tw-translate-y: calc(var(--spacing) * -0.5);

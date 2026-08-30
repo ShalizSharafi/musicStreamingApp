@@ -9,6 +9,11 @@ const sec = document.querySelectorAll('.sec')
 const popularGrid = document.getElementById('popularGrid')
 const seeMoreBtn = document.getElementById('seeMoreBtn')
 
+const moodGrid = document.getElementById('moodGrid')
+
+
+const pickRow = document.getElementById('pickRow')
+
 // now playing selected elements
 const nowPlaying = document.querySelector('.nowPlaying')
 const nowPlayingCover = document.querySelector('.nowPlaying-cover')
@@ -103,6 +108,10 @@ popularMusic.forEach((item)=>{
   cardGenerator(item,popularGrid)
 })
 
+let moodMusic = musicArray.slice(0,4)
+moodMusic.forEach((item)=>{
+  cardGenerator(item,moodGrid)
+})
 // card generator _+_+_+_+_+_+_+_++_+_+_++_+_+_+_+_+)_()&(&*)_(*)(^*&*)_^*&  _+_+_+_+_+_+_+_++_+_+_++_+_+_+_+_+)_()&(&*)_(*)(^*&*)_^*&
 
 function cardGenerator(x,container){
@@ -137,10 +146,19 @@ function cardGenerator(x,container){
 ///applying to other sections
 newMusicGrid.addEventListener('click',(e)=>{
   musicPlay(newMusicGrid,e)
+  likingTheSong(newMusicGrid,e)
+
 })
 
 popularGrid.addEventListener('click',(e)=>{
   musicPlay(popularGrid,e)
+  likingTheSong(popularGrid,e)
+
+})
+
+moodGrid.addEventListener('click',(e)=>{
+  musicPlay(moodGrid,e)
+  likingTheSong(moodGrid,e)
 })
 
 function musicPlay(container,e){
@@ -190,7 +208,7 @@ function resetIcon(btn){
 function likingTheSong(container,e){
   let likeBtn = e.target.closest('.likeBtn')
  if(!likeBtn) return
- let allCards = likeBtn.closest('#newMusicGrid').querySelectorAll('.track-card')
+ let allCards = container.querySelectorAll('.track-card')
  let currentCard = likeBtn.closest('.track-card')
 let temp = currentCard.getAttribute('is-liked')
   if(temp == 'true') currentCard.setAttribute('is-liked','false')
@@ -199,15 +217,6 @@ let temp = currentCard.getAttribute('is-liked')
   let newTemp = currentCard.getAttribute('is-liked')
   likeBtn.children[0].classList.toggle('likeFill', newTemp == 'true' )
 }
-
-///applying to other sections
-newMusicGrid.addEventListener('click',(e)=>{
- likingTheSong(newMusicGrid,e)
-})
-
-popularGrid.addEventListener('click',(e)=>{
-   likingTheSong(popularGrid,e)
-})
 
 // now playing function  _+_+_+_+_+_+_+_++_+_+_++_+_+_+_+_+)_()&(&*)_(*)(^*&*)_^*&  _+_+_+_+_+_+_+_++_+_+_++_+_+_+_+_+)_()&(&*)_(*)(^*&*)_^*&
 
@@ -244,4 +253,31 @@ seeMoreBtn.addEventListener('click',()=>{
     })
     seeMoreBtn.innerText = 'See more'
   }
+})
+
+///  quick picks _+_+_+_+_+_+_+_++_+_+_++_+_+_+_+_+)_()&(&*)_(*)(^*&*)_^*&  _+_+_+_+_+_+_+_++_+_+_++_+_+_+_+_+)_()&(&*)_(*)(^*&*)_^*&
+
+let quickMuisc = musicArray.slice(0,7)
+quickMuisc.forEach((item)=>{
+ quickPickGenerator(item,pickRow)
+})
+
+function quickPickGenerator(item,container){
+   let quickBlocks = document.createElement('div')
+quickBlocks.classList.add('pick-card')
+quickBlocks.setAttribute('data-id',item.id)
+quickBlocks.innerHTML=`
+    <figure class="pick-cover cover-4 ">
+    <img src="${item.imgSrc}" class="w-full h-full object-cover rounded-lg">
+    </figure>
+    <div class="pick-info">
+      <div class="pick-title">${item.trackName}</div>
+      <div class="pick-artist">${item.artist}</div>
+    </div>
+`
+container.appendChild(quickBlocks)
+}
+
+pickRow.addEventListener('click',(e)=>{
+  
 })

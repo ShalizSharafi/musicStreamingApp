@@ -231,7 +231,7 @@
            bg-ink/70 backdrop-blur-xl border-b border-transparent duration-200;
   }
   .topbar.is-scrolled {
-    @apply border-white/8 bg-ink/90;
+    @apply border-white/8 bg-gray-800/10;
   }
   .brand {
     @apply flex items-center gap-2.5 shrink-0;
@@ -579,20 +579,21 @@
   .video-thumb svg { @apply w-8.5 h-8.5 text-paper/85; }
   .video-cap { @apply px-3 py-2.5; }
 
-  /* ===================== QUICK PICKS ===================== */
+  /* QUICK PICKS _+_+_+_+_+_++_+_+_+_+_+_++_+_+_+_+_+_+_+_+''''80475978679485 */
   .pick-row {
     @apply grid gap-3;
     grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
   }
   .pick-card {
     @apply flex items-center gap-3 p-2.5 rounded-lg bg-panel border border-white/8
-           hover:bg-panel-2 hover:-translate-y-0.5 duration-150;
+           hover:bg-panel-2 hover:-translate-y-0.5 duration-300 cursor-pointer
   }
-  .pick-cover { @apply w-12 h-12 rounded-md shrink-0; }
+
+  .pick-cover { @apply w-12 h-12 rounded-md shrink-0  ; }
   .pick-title { @apply text-[13px] font-semibold whitespace-nowrap overflow-hidden text-ellipsis; }
   .pick-artist { @apply text-[11.5px] text-fog; }
 
-  /* ===================== ALBUMS ===================== */
+  /* ALBUMS _+_+_+_+_+_++_+_+_+_+_+_++_+_+_+_+_+_+_+_+''''80475978679485 */
   .hscroll {
     @apply flex gap-4 overflow-x-auto pb-2;
   }
