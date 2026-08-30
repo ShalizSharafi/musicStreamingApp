@@ -225,6 +225,7 @@
 @layer components {
 
 /* HEADER _+_+_++_+_+_+_+_+_++_+_++ _+_+_+_+_+_+_++_+_+_+_++_?>?>?)_)_)_)_)_)_ */
+
   .topbar {
     @apply fixed top-0 left-0 w-full h-16 z-100 flex items-center gap-4.5 px-5
            bg-ink/70 backdrop-blur-xl border-b border-transparent duration-200;
@@ -270,7 +271,9 @@
     @apply w-8.5 h-8.5 rounded-full bg-panel-2 border border-white/8 shrink-0;
   }
 
-  /* ===================== LAYOUT / SIDEBAR ===================== */
+  /* /SIDEBAR*_+_+_++_+_+_+_+_+_++_+_++ _+_+_+_+_+_+_++_+_+_+_++_?>?>?)_)_)_)_)_) _+_+_++_+_+_+_+_+_++_+_++ _+_+_+_+_+_+_++_+_+_+_++_?>?>?)_)_)_)_)_)_ */  
+
+
   .app {
     @apply flex pt-16 min-h-screen;
   }
@@ -318,35 +321,41 @@
   .logout-btn svg {
     @apply w-3.5 h-3.5;
   }
-  .now-mini {
+
+  /* ////now playing 909)())()()()()()*)(&*%%^$%^&*(*&^%$%^*&^%$#%^&*(JHGYDSTYGNMUMIFBD%^RTOPIUYU&R&^%$^&*(_*&^#$%^&())(_^%&*^ */
+  .nowPlaying {
     @apply hidden border-t border-white/8 pt-4;
   }
   @media (min-width: 1100px) {
-    .now-mini { @apply block; }
+    .nowPlaying { @apply block; }
   }
-  .now-mini-head {
+  .nowPlaying-head {
     @apply flex items-center justify-between text-[12px] font-bold uppercase
            tracking-wide text-mist mb-2.5;
   }
-  .now-mini-head svg {
+  .nowPlaying-head svg {
     @apply w-3.5 h-3.5;
   }
-  .now-mini-card {
+  .nowPlaying-card {
     @apply rounded-lg overflow-hidden border border-white/8 bg-panel;
   }
-  .now-mini-cover {
-    @apply h-22.5;
+  .nowPlaying-cover {
+    @apply h-22.5 p-0.5 overflow-hidden;
   }
-  .now-mini-cap {
+  .nowPlaying-caption {
     @apply px-2.5 py-2;
   }
-  .now-mini-cap .t {
+  .nowPlaying-caption .caption-track {
     @apply text-[12.5px] font-semibold;
   }
-  .now-mini-cap .a {
+  .nowPlaying-caption .caption-artist {
     @apply text-[11px] text-fog;
   }
 
+  .on-off-navigator{
+     @apply fill-green-300!
+  }
+  
   .content {
     @apply flex-1 min-w-0 pb-27.5;
   }

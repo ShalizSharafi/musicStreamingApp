@@ -673,16 +673,18 @@
       </nav>
     </div>
 
-    <div class="now-mini">
-      <div class="now-mini-head">
+    <div class="nowPlaying">
+      <div class="nowPlaying-head">
         <span>Now playing</span>
-        <svg viewBox="0 0 24 24" fill="currentColor"><circle cx="12" cy="12" r="10"/></svg>
+        <svg viewBox="0 0 24 24" fill="currentColor" class="status"><circle cx="12" cy="12" r="10"/></svg>
       </div>
-      <div class="now-mini-card">
-        <div class="now-mini-cover cover-1"></div>
-        <div class="now-mini-cap">
-          <div class="t" id="mini-title">Amber Light</div>
-          <div class="a" id="mini-artist">Mira Voss</div>
+      <div class="nowPlaying-card">
+        <figure class="nowPlaying-cover cover-1">
+              <!-- now playing im goes here -->
+        </figure>
+        <div class="nowPlaying-caption">
+          <div class="caption-track" id="nowPlaying-track"></div>
+          <div class="caption-artist" id="nowPlaying-artist"></div>
         </div>
       </div>
     </div>
