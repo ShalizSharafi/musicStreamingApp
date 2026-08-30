@@ -1645,8 +1645,8 @@
     background-color: var(--color-paper);
     color: var(--color-ink);
     opacity: 0%;
-    --tw-duration: 200ms;
-    transition-duration: 200ms;
+    --tw-duration: 300ms;
+    transition-duration: 300ms;
   }
   .track-card:hover .playBtn, .track-card:focus-within .playBtn {
     --tw-translate-y: calc(var(--spacing) * 0);
@@ -1665,6 +1665,7 @@
     display: flex;
     height: calc(var(--spacing) * 7);
     width: calc(var(--spacing) * 7);
+    cursor: pointer;
     align-items: center;
     justify-content: center;
     border-radius: calc(infinity * 1px);
@@ -1674,8 +1675,8 @@
     }
     color: var(--color-paper);
     opacity: 0%;
-    --tw-duration: 150ms;
-    transition-duration: 150ms;
+    --tw-duration: 300ms;
+    transition-duration: 300ms;
   }
   .track-card:hover .likeBtn {
     opacity: 100%;
@@ -1687,6 +1688,9 @@
   .likeBtn svg {
     height: calc(var(--spacing) * 3.25);
     width: calc(var(--spacing) * 3.25);
+  }
+  .likeFill {
+    fill: var(--color-white) !important;
   }
   .artist-grid {
     display: grid;

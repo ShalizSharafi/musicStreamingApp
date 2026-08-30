@@ -499,7 +499,7 @@
   .playBtn {
     @apply absolute right-2 bottom-2 w-9.5 h-9.5 rounded-full
            bg-paper text-ink flex items-center justify-center
-           opacity-0 translate-y-1.5 duration-200 cursor-pointer z-50;
+           opacity-0 translate-y-1.5 duration-300 cursor-pointer z-50;
   }
   .track-card:hover .playBtn,
   .track-card:focus-within .playBtn {
@@ -510,12 +510,15 @@
 
   .likeBtn {
     @apply absolute left-2 top-2 w-7 h-7 rounded-full
-           bg-ink/55 text-paper flex items-center justify-center opacity-0 duration-150 z-50;
+           bg-ink/55 text-paper flex items-center justify-center opacity-0 duration-300 z-50 cursor-pointer;
   }
   .track-card:hover .likeBtn { @apply opacity-100; }
   .likeBtn.is-liked { @apply opacity-100 text-paper; }
   .likeBtn svg { @apply w-3.25 h-3.25; }
 
+  .likeFill{
+     @apply fill-white!
+  }
   /* ===================== ARTISTS ===================== */
   .artist-grid {
     @apply grid gap-5;

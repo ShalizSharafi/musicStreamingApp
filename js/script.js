@@ -536,6 +536,7 @@ function cardGenerator(x,container){
   let trackCard = document.createElement('div')
      trackCard.classList.add('track-card')
      trackCard.setAttribute('data-id',x.id)
+     trackCard.setAttribute('is-liked',false)
      trackCard.innerHTML=`
       <div class="cover" >
       <figure class="songCover">
@@ -600,3 +601,22 @@ function resetIcon(btn){
   `
 }
 
+
+// like the muisuc function  _+_+_+_+_+_+_+_++_+_+_++_+_+_+_+_+)_()&(&*)_(*)(^*&*)_^*&  _+_+_+_+_+_+_+_++_+_+_++_+_+_+_+_+)_()&(&*)_(*)(^*&*)_^*&
+
+function likingTheSong(container,e){
+  let likeBtn = e.target.closest('.likeBtn')
+ if(!likeBtn) return
+ let allCards = likeBtn.closest('#newMusicGrid').querySelectorAll('.track-card')
+ let currentCard = likeBtn.closest('.track-card')
+let temp = currentCard.getAttribute('is-liked')
+  if(temp == 'true') currentCard.setAttribute('is-liked','false')
+    else currentCard.setAttribute('is-liked','true')
+
+  let newTemp = currentCard.getAttribute('is-liked')
+  likeBtn.children[0].classList.toggle('likeFill', newTemp == 'true' )
+}
+
+newMusicGrid.addEventListener('click',(e)=>{
+ likingTheSong(newMusicGrid,e)
+})
