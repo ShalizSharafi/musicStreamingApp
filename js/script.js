@@ -278,6 +278,25 @@ quickBlocks.innerHTML=`
 container.appendChild(quickBlocks)
 }
 
+
+
+//// quick picks to -> now playing
+function quickNowPlaying(x){
+   
+  let trackName = x.querySelector('.pick-title')
+  let artist = x.querySelector('.pick-artist')
+  let trackImg = x.querySelector('.pick-cover>img')
+
+  nowPlayingCaption.children[0].innerText = artist.innerText
+ nowPlayingCaption.children[1].innerText = trackName.innerText
+ nowPlayingCover.innerHTML=`
+ <img src="${trackImg.src}" class="w-full h-full object-contain rounded-lg">
+ `
+}
+
 pickRow.addEventListener('click',(e)=>{
-  
+  let pickedCard = e.target.closest('.pick-card')
+  if(!pickedCard) return
+ quickNowPlaying(pickedCard)
 })
+
