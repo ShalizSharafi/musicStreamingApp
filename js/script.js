@@ -6,6 +6,9 @@ const app = document.getElementById('app')
 const newMusicGrid = document.getElementById('newMusicGrid')
 const sec = document.querySelectorAll('.sec')
 
+const popularGrid = document.getElementById('popularGrid')
+const seeMoreBtn = document.getElementById('seeMoreBtn')
+
 // now playing selected elements
 const nowPlaying = document.querySelector('.nowPlaying')
 const nowPlayingCover = document.querySelector('.nowPlaying-cover')
@@ -88,13 +91,17 @@ hamburger.addEventListener('click',()=>{
         trackName: 'Dancing Queen',
         duration: '3:53',
         src: './music/ABBA – Dancing Queen.mp3'}
-          ]
+      ]
 
 let newMusic =musicArray.slice(0,6)
 newMusic.forEach((item)=>{
      cardGenerator(item,newMusicGrid)
 })
 
+let popularMusic = musicArray.slice(0,5)
+popularMusic.forEach((item)=>{
+  cardGenerator(item,popularGrid)
+})
 
 // card generator _+_+_+_+_+_+_+_++_+_+_++_+_+_+_+_+)_()&(&*)_(*)(^*&*)_^*&  _+_+_+_+_+_+_+_++_+_+_++_+_+_+_+_+)_()&(&*)_(*)(^*&*)_^*&
 
@@ -127,17 +134,22 @@ function cardGenerator(x,container){
 
 // play the muisuc function  _+_+_+_+_+_+_+_++_+_+_++_+_+_+_+_+)_()&(&*)_(*)(^*&*)_^*&  _+_+_+_+_+_+_+_++_+_+_++_+_+_+_+_+)_()&(&*)_(*)(^*&*)_^*&
 
+///applying to other sections
 newMusicGrid.addEventListener('click',(e)=>{
   musicPlay(newMusicGrid,e)
+})
+
+popularGrid.addEventListener('click',(e)=>{
+  musicPlay(popularGrid,e)
 })
 
 function musicPlay(container,e){
   let playBtn = e.target.closest('.playBtn')
   if(!playBtn) return
-  let allCards = playBtn.closest('#newMusicGrid').querySelectorAll('.track-card')
+  let allCards = container.querySelectorAll('.track-card')
   let currentCard = playBtn.closest('.track-card')
   let sound = currentCard.querySelector('audio')
-  let allSounds = newMusicGrid.querySelectorAll('.track-card>audio')
+  let allSounds =container.querySelectorAll('.track-card>audio')
 
 ////play the music 
   allSounds.forEach((s)=>{
@@ -188,8 +200,13 @@ let temp = currentCard.getAttribute('is-liked')
   likeBtn.children[0].classList.toggle('likeFill', newTemp == 'true' )
 }
 
+///applying to other sections
 newMusicGrid.addEventListener('click',(e)=>{
  likingTheSong(newMusicGrid,e)
+})
+
+popularGrid.addEventListener('click',(e)=>{
+   likingTheSong(popularGrid,e)
 })
 
 // now playing function  _+_+_+_+_+_+_+_++_+_+_++_+_+_+_+_+)_()&(&*)_(*)(^*&*)_^*&  _+_+_+_+_+_+_+_++_+_+_++_+_+_+_+_+)_()&(&*)_(*)(^*&*)_^*&
@@ -210,3 +227,21 @@ let artist = x.querySelector('.track-artist')
 let online_ = navigator.onLine
 console.log(online_)
 status_.classList.toggle('on-off-navigator',online_ == true)
+
+///see more  _+_+_+_+_+_+_+_++_+_+_++_+_+_+_+_+)_()&(&*)_(*)(^*&*)_^*&  _+_+_+_+_+_+_+_++_+_+_++_+_+_+_+_+)_()&(&*)_(*)(^*&*)_^*&
+
+seeMoreBtn.addEventListener('click',()=>{
+  if(seeMoreBtn.innerText === 'See more'){
+    let moreMusic = musicArray.slice(0,7)
+    moreMusic.forEach((m)=>{
+      cardGenerator(m,popularGrid)
+    })
+    seeMoreBtn.innerText = 'See less'
+  }else{
+    popularGrid.innerHTML =''
+    popularMusic.forEach((p)=>{
+      cardGenerator(p,popularGrid)
+    })
+    seeMoreBtn.innerText = 'See more'
+  }
+})

@@ -355,7 +355,7 @@
   .on-off-navigator{
      @apply fill-green-300!
   }
-  
+
   .content {
     @apply flex-1 min-w-0 pb-27.5;
   }
@@ -449,7 +449,7 @@
     @apply text-[13px] text-fog mb-5;
   }
   .see-more {
-    @apply text-[12.5px] text-fog hover:text-paper duration-150 whitespace-nowrap;
+    @apply text-[12.5px] text-fog hover:text-paper duration-150 whitespace-nowrap cursor-pointer;
   }
 
   .chip-row {

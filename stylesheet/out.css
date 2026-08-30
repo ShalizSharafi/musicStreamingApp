@@ -462,6 +462,9 @@
   .text-\[\#0764EE\] {
     color: #0764EE;
   }
+  .text-\[\#B1ABA1\] {
+    color: #B1ABA1;
+  }
   .text-black {
     color: var(--color-black);
   }
@@ -1426,6 +1429,7 @@
     color: var(--color-fog);
   }
   .see-more {
+    cursor: pointer;
     font-size: 12.5px;
     white-space: nowrap;
     color: var(--color-fog);
