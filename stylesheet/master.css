@@ -341,13 +341,13 @@
   .artist-name { @apply text-[13px] font-semibold; }
   .artist-tag { @apply text-[11.5px] text-fog; }
 
-  /* ===================== TRENDING LIST ===================== */
+  /* TRENDING LIST _+_+_+_+_+_+_+_++_+_+_++_+_+_+_+_+)_()&(&*)_(*)(^*&*)_^*&  _+_+_+_+_+_+_+_++_+_+_++_+_+_+_+_+)_()&(&*)_(*)(^*&*)_^*& */*/
   .trend-list {
     @apply border border-white/8 rounded-xl overflow-hidden bg-panel;
   }
   .trend-row {
     @apply grid items-center gap-3.5 px-4 py-2.75 border-b border-white/8
-           hover:bg-white/4 duration-150;
+           hover:bg-white/4 duration-300 cursor-pointer;
     grid-template-columns: 28px 40px 1fr 90px 60px 60px 24px;
   }
   .trend-row:last-child { @apply border-b-0; }
@@ -355,7 +355,7 @@
     .trend-row { grid-template-columns: 22px 34px 1fr 50px 22px; }
     .trend-streams, .trend-more { @apply hidden; }
   }
-  .trend-rank { @apply font-mono text-[13px] text-mist; }
+  .trend-rank { @apply font-mono text-[13px] text-[#F18602]; }
   .trend-cover { @apply w-10 h-10 rounded-md; }
   .trend-main { @apply min-w-0; }
   .trend-title { @apply text-[13.5px] font-semibold whitespace-nowrap overflow-hidden text-ellipsis; }
@@ -367,7 +367,7 @@
   .trend-like.is-liked svg { @apply text-paper; }
   .trend-more { @apply text-fog; }
 
-  /* ===================== VIDEOS ===================== */
+  /* VIDEOS_+_+_+_+_+_+_+_++_+_+_++_+_+_+_+_+)_()&(&*)_(*)(^*&*)_^*&  _+_+_+_+_+_+_+_++_+_+_++_+_+_+_+_+)_()&(&*)_(*)(^*&*)_^*& */ */
   .video-card {
     @apply rounded-xl overflow-hidden border border-white/8 bg-panel;
   }

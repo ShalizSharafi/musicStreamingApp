@@ -130,8 +130,8 @@ function cardGenerator(x,container){
         <button class="likeBtn">
           <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 21s-7-4.6-9.5-9A5.5 5.5 0 0112 5.5 5.5 5.5 0 0121.5 12c-2.5 4.4-9.5 9-9.5 9z"/></svg>
         </button>
-        <button class="playBtn cursor-pointer">
-          <svg viewBox="0 0 24 24" fill="currentColor"><path d="M7 5l13 7-13 7z"/></svg>
+        <button class="playBtn cursor-pointer bg-[#0764EE]">
+          <svg viewBox="0 0 24 24" fill="white"><path d="M7 5l13 7-13 7z"/></svg>
         </button>
       </div>
       <div class="track-caption">
@@ -186,7 +186,7 @@ function musicPlay(container,e){
     card.setAttribute('is-playing','true')
 
          playButton.innerHTML=`
- <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor"><path d="M12 22C6.47715 22 2 17.5228 2 12C2 6.47715 6.47715 2 12 2C17.5228 2 22 6.47715 22 12C22 17.5228 17.5228 22 12 22ZM12 20C16.4183 20 20 16.4183 20 12C20 7.58172 16.4183 4 12 4C7.58172 4 4 7.58172 4 12C4 16.4183 7.58172 20 12 20ZM9 9H11V15H9V9ZM13 9H15V15H13V9Z"></path></svg>
+ <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="white"><path d="M12 22C6.47715 22 2 17.5228 2 12C2 6.47715 6.47715 2 12 2C17.5228 2 22 6.47715 22 12C22 17.5228 17.5228 22 12 22ZM12 20C16.4183 20 20 16.4183 20 12C20 7.58172 16.4183 4 12 4C7.58172 4 4 7.58172 4 12C4 16.4183 7.58172 20 12 20ZM9 9H11V15H9V9ZM13 9H15V15H13V9Z"></path></svg>
   `
       }else{
         sound.pause()
@@ -200,7 +200,7 @@ function musicPlay(container,e){
 
 function resetIcon(btn){
   btn.innerHTML=`
-  <svg viewBox="0 0 24 24" fill="currentColor"><path d="M7 5l13 7-13 7z"/></svg>
+  <svg viewBox="0 0 24 24" fill="white"><path d="M7 5l13 7-13 7z"/></svg>
   `
 }
 
@@ -263,6 +263,7 @@ let quickMuisc = musicArray.slice(0,7)
 quickMuisc.forEach((item)=>{
  quickPickGenerator(item,pickRow)
 })
+/////generate quick picks
 
 function quickPickGenerator(item,container){
    let quickBlocks = document.createElement('div')
@@ -329,6 +330,8 @@ quickNowPlaying(pickedCard)
 
 /// Artists _+_+_+_+_+_+_+_++_+_+_++_+_+_+_+_+)_()&(&*)_(*)(^*&*)_^*&  _+_+_+_+_+_+_+_++_+_+_++_+_+_+_+_+)_()&(&*)_(*)(^*&*)_^*&
 
+/////generate artists
+
 let artists = musicArray.slice(0,6)
 artists.forEach((a)=>{
   let artistCard = document.createElement('div')
@@ -341,4 +344,34 @@ artists.forEach((a)=>{
     <div class="artist-tag">Artist</div>
   `
   artistGrid.appendChild(artistCard)
+})
+
+/// TRENDING _+_+_+_+_+_+_+_++_+_+_++_+_+_+_+_+)_()&(&*)_(*)(^*&*)_^*&  _+_+_+_+_+_+_+_++_+_+_++_+_+_+_+_+)_()&(&*)_(*)(^*&*)_^*&
+
+let trendMusic = musicArray.slice(0,7)
+trendMusic.forEach((val,i)=>{
+  let trendRow = document.createElement('div')
+  trendRow.classList.add('trend-row')
+  trendRow.setAttribute('data-id',val.id)
+  trendRow.innerHTML=`
+   <span class="trend-rank text-[#F18602">0${i+1}</span>
+      <figure class="trend-cover flex items-center justify-center overflow-hidden">
+      <img src="${val.imgSrc}" class="w-full h-full object-cover">
+      </figure>
+      <div class="trend-main">
+        <div class="trend-title">${val.trackName}</div>
+        <div class="trend-artist">${val.artist}</div>
+      </div>
+      <span class="trend-streams">
+        <svg viewBox="0 0 24 24" fill="#F18602"><path d="M12 4C7.6 4 4 7.6 4 12h3c1.1 0 2 .9 2 2v5c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2v-7C2 6.5 6.5 2 12 2s10 4.5 10 10v7c0 1.1-.9 2-2 2h-3c-1.1 0-2-.9-2-2v-5c0-1.1.9-2 2-2h3c0-4.4-3.6-8-8-8z"/></svg>
+       ${Math.floor(i*1.8+668)} M
+      </span>
+      <span class="trend-time">${val.duration}</span>
+      <button class="trend-like">
+        <svg viewBox="0 0 24 24" fill="white" stroke="currentColor" stroke-width="2"><path d="M12 21s-7-4.6-9.5-9A5.5 5.5 0 0112 5.5 5.5 5.5 0 0121.5 12c-2.5 4.4-9.5 9-9.5 9z"/></svg>
+      </button>
+      <span class="trend-more">⋯</span>
+  `
+ 
+trendList.appendChild(trendRow)
 })
