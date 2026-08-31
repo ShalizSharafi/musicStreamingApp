@@ -460,11 +460,20 @@
     --tw-font-weight: var(--font-weight-normal);
     font-weight: var(--font-weight-normal);
   }
+  .text-\[\#056AFF\] {
+    color: #056AFF;
+  }
   .text-\[\#0764EE\] {
     color: #0764EE;
   }
+  .text-\[\#19234A\] {
+    color: #19234A;
+  }
   .text-\[\#B1ABA1\] {
     color: #B1ABA1;
+  }
+  .text-\[\#F18602\] {
+    color: #F18602;
   }
   .text-black {
     color: var(--color-black);

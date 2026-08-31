@@ -327,7 +327,7 @@
   .likeFill{
      @apply fill-white!
   }
-  /* ===================== ARTISTS ===================== */
+  /*  ARTISTS _+_+_+_+_+_+_+_++_+_+_++_+_+_+_+_+)_()&(&*)_(*)(^*&*)_^*&  _+_+_+_+_+_+_+_++_+_+_++_+_+_+_+_+)_()&(&*)_(*)(^*&*)_^*& */
   .artist-grid {
     @apply grid gap-5;
     grid-template-columns: repeat(auto-fill, minmax(120px, 1fr));

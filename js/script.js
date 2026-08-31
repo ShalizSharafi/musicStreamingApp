@@ -10,15 +10,17 @@ const popularGrid = document.getElementById('popularGrid')
 const seeMoreBtn = document.getElementById('seeMoreBtn')
 
 const moodGrid = document.getElementById('moodGrid')
-
-
 const pickRow = document.getElementById('pickRow')
+const artistGrid = document.getElementById('artistGrid')
+const trendList = document.getElementById('trendList')
+
 
 // now playing selected elements
 const nowPlaying = document.querySelector('.nowPlaying')
 const nowPlayingCover = document.querySelector('.nowPlaying-cover')
 const nowPlayingCaption = document.querySelector('.nowPlaying-caption')
 const status_ = document.querySelector('.status')
+
 
 // header bg chnage while scrolling  _+_+_+_+_+_+_+_++_+_+_++_+_+_+_+_+)_()&(&*)_(*)(^*&*)_^*& _+_+_+_+_+_+_+_++_+_+_++_+_+_+_+_+)_()&(&*)_(*)(^*&*)_^*&  _+_+_+_+_+_+_+_++_+_+_++_+_+_+_+_+)_()&(&*)_(*)(^*&*)_
 addEventListener('scroll',()=>{
@@ -325,3 +327,18 @@ quickNowPlaying(pickedCard)
 
 })
 
+/// Artists _+_+_+_+_+_+_+_++_+_+_++_+_+_+_+_+)_()&(&*)_(*)(^*&*)_^*&  _+_+_+_+_+_+_+_++_+_+_++_+_+_+_+_+)_()&(&*)_(*)(^*&*)_^*&
+
+let artists = musicArray.slice(0,6)
+artists.forEach((a)=>{
+  let artistCard = document.createElement('div')
+  artistCard.classList.add('artist-card')
+  artistCard.innerHTML=`
+     <figure class="artist-photo cover-3 ">
+     <img src="${a.imgSrc}" class="w-full h-full rounded-full object-cover">
+     </figure>
+    <div class="artist-name">${a.artist}</div>
+    <div class="artist-tag">Artist</div>
+  `
+  artistGrid.appendChild(artistCard)
+})
