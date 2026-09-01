@@ -5,6 +5,14 @@ const hamburger = document.querySelector('.hamburger')
 //////navbar main
 const navBar = document.querySelector('.main-nav')
 const navItems = document.querySelectorAll('.navItems')
+
+////slider
+const slide = document.querySelectorAll('.slide')
+const preSlide = document.getElementById('slide-prev')
+const nextSlide = document.getElementById('slide-next')
+const dotsWrapper = document.getElementById('slide-dots')
+const heroSection = document.getElementById('hero')
+
 ///app seleceted elements 
 const app = document.getElementById('app')
 const newMusicGrid = document.getElementById('newMusicGrid')
@@ -134,8 +142,8 @@ function cardGenerator(x,container){
   let trackCard = document.createElement('div')
      trackCard.classList.add('track-card')
      trackCard.setAttribute('data-id',x.id)
-     trackCard.setAttribute('is-playing','false')
-     trackCard.setAttribute('is-liked','false')
+     trackCard.setAttribute('data-playing','false')
+     trackCard.setAttribute('data-liked','false')
      trackCard.innerHTML=`
       <div class="cover" >
       <figure class="songCover">
@@ -196,15 +204,15 @@ function musicPlay(container,e,cardSelector){
   allSounds.forEach((s)=>{
     let card = s.closest(cardSelector)
     let playButton = card.querySelector('.playBtn')
-    card.setAttribute('is-playing','false')
+    card.setAttribute('data-playing','false')
     if(s !== sound){
       s.pause()
         resetIcon(playButton)
-    card.setAttribute('is-playing','false')
+    card.setAttribute('data-playing','false')
     }else{
       if(sound.paused){
         sound.play()
-    card.setAttribute('is-playing','true')
+    card.setAttribute('data-playing','true')
 
          playButton.innerHTML=`
  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="white"><path d="M12 22C6.47715 22 2 17.5228 2 12C2 6.47715 6.47715 2 12 2C17.5228 2 22 6.47715 22 12C22 17.5228 17.5228 22 12 22ZM12 20C16.4183 20 20 16.4183 20 12C20 7.58172 16.4183 4 12 4C7.58172 4 4 7.58172 4 12C4 16.4183 7.58172 20 12 20ZM9 9H11V15H9V9ZM13 9H15V15H13V9Z"></path></svg>
@@ -234,11 +242,11 @@ function likingTheSong(container,e){
  if(!likeBtn) return
  let allCards = container.querySelectorAll('.track-card')
  let currentCard = likeBtn.closest('.track-card')
-let temp = currentCard.getAttribute('is-liked')
-  if(temp == 'true') currentCard.setAttribute('is-liked','false')
-    else currentCard.setAttribute('is-liked','true')
+let temp = currentCard.getAttribute('data-liked')
+  if(temp == 'true') currentCard.setAttribute('data-liked','false')
+    else currentCard.setAttribute('data-liked','true')
 
-  let newTemp = currentCard.getAttribute('is-liked')
+  let newTemp = currentCard.getAttribute('data-liked')
   likeBtn.children[0].classList.toggle('likeFill', newTemp == 'true' )
 }
 
@@ -309,7 +317,7 @@ function quickPickGenerator(item,container){
    let quickBlocks = document.createElement('div')
 quickBlocks.classList.add('pick-card')
 quickBlocks.setAttribute('data-id',item.id)
-quickBlocks.setAttribute('is-playing','false')
+quickBlocks.setAttribute('data-playing','false')
 quickBlocks.innerHTML=`
     <figure class="pick-cover relative cover-4 ">
     <img src="${item.imgSrc}" class="w-full h-full object-cover rounded-lg">
@@ -382,3 +390,53 @@ trendMusic.forEach((val,i)=>{
 trendList.appendChild(trendRow)
 })
 
+////slider _+_+_+_+_+_+_+_++_+_+_++_+_+_+_+_+)_()&(&*)_(*)(^*&*)_^*&  _+_+_+_+_+_+_+_++_+_+_++_+_+_+_+_+)_()&(&*)_(*)(^*&*)_^*&
+
+let slideIndex = 0
+let slideTimer = null
+let slideDuration = 6000
+restartAutoPlay()
+function goToSlide(i){
+  slide[slideIndex].classList.remove('is-active')
+  allDots[slideIndex].classList.remove('is-active')
+ slideIndex = i
+  slide[slideIndex].classList.add('is-active')
+  allDots[slideIndex].classList.add('is-active')
+  restartAutoPlay()
+}
+
+function slideNext(){
+  goToSlide((slideIndex + 1) % slide.length)
+}
+function slidePrevious(){
+  goToSlide((slideIndex - 1 + slide.length) % slide.length)
+}
+
+preSlide.addEventListener('click', slidePrevious)
+nextSlide.addEventListener('click',slideNext)
+
+// the dots////
+slide.forEach((s,i)=>{
+  const d = document.createElement('div')
+  d.className = 'dot' + (i === 0 ? ' is-active' : '')
+  d.addEventListener('click',()=>goToSlide(i))
+  dotsWrapper.appendChild(d)
+})
+
+const allDots = [...dotsWrapper.children]
+console.log(allDots)
+
+
+
+function restartAutoPlay(){
+  clearTimeout(slideTimer)
+   slideTimer = setTimeout(slideNext,slideDuration)
+}
+
+hero.addEventListener('mouseenter',()=>{
+  clearTimeout(slideTimer)
+})
+
+hero.addEventListener('mouseleave',()=>{
+  restartAutoPlay()
+})
