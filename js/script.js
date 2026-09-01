@@ -1,6 +1,10 @@
 ////selected elements 
 const topbar = document.querySelector('.topbar')
 const hamburger = document.querySelector('.hamburger')
+
+//////navbar main
+const navBar = document.querySelector('.main-nav')
+const navItems = document.querySelectorAll('.navItems')
 ///app seleceted elements 
 const app = document.getElementById('app')
 const newMusicGrid = document.getElementById('newMusicGrid')
@@ -34,6 +38,15 @@ app.classList.remove('side-collapsed')
 hamburger.addEventListener('click',()=>{
   app.classList.toggle('side-collapsed')
 })
+
+//Navigation bar _+_+_+_+_+_+_+_++_+_+_++_+_+_+_+_+)_()&(&*)_(*)(^*&*)_^*&  _+_+_+_+_+_+_+_++_+_+_++_+_+_+_+_+)_()&(&*)_(*)(^*&*)_^*&
+navBar.addEventListener('click',(e)=>{
+  let selected = e.target.closest('.navItems')
+  if(!selected) return
+  navItems.forEach((i)=>i.classList.remove('is-active'))
+  selected.classList.add('is-active')
+})
+
 // main array _+_+_+_+_+_+_+_++_+_+_++_+_+_+_+_+)_()&(&*)_(*)(^*&*)_^*&  _+_+_+_+_+_+_+_++_+_+_++_+_+_+_+_+)_()&(&*)_(*)(^*&*)_^*&
 
  const musicArray = [

@@ -46,13 +46,13 @@
            hover:text-paper hover:bg-white/6 duration-150;
   }
   .main-nav {
-    @apply hidden md:flex items-center gap-1;
+    @apply hidden md:flex items-center justify-start;
   }
-  .main-nav a {
-    @apply px-3 py-2 rounded-lg text-[13.5px] font-medium text-fog
-           hover:text-paper hover:bg-white/6 duration-150;
+  .navItems {
+    @apply px-2.5 py-1 rounded-md text-[13.5px] font-medium text-fog
+           hover:text-paper hover:bg-white/6 duration-300 cursor-pointer;
   }
-  .main-nav a.is-active {
+  .is-active {
     @apply bg-paper text-ink;
   }
   .topbar-search {
