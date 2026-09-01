@@ -24,6 +24,7 @@ const nowPlaying = document.querySelector('.nowPlaying')
 const nowPlayingCover = document.querySelector('.nowPlaying-cover')
 const nowPlayingCaption = document.querySelector('.nowPlaying-caption')
 const status_ = document.querySelector('.status')
+const gif = document.querySelector('.gif')
 
 
 // header bg chnage while scrolling  _+_+_+_+_+_+_+_++_+_+_++_+_+_+_+_+)_()&(&*)_(*)(^*&*)_^*& _+_+_+_+_+_+_+_++_+_+_++_+_+_+_+_+)_()&(&*)_(*)(^*&*)_^*&  _+_+_+_+_+_+_+_++_+_+_++_+_+_+_+_+)_()&(&*)_(*)(^*&*)_
@@ -160,33 +161,40 @@ function cardGenerator(x,container){
 
 ///applying to other sections
 newMusicGrid.addEventListener('click',(e)=>{
-  musicPlay(newMusicGrid,e)
+  musicPlay(newMusicGrid,e,'.track-card')
   likingTheSong(newMusicGrid,e)
-
 })
 
 popularGrid.addEventListener('click',(e)=>{
-  musicPlay(popularGrid,e)
+  musicPlay(popularGrid,e,'.track-card')
   likingTheSong(popularGrid,e)
-
 })
 
 moodGrid.addEventListener('click',(e)=>{
-  musicPlay(moodGrid,e)
+  musicPlay(moodGrid,e,'.track-card')
   likingTheSong(moodGrid,e)
 })
 
-function musicPlay(container,e){
+trendList.addEventListener('click',(e)=>{
+  musicPlay(trendList,e,'.trend-row')
+})
+
+pickRow.addEventListener('click',(e)=>{
+   musicPlay(pickRow,e,'.pick-card')
+})
+
+function musicPlay(container,e,cardSelector){
   let playBtn = e.target.closest('.playBtn')
   if(!playBtn) return
-  let allCards = container.querySelectorAll('.track-card')
-  let currentCard = playBtn.closest('.track-card')
+  let allCards = container.querySelectorAll(cardSelector)
+  let currentCard = playBtn.closest(cardSelector)
+  if(!currentCard) return
   let sound = currentCard.querySelector('audio')
-  let allSounds =container.querySelectorAll('.track-card>audio')
+  let allSounds =container.querySelectorAll(`${cardSelector} > audio`)
 
 ////play the music 
   allSounds.forEach((s)=>{
-    let card = s.closest('.track-card')
+    let card = s.closest(cardSelector)
     let playButton = card.querySelector('.playBtn')
     card.setAttribute('is-playing','false')
     if(s !== sound){
@@ -208,6 +216,7 @@ function musicPlay(container,e){
     }
    
   })
+  sound.paused ? pauseGif() : playGif()
  nowplaying(currentCard)
 }
 
@@ -241,11 +250,29 @@ let artist = x.querySelector('.track-artist')
  let trackImg = x.querySelector('img')
  nowPlayingCaption.children[0].innerText = artist.innerText
  nowPlayingCaption.children[1].innerText = trackName.innerText
- nowPlayingCover.innerHTML=`
- <img src="${trackImg.src}" class="w-full h-full object-contain rounded-lg">
- `
+
+let oldImg = nowPlayingCover.querySelector('.nowPlayingImg')
+  if(oldImg) oldImg.remove()
+
+ let img = document.createElement('img')
+ img.classList.add('nowPlayingImg')
+ img.src= trackImg.src
+ nowPlayingCover.appendChild(img)
 }
 
+function pauseGif(){
+  gif.innerHTML=''
+  gif.innerHTML=`
+     <img src="./images/pauseGif.png" alt="" class="w-full h-full">
+  `
+}
+
+function playGif(){
+  gif.innerHTML=''
+   gif.innerHTML=`
+     <img src="./images/playGif.gif" alt="" class="w-full h-full">
+  `
+}
 
 ///check online offline  _+_+_+_+_+_+_+_++_+_+_++_+_+_+_+_+)_()&(&*)_(*)(^*&*)_^*&  _+_+_+_+_+_+_+_++_+_+_++_+_+_+_+_+)_()&(&*)_(*)(^*&*)_^*&
 let online_ = navigator.onLine
@@ -284,62 +311,20 @@ quickBlocks.classList.add('pick-card')
 quickBlocks.setAttribute('data-id',item.id)
 quickBlocks.setAttribute('is-playing','false')
 quickBlocks.innerHTML=`
-    <figure class="pick-cover cover-4 ">
+    <figure class="pick-cover relative cover-4 ">
     <img src="${item.imgSrc}" class="w-full h-full object-cover rounded-lg">
+     <button class="playBtn bottom-0 right-0 w-full h-full translate-0 bg-ink/80 rounded-none ">
+          <svg viewBox="0 0 24 24" fill="white" class="size-6"><path d="M7 5l13 7-13 7z"/></svg>
+        </button>
     </figure>
     <div class="pick-info">
-      <div class="pick-title">${item.trackName}</div>
-      <div class="pick-artist">${item.artist}</div>
+      <div class="track-title">${item.trackName}</div>
+      <div class="track-artist">${item.artist}</div>
     </div>
     <audio src="${item.src}"></audio>
 `
 container.appendChild(quickBlocks)
 }
-
-
-
-//// quick picks to -> now playing
-function quickNowPlaying(x){
-   
-  let trackName = x.querySelector('.pick-title')
-  let artist = x.querySelector('.pick-artist')
-  let trackImg = x.querySelector('.pick-cover>img')
-
-  nowPlayingCaption.children[0].innerText = artist.innerText
- nowPlayingCaption.children[1].innerText = trackName.innerText
- nowPlayingCover.innerHTML=`
- <img src="${trackImg.src}" class="w-full h-full object-contain rounded-lg">
- `
-}
-
-
-/////quick picks music play
-pickRow.addEventListener('click',(e)=>{
-  let pickedCard = e.target.closest('.pick-card')
-    if(!pickedCard) return
-    let sound = pickedCard.querySelector('audio')
-    let allsounds = pickedCard.closest('#pickRow').querySelectorAll('audio')
-
-    allsounds.forEach((s)=>{
-    let pickedCard = s.closest('.pick-card')
-    pickedCard.setAttribute('is-playing','false')
-    if(s !== sound){
-      s.pause()
-    pickedCard.setAttribute('is-playing','false')
-    }else{
-      if(sound.paused){
-        sound.play()
-    pickedCard.setAttribute('is-playing','true')
-      }else{
-        sound.pause()
-        }
-    }
-   
-  })
-
-quickNowPlaying(pickedCard)
-
-})
 
 /// Artists _+_+_+_+_+_+_+_++_+_+_++_+_+_+_+_+)_()&(&*)_(*)(^*&*)_^*&  _+_+_+_+_+_+_+_++_+_+_++_+_+_+_+_+)_()&(&*)_(*)(^*&*)_^*&
 
@@ -361,6 +346,10 @@ artists.forEach((a)=>{
 
 /// TRENDING _+_+_+_+_+_+_+_++_+_+_++_+_+_+_+_+)_()&(&*)_(*)(^*&*)_^*&  _+_+_+_+_+_+_+_++_+_+_++_+_+_+_+_+)_()&(&*)_(*)(^*&*)_^*&
 
+trendList.addEventListener('click',(e)=>{
+  musicPlay(trendList,e)
+})
+
 let trendMusic = musicArray.slice(0,7)
 trendMusic.forEach((val,i)=>{
   let trendRow = document.createElement('div')
@@ -370,10 +359,13 @@ trendMusic.forEach((val,i)=>{
    <span class="trend-rank text-[#F18602">0${i+1}</span>
       <figure class="trend-cover flex items-center justify-center overflow-hidden">
       <img src="${val.imgSrc}" class="w-full h-full object-cover">
+        <button class="playBtn bottom-0 right-0 w-full h-full translate-0 bg-ink/80 rounded-none ">
+          <svg viewBox="0 0 24 24" fill="white" class="size-6"><path d="M7 5l13 7-13 7z"/></svg>
+        </button>
       </figure>
       <div class="trend-main">
-        <div class="trend-title">${val.trackName}</div>
-        <div class="trend-artist">${val.artist}</div>
+        <div class="track-title">${val.trackName}</div>
+        <div class="track-artist">${val.artist}</div>
       </div>
       <span class="trend-streams">
         <svg viewBox="0 0 24 24" fill="#F18602"><path d="M12 4C7.6 4 4 7.6 4 12h3c1.1 0 2 .9 2 2v5c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2v-7C2 6.5 6.5 2 12 2s10 4.5 10 10v7c0 1.1-.9 2-2 2h-3c-1.1 0-2-.9-2-2v-5c0-1.1.9-2 2-2h3c0-4.4-3.6-8-8-8z"/></svg>
@@ -388,26 +380,5 @@ trendMusic.forEach((val,i)=>{
   `
  
 trendList.appendChild(trendRow)
-})
-
-trendList.addEventListener('click',(e)=>{
-  let trendCard = e.target.closest('.trend-row')
-  console.log(trendCard)
-  if(!trendCard) return
-  let sound = trendCard.querySelector('audio')
-  let allsounds = trendCard.closest('#trendList').querySelectorAll('audio')
-
-  allsounds.forEach((s)=>{
-    if(s !== sound){
-      s.pause()
-    }else{
-      if(sound.paused){
-        sound.play()
-      }else{
-        sound.pause()
-      }
-    }
-  })
-  nowplaying(trendCard)
 })
 

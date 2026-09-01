@@ -140,7 +140,13 @@
     @apply rounded-lg overflow-hidden border border-white/8 bg-panel;
   }
   .nowPlaying-cover {
-    @apply h-22.5 p-0.5 overflow-hidden;
+    @apply h-22.5 p-0.5 overflow-hidden relative flex items-center justify-center;
+  }
+.nowPlayingImg{
+     @apply w-full h-full object-contain rounded-lg z-12
+}
+  .gif{
+     @apply w-full h-full flex items-center justify-center absolute top-0 left-0 z-10
   }
   .nowPlaying-caption {
     @apply px-2.5 py-2;
@@ -351,13 +357,21 @@
            hover:bg-white/4 duration-300 cursor-pointer;
     grid-template-columns: 28px 40px 1fr 90px 60px 60px 24px;
   }
+
   .trend-row:last-child { @apply border-b-0; }
   @media (max-width: 700px) {
     .trend-row { grid-template-columns: 22px 34px 1fr 50px 22px; }
     .trend-streams, .trend-more { @apply hidden; }
   }
   .trend-rank { @apply font-mono text-[13px] text-[#F18602]; }
-  .trend-cover { @apply w-10 h-10 rounded-md; }
+  .trend-cover { @apply w-10 h-10 rounded-md relative; }
+  .trend-row:hover .playBtn,
+  .trend-row:focus-within .playBtn {
+    @apply opacity-100 translate-y-0;
+  }
+  /* .playButton{
+     @apply top-0 z-10  absolute left-0 w-full flex items-center justify-center h-full cursor-pointer bg-ink/70
+  } */
   .trend-main { @apply min-w-0; }
   .trend-title { @apply text-[13.5px] font-semibold whitespace-nowrap overflow-hidden text-ellipsis; }
   .trend-artist { @apply text-[11.5px] text-fog whitespace-nowrap overflow-hidden text-ellipsis; }
@@ -390,6 +404,10 @@
   }
 
   .pick-cover { @apply w-12 h-12 rounded-md shrink-0  ; }
+  .pick-card:hover .playBtn,
+  .pick-card:focus-within .playBtn {
+    @apply opacity-100 translate-y-0;
+  }
   .pick-title { @apply text-[13px] font-semibold whitespace-nowrap overflow-hidden text-ellipsis; }
   .pick-artist { @apply text-[11.5px] text-fog; }
 

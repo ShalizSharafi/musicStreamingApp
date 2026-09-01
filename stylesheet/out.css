@@ -186,20 +186,47 @@
   }
 }
 @layer utilities {
+  .relative {
+    position: relative;
+  }
   .static {
     position: static;
   }
   .end {
     inset-inline-end: var(--spacing);
   }
+  .right-0 {
+    right: calc(var(--spacing) * 0);
+  }
+  .bottom-0 {
+    bottom: calc(var(--spacing) * 0);
+  }
+  .z-12 {
+    z-index: 12;
+  }
   .flex {
     display: flex;
+  }
+  .size-6 {
+    width: calc(var(--spacing) * 6);
+    height: calc(var(--spacing) * 6);
+  }
+  .h-2\/3 {
+    height: calc(2 / 3 * 100%);
   }
   .h-full {
     height: 100%;
   }
+  .w-2\/3 {
+    width: calc(2 / 3 * 100%);
+  }
   .w-full {
     width: 100%;
+  }
+  .translate-0 {
+    --tw-translate-x: calc(var(--spacing) * 0);
+    --tw-translate-y: calc(var(--spacing) * 0);
+    translate: var(--tw-translate-x) var(--tw-translate-y);
   }
   .cursor-pointer {
     cursor: pointer;
@@ -222,11 +249,20 @@
   .rounded-lg {
     border-radius: var(--radius-lg);
   }
+  .rounded-none {
+    border-radius: 0;
+  }
   .rounded-xl {
     border-radius: var(--radius-xl);
   }
   .bg-\[\#0764EE\] {
     background-color: #0764EE;
+  }
+  .bg-ink\/80 {
+    background-color: color-mix(in srgb, #0d0d0d 80%, transparent);
+    @supports (color: color-mix(in lab, red, red)) {
+      background-color: color-mix(in oklab, var(--color-ink) 80%, transparent);
+    }
   }
   .object-contain {
     object-fit: contain;
@@ -622,9 +658,31 @@
     background-color: var(--color-panel);
   }
   .nowPlaying-cover {
+    position: relative;
+    display: flex;
     height: calc(var(--spacing) * 22.5);
+    align-items: center;
+    justify-content: center;
     overflow: hidden;
     padding: calc(var(--spacing) * 0.5);
+  }
+  .nowPlayingImg {
+    z-index: 12;
+    height: 100%;
+    width: 100%;
+    border-radius: var(--radius-lg);
+    object-fit: contain;
+  }
+  .gif {
+    position: absolute;
+    top: calc(var(--spacing) * 0);
+    left: calc(var(--spacing) * 0);
+    z-index: 10;
+    display: flex;
+    height: 100%;
+    width: 100%;
+    align-items: center;
+    justify-content: center;
   }
   .nowPlaying-caption {
     padding-inline: calc(var(--spacing) * 2.5);
@@ -1199,9 +1257,15 @@
     color: #F18602;
   }
   .trend-cover {
+    position: relative;
     height: calc(var(--spacing) * 10);
     width: calc(var(--spacing) * 10);
     border-radius: var(--radius-md);
+  }
+  .trend-row:hover .playBtn, .trend-row:focus-within .playBtn {
+    --tw-translate-y: calc(var(--spacing) * 0);
+    translate: var(--tw-translate-x) var(--tw-translate-y);
+    opacity: 100%;
   }
   .trend-main {
     min-width: calc(var(--spacing) * 0);
@@ -1319,6 +1383,11 @@
     width: calc(var(--spacing) * 12);
     flex-shrink: 0;
     border-radius: var(--radius-md);
+  }
+  .pick-card:hover .playBtn, .pick-card:focus-within .playBtn {
+    --tw-translate-y: calc(var(--spacing) * 0);
+    translate: var(--tw-translate-x) var(--tw-translate-y);
+    opacity: 100%;
   }
   .pick-title {
     overflow: hidden;
@@ -1543,6 +1612,21 @@
     }
   }
 }
+@property --tw-translate-x {
+  syntax: "*";
+  inherits: false;
+  initial-value: 0;
+}
+@property --tw-translate-y {
+  syntax: "*";
+  inherits: false;
+  initial-value: 0;
+}
+@property --tw-translate-z {
+  syntax: "*";
+  inherits: false;
+  initial-value: 0;
+}
 @property --tw-border-style {
   syntax: "*";
   inherits: false;
@@ -1596,21 +1680,6 @@
   syntax: "*";
   inherits: false;
 }
-@property --tw-translate-x {
-  syntax: "*";
-  inherits: false;
-  initial-value: 0;
-}
-@property --tw-translate-y {
-  syntax: "*";
-  inherits: false;
-  initial-value: 0;
-}
-@property --tw-translate-z {
-  syntax: "*";
-  inherits: false;
-  initial-value: 0;
-}
 @property --tw-ease {
   syntax: "*";
   inherits: false;
@@ -1622,6 +1691,9 @@
 @layer properties {
   @supports ((-webkit-hyphens: none) and (not (margin-trim: inline))) or ((-moz-orient: inline) and (not (color:rgb(from red r g b)))) {
     *, ::before, ::after, ::backdrop {
+      --tw-translate-x: 0;
+      --tw-translate-y: 0;
+      --tw-translate-z: 0;
       --tw-border-style: solid;
       --tw-backdrop-blur: initial;
       --tw-backdrop-brightness: initial;
@@ -1635,9 +1707,6 @@
       --tw-duration: initial;
       --tw-font-weight: initial;
       --tw-tracking: initial;
-      --tw-translate-x: 0;
-      --tw-translate-y: 0;
-      --tw-translate-z: 0;
       --tw-ease: initial;
       --tw-leading: initial;
     }
