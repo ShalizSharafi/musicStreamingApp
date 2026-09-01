@@ -45,12 +45,13 @@
     @apply w-8.5 h-8.5 rounded-lg flex items-center justify-center text-fog
            hover:text-paper hover:bg-white/6 duration-150;
   }
+  /* ///navabr *&*&*&**^&^%^&*(*&^%$#$$%^&*()(*&^%$$#%^&()()(*%$%$%&**()_*&^&^#%$%&*(*&*&*&**^&^%^&*(*&^%$#$$%^&*()(*&^%$$#%^&()()(*%$%$%&**()_*&^&^#%$%&*( */
   .main-nav {
     @apply hidden md:flex items-center justify-start;
   }
   .navItems {
     @apply px-2.5 py-1 rounded-md text-[13.5px] font-medium text-fog
-           hover:text-paper hover:bg-white/6 duration-300 cursor-pointer;
+           hover:text-paper hover:bg-white/6 cursor-pointer;
   }
   .is-active {
     @apply bg-paper text-ink;

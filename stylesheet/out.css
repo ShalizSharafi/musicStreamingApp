@@ -363,8 +363,6 @@
     --tw-font-weight: var(--font-weight-medium);
     font-weight: var(--font-weight-medium);
     color: var(--color-fog);
-    --tw-duration: 300ms;
-    transition-duration: 300ms;
     &:hover {
       @media (hover: hover) {
         background-color: color-mix(in srgb, #fff 6%, transparent);

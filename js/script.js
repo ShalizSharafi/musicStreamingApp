@@ -238,7 +238,7 @@ let temp = currentCard.getAttribute('is-liked')
 function nowplaying(x){
 let artist = x.querySelector('.track-artist')
  let trackName = x.querySelector('.track-title')
- let trackImg = x.querySelector('.songCover>img')
+ let trackImg = x.querySelector('img')
  nowPlayingCaption.children[0].innerText = artist.innerText
  nowPlayingCaption.children[1].innerText = trackName.innerText
  nowPlayingCover.innerHTML=`
@@ -384,7 +384,30 @@ trendMusic.forEach((val,i)=>{
         <svg viewBox="0 0 24 24" fill="white" stroke="currentColor" stroke-width="2"><path d="M12 21s-7-4.6-9.5-9A5.5 5.5 0 0112 5.5 5.5 5.5 0 0121.5 12c-2.5 4.4-9.5 9-9.5 9z"/></svg>
       </button>
       <span class="trend-more">⋯</span>
+      <audio src="${val.src}"></audio>
   `
  
 trendList.appendChild(trendRow)
 })
+
+trendList.addEventListener('click',(e)=>{
+  let trendCard = e.target.closest('.trend-row')
+  console.log(trendCard)
+  if(!trendCard) return
+  let sound = trendCard.querySelector('audio')
+  let allsounds = trendCard.closest('#trendList').querySelectorAll('audio')
+
+  allsounds.forEach((s)=>{
+    if(s !== sound){
+      s.pause()
+    }else{
+      if(sound.paused){
+        sound.play()
+      }else{
+        sound.pause()
+      }
+    }
+  })
+  nowplaying(trendCard)
+})
+
