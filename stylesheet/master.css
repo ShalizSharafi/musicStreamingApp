@@ -56,13 +56,13 @@
   .is-active {
     @apply bg-paper text-ink;
   }
-  .topbar-search {
+  .searchbar {
     @apply hidden md:block relative w-60 ml-auto;
   }
-  .topbar-search svg {
+  .searchbar svg {
     @apply absolute left-2.5 top-1/2 -translate-y-1/2 w-3.5 h-3.5 text-fog;
   }
-  .topbar-search input {
+  .searchbar input {
     @apply w-full h-9 rounded-lg border border-white/8 bg-panel text-paper
            pl-8 pr-3 text-[13px] outline-none placeholder:text-fog
            focus:border-white/25;
@@ -415,6 +415,18 @@
   }
   .pick-title { @apply text-[13px] font-semibold whitespace-nowrap overflow-hidden text-ellipsis; }
   .pick-artist { @apply text-[11.5px] text-fog; }
+
+
+/* search section /* _+_+_+_+_+_+_+_++_+_+_++_+_+_+_+_+)_()&(&*)_(*)(^*&*)_^*&  _+_+_+_+_+_+_+_++_+_+_++_+_+_+_+_+)_()&(&*)_(*)(^*&*)_^*& */ 
+#searchSection{
+     @apply hidden
+}
+
+#searchSection.is-visible {
+  @apply block;
+}
+
+ 
 
   /* ALBUMS _+_+_+_+_+_++_+_+_+_+_+_++_+_+_+_+_+_+_+_+''''80475978679485 */
   .hscroll {

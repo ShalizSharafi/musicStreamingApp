@@ -202,9 +202,6 @@
   .bottom-0 {
     bottom: calc(var(--spacing) * 0);
   }
-  .z-50 {
-    z-index: 50;
-  }
   .flex {
     display: flex;
   }
@@ -250,9 +247,6 @@
   .rounded-xl {
     border-radius: var(--radius-xl);
   }
-  .bg-black {
-    background-color: var(--color-black);
-  }
   .bg-black\/80 {
     background-color: color-mix(in srgb, #000 80%, transparent);
     @supports (color: color-mix(in lab, red, red)) {
@@ -279,9 +273,6 @@
   }
   .text-white {
     color: var(--color-white);
-  }
-  .bg-blend-color {
-    background-blend-mode: color;
   }
 }
 @layer base {
@@ -418,7 +409,7 @@
     background-color: var(--color-paper);
     color: var(--color-ink);
   }
-  .topbar-search {
+  .searchbar {
     position: relative;
     margin-left: auto;
     display: none;
@@ -427,7 +418,7 @@
       display: block;
     }
   }
-  .topbar-search svg {
+  .searchbar svg {
     position: absolute;
     top: calc(1 / 2 * 100%);
     left: calc(var(--spacing) * 2.5);
@@ -437,7 +428,7 @@
     translate: var(--tw-translate-x) var(--tw-translate-y);
     color: var(--color-fog);
   }
-  .topbar-search input {
+  .searchbar input {
     height: calc(var(--spacing) * 9);
     width: 100%;
     border-radius: var(--radius-lg);
@@ -1411,6 +1402,12 @@
   .pick-artist {
     font-size: 11.5px;
     color: var(--color-fog);
+  }
+  #searchSection {
+    display: none;
+  }
+  #searchSection.is-visible {
+    display: block;
   }
   .hscroll {
     display: flex;

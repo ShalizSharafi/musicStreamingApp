@@ -6,6 +6,11 @@ const hamburger = document.querySelector('.hamburger')
 const navBar = document.querySelector('.main-nav')
 const navItems = document.querySelectorAll('.navItems')
 
+///searchbar
+const inp = document.getElementById('inp')
+const searchGrid = document.getElementById('searchSectionGrid')
+const searchSection = document.getElementById('searchSection')
+
 ////slider
 const slide = document.querySelectorAll('.slide')
 const preSlide = document.getElementById('slide-prev')
@@ -432,11 +437,11 @@ function restartAutoPlay(){
    slideTimer = setTimeout(slideNext,slideDuration)
 }
 
-hero.addEventListener('mouseenter',()=>{
+heroSection.addEventListener('mouseenter',()=>{
   clearTimeout(slideTimer)
 })
 
-hero.addEventListener('mouseleave',()=>{
+heroSection.addEventListener('mouseleave',()=>{
   restartAutoPlay()
 })
 
@@ -512,3 +517,37 @@ function playSlideIcon(x){
 function resetSlideIcon(x){
   x.children[0].outerHTML = `<svg viewBox="0 0 24 24" fill="currentColor"><path d="M7 5l13 7-13 7z"/></svg>`
 }
+
+
+////search bar
+// searchGrid
+inp.addEventListener('input',(e)=>{
+  let record = e.target.value.trim().toLowerCase()
+  console.log('typing detected')
+
+  let result = musicArray.filter((song)=>
+    song.trackName.toLowerCase().includes(record) ||
+    song.artist.toLowerCase().includes(record)
+  )
+console.log(result)
+console.log(searchGrid)
+  if(record === ''){
+   searchSection.classList.remove('is-visible')
+  sec.forEach((section)=> {
+    if (section !== searchSection) section.style.display = ''
+  })
+  heroSection.style.display = ''
+  } else {
+   searchSection.classList.add('is-visible')
+  sec.forEach((section)=> {
+    if (section !== searchSection) section.style.display = 'none'
+  })
+  heroSection.style.display='none'
+
+  searchGrid.innerHTML=''
+  result.forEach((r) => cardGenerator(r, searchGrid))  }
+})
+searchGrid.addEventListener('click',(e)=>{
+  musicPlay(searchGrid,e,'.track-card')
+  likingTheSong(searchGrid,e,'.track-card')
+})
