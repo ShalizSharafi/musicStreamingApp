@@ -204,13 +204,18 @@
     @apply text-[14.5px] text-paper/70 mb-6 max-w-110;
   }
   .slide-actions {
-    @apply flex items-center gap-3.5;
+    @apply flex items-center gap-3.5 ;
+  }
+
+  .artImg{
+     @apply absolute inset-0 w-full h-full object-cover;
   }
   .slide-play {
     @apply flex items-center gap-2 px-5.5 py-3 rounded-full bg-paper text-ink
-           font-bold text-[13.5px] hover:scale-[1.04] duration-150;
+           font-bold text-[13.5px] hover:scale-[1.04] duration-300 cursor-pointer;
   }
-  .slide-play svg { @apply w-3.5 h-3.5; }
+  .slide-play svg,
+.slide-play img { @apply w-3.5 h-3.5 object-cover rounded-full ; }
   .slide-secondary {
     @apply flex items-center gap-2 text-[13px] text-paper border border-white/30
            px-4.5 py-3 rounded-full hover:border-white/70 duration-150;

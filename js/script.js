@@ -152,7 +152,7 @@ function cardGenerator(x,container){
         <button class="likeBtn">
           <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 21s-7-4.6-9.5-9A5.5 5.5 0 0112 5.5 5.5 5.5 0 0121.5 12c-2.5 4.4-9.5 9-9.5 9z"/></svg>
         </button>
-        <button class="playBtn cursor-pointer bg-[#0764EE]">
+        <button class="playBtn cursor-pointer bg-black/80 ">
           <svg viewBox="0 0 24 24" fill="white"><path d="M7 5l13 7-13 7z"/></svg>
         </button>
       </div>
@@ -170,17 +170,17 @@ function cardGenerator(x,container){
 ///applying to other sections
 newMusicGrid.addEventListener('click',(e)=>{
   musicPlay(newMusicGrid,e,'.track-card')
-  likingTheSong(newMusicGrid,e)
+  likingTheSong(newMusicGrid,e,'.track-card')
 })
 
 popularGrid.addEventListener('click',(e)=>{
   musicPlay(popularGrid,e,'.track-card')
-  likingTheSong(popularGrid,e)
+  likingTheSong(popularGrid,e,'.track-card')
 })
 
 moodGrid.addEventListener('click',(e)=>{
   musicPlay(moodGrid,e,'.track-card')
-  likingTheSong(moodGrid,e)
+  likingTheSong(moodGrid,e,'.track-card')
 })
 
 trendList.addEventListener('click',(e)=>{
@@ -197,6 +197,7 @@ function musicPlay(container,e,cardSelector){
   let allCards = container.querySelectorAll(cardSelector)
   let currentCard = playBtn.closest(cardSelector)
   if(!currentCard) return
+  if(heroSound) heroSound.pause()
   let sound = currentCard.querySelector('audio')
   let allSounds =container.querySelectorAll(`${cardSelector} > audio`)
 
@@ -215,7 +216,7 @@ function musicPlay(container,e,cardSelector){
     card.setAttribute('data-playing','true')
 
          playButton.innerHTML=`
- <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="white"><path d="M12 22C6.47715 22 2 17.5228 2 12C2 6.47715 6.47715 2 12 2C17.5228 2 22 6.47715 22 12C22 17.5228 17.5228 22 12 22ZM12 20C16.4183 20 20 16.4183 20 12C20 7.58172 16.4183 4 12 4C7.58172 4 4 7.58172 4 12C4 16.4183 7.58172 20 12 20ZM9 9H11V15H9V9ZM13 9H15V15H13V9Z"></path></svg>
+ <img src="./images/playGif.gif" class="w-full h-full object-cover">
   `
       }else{
         sound.pause()
@@ -237,11 +238,11 @@ function resetIcon(btn){
 
 // like the muisuc function  _+_+_+_+_+_+_+_++_+_+_++_+_+_+_+_+)_()&(&*)_(*)(^*&*)_^*&  _+_+_+_+_+_+_+_++_+_+_++_+_+_+_+_+)_()&(&*)_(*)(^*&*)_^*&
 
-function likingTheSong(container,e){
+function likingTheSong(container,e,selector){
   let likeBtn = e.target.closest('.likeBtn')
  if(!likeBtn) return
- let allCards = container.querySelectorAll('.track-card')
- let currentCard = likeBtn.closest('.track-card')
+ let allCards = container.querySelectorAll(selector)
+ let currentCard = likeBtn.closest(selector)
 let temp = currentCard.getAttribute('data-liked')
   if(temp == 'true') currentCard.setAttribute('data-liked','false')
     else currentCard.setAttribute('data-liked','true')
@@ -426,8 +427,6 @@ slide.forEach((s,i)=>{
 const allDots = [...dotsWrapper.children]
 console.log(allDots)
 
-
-
 function restartAutoPlay(){
   clearTimeout(slideTimer)
    slideTimer = setTimeout(slideNext,slideDuration)
@@ -440,3 +439,76 @@ hero.addEventListener('mouseenter',()=>{
 hero.addEventListener('mouseleave',()=>{
   restartAutoPlay()
 })
+
+let heroMusic = musicArray.slice(0,3)
+
+let heroBtns = document.querySelectorAll('[data-play-hero]')
+let heroSound = null
+let heroBtn = null
+heroBtns.forEach((btn)=>{
+  btn.addEventListener('click',()=>{
+    let btnVal = Number(btn.getAttribute('data-play-hero'))
+    let song = heroMusic[btnVal]
+    if(heroSound && heroBtn === btnVal) {
+      if(heroSound.paused){
+        heroSound.play()
+        playSlideIcon(btn)
+      }else{
+        heroSound.pause()
+        resetSlideIcon(btn)
+      }
+      return
+    }
+
+    if(heroSound) heroSound.pause()
+    pauseAllGridSounds()
+    heroSound = new Audio(song.src)
+    heroSound.play()
+    heroBtn = btnVal
+    heroNowPlaying(song)
+    playSlideIcon(btn)
+         
+  })
+})
+
+///////NOW PLAYING FOR HERO SECTION 
+function heroNowPlaying(song){
+  nowPlayingCaption.children[0].innerText = song.artist
+  nowPlayingCaption.children[1].innerText = song.trackName
+
+  let oldImg = nowPlayingCover.querySelector('.nowPlayingImg')
+  if(oldImg) oldImg.remove()
+
+
+
+  let img = document.createElement('img')
+  img.classList.add('nowPlayingImg')
+  img.src = song.imgSrc
+  nowPlayingCover.appendChild(img)
+}
+
+function pauseAllGridSounds(){
+  document.querySelectorAll('audio').forEach((a)=>a.pause())
+}
+
+const heroImages=['./images/hero1.png','./images/hero2.png','./images/hero3.png']
+
+heroMusic.forEach((song,i)=>{
+  let selectedSlide = document.querySelector(`.slide[data-slide="${i}"]`)
+  let title = selectedSlide.querySelector('.slide-title')
+  let artImg = selectedSlide.querySelector('.artImg')
+
+  title.innerText = song.artist
+  artImg.src=heroImages[i]
+ 
+  console.log(selectedSlide)
+})
+
+
+function playSlideIcon(x){
+  x.children[0].outerHTML = `<img src="./images/Music Equalizer.png" class="slide-play-icon">`
+}
+
+function resetSlideIcon(x){
+  x.children[0].outerHTML = `<svg viewBox="0 0 24 24" fill="currentColor"><path d="M7 5l13 7-13 7z"/></svg>`
+}
