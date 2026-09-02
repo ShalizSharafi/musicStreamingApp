@@ -40,6 +40,17 @@ const status_ = document.querySelector('.status')
 const gif = document.querySelector('.gif')
 
 
+///player bar
+const playerCover = document.getElementById('pb-cover')
+const playerTilte = document.getElementById('pb-title')
+const playerArtist = document.getElementById('pb-artist')
+const  playerPlayBtn = document.getElementById('pb-play')
+const  playerNext = document.getElementById('pb-next')
+const  playerPrev = document.getElementById('pb-prev')
+const playerElapsed = document.getElementById('pb-elapsed')
+const playerDuration = document.getElementById('pb-duration')
+const seekBar = document.getElementById('pb-bar')
+const seekFill = document.getElementById('pb-bar-fill')
 // header bg chnage while scrolling  _+_+_+_+_+_+_+_++_+_+_++_+_+_+_+_+)_()&(&*)_(*)(^*&*)_^*& _+_+_+_+_+_+_+_++_+_+_++_+_+_+_+_+)_()&(&*)_(*)(^*&*)_^*&  _+_+_+_+_+_+_+_++_+_+_++_+_+_+_+_+)_()&(&*)_(*)(^*&*)_
 addEventListener('scroll',()=>{
   let topbarHeight = topbar.clientHeight
