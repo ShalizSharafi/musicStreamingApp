@@ -1638,6 +1638,13 @@
       transition: none !important;
     }
   }
+  #likedSection {
+    display: none;
+  }
+  #likedSection.is-visible {
+    display: flex;
+    flex-direction: column;
+  }
 }
 @property --tw-translate-x {
   syntax: "*";

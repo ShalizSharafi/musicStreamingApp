@@ -6,6 +6,12 @@ const hamburger = document.querySelector('.hamburger')
 const navBar = document.querySelector('.main-nav')
 const navItems = document.querySelectorAll('.navItems')
 
+
+/////side item
+
+const homeLink = document.getElementById('homeLink')
+const artistsLink = document.getElementById('artistsLink')
+
 ///searchbar
 const inp = document.getElementById('inp')
 const searchGrid = document.getElementById('searchSectionGrid')
@@ -59,6 +65,12 @@ const volFill = document.getElementById('vol-fill')
 const playerLikeBtn = document.getElementById('pb-like')
 
 
+//////liked songs selected elekemet
+
+const likedSection = document.getElementById('likedSection')
+const likedGrid = document.getElementById('likedSectionGrid')
+const likedSongsLink = document.getElementById('likedSongsLink')
+
 // header bg chnage while scrolling  _+_+_+_+_+_+_+_++_+_+_++_+_+_+_+_+)_()&(&*)_(*)(^*&*)_^*& _+_+_+_+_+_+_+_++_+_+_++_+_+_+_+_+)_()&(&*)_(*)(^*&*)_^*&  _+_+_+_+_+_+_+_++_+_+_++_+_+_+_+_+)_()&(&*)_(*)(^*&*)_
 addEventListener('scroll',()=>{
   let topbarHeight = topbar.clientHeight
@@ -78,6 +90,11 @@ navBar.addEventListener('click',(e)=>{
   if(!selected) return
   navItems.forEach((i)=>i.classList.remove('is-active'))
   selected.classList.add('is-active')
+
+   likedSection.classList.remove('is-visible')
+  searchSection.classList.remove('is-visible')
+  sec.forEach(section => section.style.display = '')
+  heroSection.style.display = ''
 })
 
 // main array _+_+_+_+_+_+_+_++_+_+_++_+_+_+_+_+)_()&(&*)_(*)(^*&*)_^*&  _+_+_+_+_+_+_+_++_+_+_++_+_+_+_+_+)_()&(&*)_(*)(^*&*)_^*&
@@ -843,3 +860,53 @@ function saveLikedSong(id, isLiked) {
 
 
 restoreLikedSongs()
+
+
+///////liked song playlist
+
+likedSongsLink.addEventListener('click',(e)=>{
+  e.preventDefault()
+
+  let likedIds = JSON.parse(localStorage.getItem('likedSongs')) || []
+let likedSongsData = musicArray.filter(song => likedIds.includes(song.id))
+
+  likedGrid.innerHTML = ''
+  likedSongsData.forEach((s)=>cardGenerator(s, likedGrid))
+  likedSection.classList.add('is-visible')
+  searchSection.classList.remove('is-visible')
+
+  sec.forEach((s)=>{
+    if(s !== likedSection) s.style.display='none'
+  })
+   heroSection.style.display = 'none'
+})
+
+
+//////side bar
+
+homeLink.addEventListener('click',(e)=>{
+  e.preventDefault()
+  likedSection.classList.remove('is-visible')
+  searchSection.classList.remove('is-visible')
+
+  sec.forEach((s)=>{
+    s.style.display=''
+  })
+
+  heroSection.style.display=''
+})
+
+artistsLink.addEventListener('click',(e)=>{
+  e.preventDefault()
+  likedSection.classList.remove('is-visible')
+  heroSection.classList.remove('is-visible')
+
+  sec.forEach((s)=>{
+    s.style.display=''
+  })
+  heroSection.style.display=''
+
+  setTimeout(() => {
+     document.getElementById('artists').scrollIntoView({ behavior: 'smooth' })
+  }, 0);
+})

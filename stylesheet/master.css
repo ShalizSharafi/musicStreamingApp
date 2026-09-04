@@ -481,6 +481,14 @@
     .slide { transition: opacity 0.3s ease !important; }
     .track-card, .pick-card { transition: none !important; }
   }
+  /* ///////liked songs  */
+
+  #likedSection {
+  @apply hidden;
+}
+#likedSection.is-visible {
+  @apply flex flex-col;
+}
 }
 
 @theme {
