@@ -25,7 +25,6 @@
               <li class="navItems is-active"><a >Music</a></li>
               <li class="navItems"><a >Playlists</a></li>
               <li class="navItems"><a href="#artists" >Artists</a></li>
-              <li class="navItems"><a href="#albums" >Albums</a></li>
        </ul>
   </nav>
 
@@ -266,7 +265,7 @@
     </section>
 
     <!-- ================= ALBUMS ================= -->
-    <section class="sec" id="albums" style="padding-bottom:2.5rem;">
+    <!-- <section class="sec" id="albums" style="padding-bottom:2.5rem;">
       <div class="sec-head">
         <h2 class="sec-title">
           <svg viewBox="0 0 24 24" fill="currentColor"><circle cx="12" cy="12" r="10"/><circle cx="12" cy="12" r="3" fill="var(--color-ink)"/></svg>
@@ -274,7 +273,7 @@
         </h2>
       </div>
       <div class="hscroll" id="albumRow"></div>
-    </section>
+    </section> -->
 
 
     <!-- ////////search section  _+_+_+_+_+_+_+_++_+_+_++_+_+_+_+_+)_()&(&*)_(*)(^*&*)_^*&  _+_+_+_+_+_+_+_++_+_+_++_+_+_+_+_+)_()&(&*)_(*)(^*&*)_^*&  -->
@@ -290,7 +289,9 @@
 <!-- PLAYER BAR  _+_+_+_+_+_+_+_++_+_+_++_+_+_+_+_+)_()&(&*)_(*)(^*&*)_^*&  _+_+_+_+_+_+_+_++_+_+_++_+_+_+_+_+)_()&(&*)_(*)(^*&*)_^*& -->
 <div class="player-bar">
   <div class="pb-track">
-    <div class="pb-cover cover-1" id="pb-cover"></div>
+    <figure class="pb-cover cover-1" id="pb-cover">
+       <img src="" alt="" class="w-full h-full object-cover" id="playerImg">
+    </figure>
     <div class="pb-meta">
       <div class="pb-title" id="pb-title">Amber Light</div>
       <div class="pb-artist" id="pb-artist">Mira Voss</div>
@@ -310,7 +311,7 @@
     <div class="pb-seek">
       <span class="pb-time" id="pb-elapsed">0:00</span>
       <div class="pb-bar" id="pb-bar"><div class="pb-bar-fill" id="pb-bar-fill"></div></div>
-      <span class="pb-time end" id="pb-duration">4:12</span>
+      <span class="pb-time end" id="pb-duration"></span>
     </div>
   </div>
 

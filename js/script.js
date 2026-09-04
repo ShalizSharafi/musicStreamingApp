@@ -12,11 +12,11 @@ const searchGrid = document.getElementById('searchSectionGrid')
 const searchSection = document.getElementById('searchSection')
 
 ////slider
+const heroSection = document.getElementById('hero')
 const slide = document.querySelectorAll('.slide')
 const preSlide = document.getElementById('slide-prev')
 const nextSlide = document.getElementById('slide-next')
 const dotsWrapper = document.getElementById('slide-dots')
-const heroSection = document.getElementById('hero')
 
 ///app seleceted elements 
 const app = document.getElementById('app')
@@ -40,7 +40,7 @@ const status_ = document.querySelector('.status')
 const gif = document.querySelector('.gif')
 
 
-///player bar
+///player bar selected elements 
 const playerCover = document.getElementById('pb-cover')
 const playerTilte = document.getElementById('pb-title')
 const playerArtist = document.getElementById('pb-artist')
@@ -51,6 +51,11 @@ const playerElapsed = document.getElementById('pb-elapsed')
 const playerDuration = document.getElementById('pb-duration')
 const seekBar = document.getElementById('pb-bar')
 const seekFill = document.getElementById('pb-bar-fill')
+const playerImg = document.getElementById('playerImg')
+let currentAudio = null
+let currentContainer = null
+
+
 // header bg chnage while scrolling  _+_+_+_+_+_+_+_++_+_+_++_+_+_+_+_+)_()&(&*)_(*)(^*&*)_^*& _+_+_+_+_+_+_+_++_+_+_++_+_+_+_+_+)_()&(&*)_(*)(^*&*)_^*&  _+_+_+_+_+_+_+_++_+_+_++_+_+_+_+_+)_()&(&*)_(*)(^*&*)_
 addEventListener('scroll',()=>{
   let topbarHeight = topbar.clientHeight
@@ -213,8 +218,32 @@ function musicPlay(container,e,cardSelector){
   let allCards = container.querySelectorAll(cardSelector)
   let currentCard = playBtn.closest(cardSelector)
   if(!currentCard) return
+
+  updatePlayerBar(currentCard)
+
   if(heroSound) heroSound.pause()
+
   let sound = currentCard.querySelector('audio')
+
+  sound.addEventListener('timeupdate',()=>{
+    // console.log(sound.currentTime)
+    playerElapsed.innerText = formatTime(sound.currentTime)
+  })
+
+
+if (sound.readyState >= 1) {
+  // metadata already loaded
+  playerDuration.innerText = formatTime(sound.duration)
+} else {
+  // not loaded yet . it waits but only listens once!
+  sound.addEventListener('loadedmetadata', () => {
+    playerDuration.innerText = formatTime(sound.duration)
+  }, { once: true })
+}
+
+
+  currentAudio = sound
+  currentContainer = container
   let allSounds =container.querySelectorAll(`${cardSelector} > audio`)
 
 ////play the music 
@@ -244,6 +273,16 @@ function musicPlay(container,e,cardSelector){
   sound.paused ? pauseGif() : playGif()
  nowplaying(currentCard)
 }
+
+///////format the time function 
+function formatTime(seconds){
+  let minutes = Math.floor(seconds / 60)
+  let secs = Math.floor(seconds % 60)
+  if(secs < 10) secs = '0'+ secs
+  return `${minutes}:${secs}`
+}
+
+
 
 function resetIcon(btn){
   btn.innerHTML=`
@@ -530,8 +569,8 @@ function resetSlideIcon(x){
 }
 
 
-////search bar
-// searchGrid
+////search bar  _+_+_+_+_+_+_+_++_+_+_++_+_+_+_+_+)_()&(&*)_(*)(^*&*)_^*&  _+_+_+_+_+_+_+_++_+_+_++_+_+_+_+_+)_()&(&*)_(*)(^*&*)_^*&
+
 inp.addEventListener('input',(e)=>{
   let record = e.target.value.trim().toLowerCase()
   console.log('typing detected')
@@ -562,3 +601,20 @@ searchGrid.addEventListener('click',(e)=>{
   musicPlay(searchGrid,e,'.track-card')
   likingTheSong(searchGrid,e,'.track-card')
 })
+
+////PLAYER BAR  _+_+_+_+_+_+_+_++_+_+_++_+_+_+_+_+)_()&(&*)_(*)(^*&*)_^*&  _+_+_+_+_+_+_+_++_+_+_++_+_+_+_+_+)_()&(&*)_(*)(^*&*)_^*&
+
+
+function updatePlayerBar(card) {
+
+   let cardImg = card.querySelector('img')
+   let cardTitle = card.querySelector('.track-title')
+   let cardArtist = card.querySelector('.track-artist')
+
+   playerArtist.innerText = cardArtist.innerText
+   playerTilte.innerText = cardTitle.innerText
+   playerImg.src= cardImg.src
+
+}
+
+
