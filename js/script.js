@@ -189,6 +189,24 @@ function cardGenerator(x,container){
     container.appendChild(trackCard)
 }
 
+
+///////restoring liked songs
+
+function restoreLikedSongs() {
+  let liked = JSON.parse(localStorage.getItem('likedSongs')) || []
+
+  document.querySelectorAll('.track-card, .trend-row').forEach(card => {
+    let id = card.getAttribute('data-id')
+    if (liked.includes(id)) {
+      card.setAttribute('data-liked', 'true')
+      let likeBtn = card.querySelector('.likeBtn')
+      if (likeBtn) likeBtn.children[0].classList.add('likeFill')
+    }
+  })
+}
+
+
+
 // play the muisuc function  _+_+_+_+_+_+_+_++_+_+_++_+_+_+_+_+)_()&(&*)_(*)(^*&*)_^*&  _+_+_+_+_+_+_+_++_+_+_++_+_+_+_+_+)_()&(&*)_(*)(^*&*)_^*&
 
 ///applying to other sections
@@ -326,6 +344,9 @@ let temp = currentCard.getAttribute('data-liked')
 
   let newTemp = currentCard.getAttribute('data-liked')
   likeBtn.children[0].classList.toggle('likeFill', newTemp == 'true' )
+
+    saveLikedSong(currentCard.getAttribute('data-id'), newTemp === 'true') 
+
 }
 
 // now playing function  _+_+_+_+_+_+_+_++_+_+_++_+_+_+_+_+)_()&(&*)_(*)(^*&*)_^*&  _+_+_+_+_+_+_+_++_+_+_++_+_+_+_+_+)_()&(&*)_(*)(^*&*)_^*&
@@ -802,4 +823,23 @@ playerLikeBtn.addEventListener('click',()=>{
   if (cardLikeBtn) {
     cardLikeBtn.children[0].classList.toggle('likeFill', newVal === 'true')
   }
+
+    saveLikedSong(activeCard.getAttribute('data-id'), newVal === 'true')   
+
 })
+
+function saveLikedSong(id, isLiked) {
+  let liked = JSON.parse(localStorage.getItem('likedSongs')) || []
+
+  if (isLiked) {
+    if (!liked.includes(id)) liked.push(id)
+  } else {
+    liked = liked.filter(likedId => likedId !== id)
+  }
+
+  localStorage.setItem('likedSongs', JSON.stringify(liked))
+}
+
+
+
+restoreLikedSongs()
