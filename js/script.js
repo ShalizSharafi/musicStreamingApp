@@ -630,9 +630,22 @@ seekBar.addEventListener('click',(e)=>{
   currentAudio.currentTime = percentage * (currentAudio.duration)
 })
 
+
+let wasPlaying = false
 seekBar.addEventListener('mousedown',(e)=>{
+  if(! currentAudio) return
   isDragging = true
-  console.log('is dragging')
+  // console.log('is dragging')
+  if (currentAudio.paused) {
+    wasPlaying = false
+    playPlayerPlayBtnIcon(playerPlayBtn)
+
+} else {
+    wasPlaying = true
+    pausePlayerPlayBtnIcon(playerPlayBtn)
+}
+  currentAudio.pause()
+
 })
 
 seekBar.addEventListener('mousemove',(e)=>{
@@ -646,7 +659,41 @@ seekBar.addEventListener('mousemove',(e)=>{
 })
 
 seekBar.addEventListener('mouseup',(e)=>{
-  if (!currentAudio) return
-  isDragging = false
+   if (!currentAudio) return
+    isDragging = false
+
+   if (wasPlaying) {
+      currentAudio.play()
+      playPlayerPlayBtnIcon(playerPlayBtn)
+    } else {
+      pausePlayerPlayBtnIcon(playerPlayBtn)
+    }
+
 })
-// console.log(currentAudio)
+
+
+/////player btns
+
+playerPlayBtn.addEventListener('click',(e)=>{
+  if(! currentAudio) return
+  // currentAudio.paused ? currentAudio.play() : currentAudio.pause()
+  if(currentAudio.paused){
+    currentAudio.play()
+    playPlayerPlayBtnIcon(playerPlayBtn)
+  }else{
+    currentAudio.pause()
+    pausePlayerPlayBtnIcon(playerPlayBtn)
+  }
+})
+
+
+function pausePlayerPlayBtnIcon(x){
+  x.innerHTML = `
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="black"><path d="M12 22C6.47715 22 2 17.5228 2 12C2 6.47715 6.47715 2 12 2C17.5228 2 22 6.47715 22 12C22 17.5228 17.5228 22 12 22ZM12 20C16.4183 20 20 16.4183 20 12C20 7.58172 16.4183 4 12 4C7.58172 4 4 7.58172 4 12C4 16.4183 7.58172 20 12 20ZM9 9H11V15H9V9ZM13 9H15V15H13V9Z"></path></svg>
+  `
+}
+function playPlayerPlayBtnIcon(x){
+  x.innerHTML = `
+  <svg id="pb-play-icon" viewBox="0 0 24 24" fill="black"><path d="M7 5l13 7-13 7z"/></svg>
+  `
+}
