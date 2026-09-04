@@ -33,7 +33,9 @@
     <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="11" cy="11" r="7"/><path d="M21 21l-4.3-4.3"/></svg>
     <input type="text" placeholder="Search" id="inp">
   </div>
-  <button class="avatar-btn" aria-label="Account">sh</button>
+  <figure class="avatar-btn overflow-hidden" aria-label="Account">
+       <img src="images/shaliz.JPG" alt="" class="w-full h-full object-cover">
+  </figure>
 </header>
 
 <div class="app side-collapsed" id="app">
@@ -57,14 +59,14 @@
       </a>
     </nav>
 
-    <div>
+    <!-- <div>
       <div class="side-label">Your crates</div>
       <nav class="side-nav">
         <a href="#" class="side-item">Late Shift</a>
         <a href="#" class="side-item">Sunday Reset</a>
         <a href="#" class="side-item">Deep Focus</a>
       </nav>
-    </div>
+    </div> -->
 
     <div class="nowPlaying">
       <div class="nowPlaying-head">
@@ -111,7 +113,7 @@
               <svg viewBox="0 0 24 24" fill="currentColor"><path d="M7 5l13 7-13 7z"/></svg>
               Play
             </button>
-            <button class="slide-secondary">
+            <button class="slide-secondary" data-save-hero="0">
               <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 21s-7-4.6-9.5-9A5.5 5.5 0 0112 5.5 5.5 5.5 0 0121.5 12c-2.5 4.4-9.5 9-9.5 9z"/></svg>
               Save
             </button>
@@ -132,7 +134,7 @@
               <svg viewBox="0 0 24 24" fill="currentColor"><path d="M7 5l13 7-13 7z"/></svg>
               Play
             </button>
-            <button class="slide-secondary">
+            <button class="slide-secondary" data-save-hero="1">
               <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 21s-7-4.6-9.5-9A5.5 5.5 0 0112 5.5 5.5 5.5 0 0121.5 12c-2.5 4.4-9.5 9-9.5 9z"/></svg>
               Save
             </button>
@@ -153,7 +155,7 @@
               <svg viewBox="0 0 24 24" fill="currentColor"><path d="M7 5l13 7-13 7z"/></svg>
               Play
             </button>
-            <button class="slide-secondary">
+            <button class="slide-secondary" data-save-hero="2">
               <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 21s-7-4.6-9.5-9A5.5 5.5 0 0112 5.5 5.5 5.5 0 0121.5 12c-2.5 4.4-9.5 9-9.5 9z"/></svg>
               Save
             </button>
@@ -174,7 +176,7 @@
     <!-- NEW MUSIC _+_+_+_+_+_+_+_++_+_+_++_+_+_+_+_+)_()&(&*)_(*)(^*&*)_^*&  _+_+_+_+_+_+_+_++_+_+_++_+_+_+_+_+)_()&(&*)_(*)(^*&*)_^*& -->
     <section class="sec" id="newMusic">
       <div class="chip-row">
-        <button class="chip is-active">Music</button>
+        <button class="chip">Music</button>
         <button class="chip">Trends</button>
       </div>
       <div class="sec-head">
@@ -234,7 +236,7 @@
       </div>
       <p class="sec-sub">Selected tracks that fit how today's going</p>
       <div class="chip-row">
-        <button class="chip is-active">Party</button>
+        <button class="chip">Party</button>
         <button class="chip">Workout</button>
         <button class="chip">Sad</button>
         <button class="chip">Relax</button>
@@ -281,8 +283,8 @@
        <img src="" alt="" class="w-full h-full object-cover" id="playerImg">
     </figure>
     <div class="pb-meta">
-      <div class="pb-title" id="pb-title">Amber Light</div>
-      <div class="pb-artist" id="pb-artist">Mira Voss</div>
+      <div class="pb-title" id="pb-title"></div>
+      <div class="pb-artist" id="pb-artist"></div>
     </div>
     <button class="pb-like" id="pb-like" aria-label="Like">
       <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 21s-7-4.6-9.5-9A5.5 5.5 0 0112 5.5 5.5 5.5 0 0121.5 12c-2.5 4.4-9.5 9-9.5 9z"/></svg>

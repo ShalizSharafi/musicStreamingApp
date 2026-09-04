@@ -63,7 +63,7 @@ let currentContainer = null
 const volBar = document.getElementById('vol-bar')
 const volFill = document.getElementById('vol-fill')
 const playerLikeBtn = document.getElementById('pb-like')
-
+const playerBar = document.querySelector('.player-bar')
 
 //////liked songs selected elekemet
 
@@ -220,6 +220,14 @@ function restoreLikedSongs() {
       if (likeBtn) likeBtn.children[0].classList.add('likeFill')
     }
   })
+  document.querySelectorAll('[data-save-hero]').forEach(btn => {
+    let btnVal = Number(btn.getAttribute('data-save-hero'))
+    let song = heroMusic[btnVal]
+    if (song && liked.includes(song.id)) {
+      btn.classList.add('is-liked')
+      btn.children[0].classList.add('likeFill')
+    }
+  })
 }
 
 
@@ -263,6 +271,10 @@ function musicPlay(container,e,cardSelector){
   if(!currentCard) return
   activeCard = currentCard
   updatePlayerBar(currentCard)
+
+  let isLiked = currentCard.getAttribute('data-liked') === 'true'
+  playerLikeBtn.classList.toggle('is-liked', isLiked)
+  playerLikeBtn.children[0].classList.toggle('likeFill', isLiked)
 
   if(heroSound) heroSound.pause()
 
@@ -369,6 +381,8 @@ let temp = currentCard.getAttribute('data-liked')
 // now playing function  _+_+_+_+_+_+_+_++_+_+_++_+_+_+_+_+)_()&(&*)_(*)(^*&*)_^*&  _+_+_+_+_+_+_+_++_+_+_++_+_+_+_+_+)_()&(&*)_(*)(^*&*)_^*&
 
 function nowplaying(x){
+  nowPlaying.classList.add('has-song')
+   playerBar.classList.add('has-song')
 let artist = x.querySelector('.track-artist')
  let trackName = x.querySelector('.track-title')
  let trackImg = x.querySelector('img')
@@ -584,8 +598,25 @@ heroBtns.forEach((btn)=>{
   })
 })
 
+let heroSaveBtns = document.querySelectorAll('[data-save-hero]')
+heroSaveBtns.forEach((btn) => {
+  btn.addEventListener('click', () => {
+    let btnVal = Number(btn.getAttribute('data-save-hero'))
+    let song = heroMusic[btnVal]
+
+    let liked = JSON.parse(localStorage.getItem('likedSongs')) || []
+    let isLiked = liked.includes(song.id)
+
+    saveLikedSong(song.id, !isLiked)
+    btn.classList.toggle('is-liked', !isLiked)
+    btn.children[0].classList.toggle('likeFill', !isLiked)
+  })
+})
+
 ///////NOW PLAYING FOR HERO SECTION 
 function heroNowPlaying(song){
+  nowPlaying.classList.add('has-song')
+   playerBar.classList.add('has-song')
   nowPlayingCaption.children[0].innerText = song.artist
   nowPlayingCaption.children[1].innerText = song.trackName
 
@@ -655,6 +686,7 @@ console.log(searchGrid)
   searchGrid.innerHTML=''
   result.forEach((r) => cardGenerator(r, searchGrid))  }
 })
+
 searchGrid.addEventListener('click',(e)=>{
   musicPlay(searchGrid,e,'.track-card')
   likingTheSong(searchGrid,e,'.track-card')
@@ -872,6 +904,7 @@ let likedSongsData = musicArray.filter(song => likedIds.includes(song.id))
 
   likedGrid.innerHTML = ''
   likedSongsData.forEach((s)=>cardGenerator(s, likedGrid))
+  restoreLikedSongs()
   likedSection.classList.add('is-visible')
   searchSection.classList.remove('is-visible')
 
@@ -881,6 +914,10 @@ let likedSongsData = musicArray.filter(song => likedIds.includes(song.id))
    heroSection.style.display = 'none'
 })
 
+likedGrid.addEventListener('click',(e)=>{
+  musicPlay(likedGrid,e,'.track-card')
+  likingTheSong(likedGrid,e,'.track-card')
+})
 
 //////side bar
 
