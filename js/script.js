@@ -56,6 +56,7 @@ let currentAudio = null
 let currentContainer = null
 const volBar = document.getElementById('vol-bar')
 const volFill = document.getElementById('vol-fill')
+const playerLikeBtn = document.getElementById('pb-like')
 
 
 // header bg chnage while scrolling  _+_+_+_+_+_+_+_++_+_+_++_+_+_+_+_+)_()&(&*)_(*)(^*&*)_^*& _+_+_+_+_+_+_+_++_+_+_++_+_+_+_+_+)_()&(&*)_(*)(^*&*)_^*&  _+_+_+_+_+_+_+_++_+_+_++_+_+_+_+_+)_()&(&*)_(*)(^*&*)_
@@ -208,6 +209,7 @@ moodGrid.addEventListener('click',(e)=>{
 
 trendList.addEventListener('click',(e)=>{
   musicPlay(trendList,e,'.trend-row')
+   likingTheSong(trendList,e,'.trend-row')
 })
 
 pickRow.addEventListener('click',(e)=>{
@@ -430,9 +432,7 @@ artists.forEach((a)=>{
 
 /// TRENDING _+_+_+_+_+_+_+_++_+_+_++_+_+_+_+_+)_()&(&*)_(*)(^*&*)_^*&  _+_+_+_+_+_+_+_++_+_+_++_+_+_+_+_+)_()&(&*)_(*)(^*&*)_^*&
 
-trendList.addEventListener('click',(e)=>{
-  musicPlay(trendList,e)
-})
+
 
 let trendMusic = musicArray.slice(0,7)
 trendMusic.forEach((val,i)=>{
@@ -456,8 +456,8 @@ trendMusic.forEach((val,i)=>{
        ${Math.floor(i*1.8+668)} M
       </span>
       <span class="trend-time">${val.duration}</span>
-      <button class="trend-like">
-        <svg viewBox="0 0 24 24" fill="white" stroke="currentColor" stroke-width="2"><path d="M12 21s-7-4.6-9.5-9A5.5 5.5 0 0112 5.5 5.5 5.5 0 0121.5 12c-2.5 4.4-9.5 9-9.5 9z"/></svg>
+      <button class="likeBtn relative opacity-100! ">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 21s-7-4.6-9.5-9A5.5 5.5 0 0112 5.5 5.5 5.5 0 0121.5 12c-2.5 4.4-9.5 9-9.5 9z"/></svg>
       </button>
       <span class="trend-more">⋯</span>
       <audio src="${val.src}"></audio>
@@ -785,4 +785,21 @@ volBar.addEventListener('click',(e)=>{
   currentVolume = percentage
   currentAudio.volume = currentVolume
   volFill.style.width = `${percentage * 100}%`
+})
+
+
+playerLikeBtn.addEventListener('click',()=>{
+  if(!activeCard) return
+
+  let temp = activeCard.getAttribute('data-liked')
+  let newVal = temp === 'true' ? 'false' : 'true'
+  activeCard.setAttribute('data-liked', newVal)
+
+  playerLikeBtn.classList.toggle('is-liked', newVal === 'true')
+  playerLikeBtn.children[0].classList.toggle('likeFill', newVal === 'true')
+
+  let cardLikeBtn = activeCard.querySelector('.likeBtn')
+  if (cardLikeBtn) {
+    cardLikeBtn.children[0].classList.toggle('likeFill', newVal === 'true')
+  }
 })

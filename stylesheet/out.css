@@ -292,6 +292,9 @@
   .text-white {
     color: var(--color-white);
   }
+  .opacity-100\! {
+    opacity: 100% !important;
+  }
 }
 @layer base {
   @font-face {
@@ -1287,6 +1290,9 @@
     translate: var(--tw-translate-x) var(--tw-translate-y);
     opacity: 100%;
   }
+  .trend-row:hover .likeBtn {
+    opacity: 100%;
+  }
   .trend-main {
     min-width: calc(var(--spacing) * 0);
   }
@@ -1322,11 +1328,6 @@
     text-align: right;
     font-family: var(--font-mono);
     font-size: 11.5px;
-    color: var(--color-fog);
-  }
-  .trend-like svg {
-    height: calc(var(--spacing) * 3.5);
-    width: calc(var(--spacing) * 3.5);
     color: var(--color-fog);
   }
   .trend-like.is-liked svg {

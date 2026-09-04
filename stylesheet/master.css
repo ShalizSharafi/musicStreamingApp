@@ -374,6 +374,7 @@
   .trend-row:focus-within .playBtn {
     @apply opacity-100 translate-y-0;
   }
+  .trend-row:hover .likeBtn { @apply opacity-100; }
   /* .playButton{
      @apply top-0 z-10  absolute left-0 w-full flex items-center justify-center h-full cursor-pointer bg-ink/70
   } */
@@ -383,7 +384,7 @@
   .trend-streams { @apply font-mono text-[11.5px] text-fog flex items-center gap-1.5; }
   .trend-streams svg { @apply w-3.25 h-3.25 text-mist; }
   .trend-time { @apply font-mono text-[11.5px] text-fog text-right; }
-  .trend-like svg { @apply w-3.5 h-3.5 text-fog; }
+  /* .trend-like svg { @apply w-3.5 h-3.5 text-fog; } */
   .trend-like.is-liked svg { @apply text-paper; }
   .trend-more { @apply text-fog; }
 
