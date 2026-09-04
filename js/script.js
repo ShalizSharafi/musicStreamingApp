@@ -264,15 +264,15 @@ if (sound.readyState >= 1) {
     card.setAttribute('data-playing','false')
     }else{
       if(sound.paused){
-        sound.play()
-    card.setAttribute('data-playing','true')
-
+         sound.play()
+         card.setAttribute('data-playing','true')
          playButton.innerHTML=`
- <img src="./images/playGif.gif" class="w-full h-full object-cover">
-  `
+         <img src="./images/playGif.gif" class="w-full h-full object-cover">
+           `
       }else{
         sound.pause()
         resetIcon(playButton)
+        card.setAttribute('data-playing','false')
         }
     }
    
@@ -726,4 +726,13 @@ playerNext.addEventListener('click',(e)=>{
   let nextCard = allCards[nextIndex]
   if (!allCards[nextIndex]) return
   nextCard.querySelector('.playBtn').click()
+})
+
+playerPrev.addEventListener('click',(e)=>{
+  let allcards = currentContainer.querySelectorAll(currentCardSelector)
+  let currentIndex = [...allcards].indexOf(activeCard)
+  let previousIndex = currentIndex - 1
+
+  if(!allcards[previousIndex]) return
+  allcards[previousIndex].querySelector('.playBtn').click()
 })
