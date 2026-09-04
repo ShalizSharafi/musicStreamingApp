@@ -54,6 +54,8 @@ const seekFill = document.getElementById('pb-bar-fill')
 const playerImg = document.getElementById('playerImg')
 let currentAudio = null
 let currentContainer = null
+const volBar = document.getElementById('vol-bar')
+const volFill = document.getElementById('vol-fill')
 
 
 // header bg chnage while scrolling  _+_+_+_+_+_+_+_++_+_+_++_+_+_+_+_+)_()&(&*)_(*)(^*&*)_^*& _+_+_+_+_+_+_+_++_+_+_++_+_+_+_+_+)_()&(&*)_(*)(^*&*)_^*&  _+_+_+_+_+_+_+_++_+_+_++_+_+_+_+_+)_()&(&*)_(*)(^*&*)_
@@ -215,7 +217,6 @@ pickRow.addEventListener('click',(e)=>{
 let currentCardSelector = null
 let activeCard = null 
 
-
 function musicPlay(container,e,cardSelector){
   let playBtn = e.target.closest('.playBtn')
   if(!playBtn) return
@@ -250,6 +251,16 @@ if (sound.readyState >= 1) {
 
 
   currentAudio = sound
+  sound.volume = currentVolume
+  sound.addEventListener('ended',()=>{
+    let allcards = currentContainer.querySelectorAll(currentCardSelector)
+    let currentIndex = [...allcards].indexOf(activeCard)
+    let nextIndex  = currentIndex + 1
+    if(!allcards[nextIndex]) return
+    let nextCard = allcards[nextIndex]
+    let nextCardPlayBtn = nextCard.querySelector('.playBtn')
+    nextCardPlayBtn.click()
+  })
   currentContainer = container
   let allSounds =container.querySelectorAll(`${cardSelector} > audio`)
 
@@ -260,6 +271,7 @@ if (sound.readyState >= 1) {
     card.setAttribute('data-playing','false')
     if(s !== sound){
       s.pause()
+      s.currentTime = 0
         resetIcon(playButton)
     card.setAttribute('data-playing','false')
     }else{
@@ -278,6 +290,7 @@ if (sound.readyState >= 1) {
    
   })
   sound.paused ? pauseGif() : playGif()
+  sound.paused ? pausePlayerPlayBtnIcon(playerPlayBtn) : playPlayerPlayBtnIcon(playerPlayBtn)
  nowplaying(currentCard)
 }
 
@@ -717,7 +730,6 @@ function playPlayerPlayBtnIcon(x){
 
 /////player previous and next btns
 
-
 playerNext.addEventListener('click',(e)=>{
   let allCards = currentContainer.querySelectorAll(currentCardSelector)
   let currentCard = currentContainer.querySelector('[data-playing="true"]')
@@ -735,4 +747,42 @@ playerPrev.addEventListener('click',(e)=>{
 
   if(!allcards[previousIndex]) return
   allcards[previousIndex].querySelector('.playBtn').click()
+})
+
+//////volume bar 
+let currentVolume = 1
+let isVolDragging = false
+volBar.addEventListener('mousedown',(e)=>{
+  if(!currentAudio) return
+  isVolDragging = true
+})
+
+volBar.addEventListener('mousemove',(e)=>{
+  if(!isVolDragging) return
+  if(!currentAudio) return
+
+  let rect = volBar.getBoundingClientRect()
+  let clickX = e.clientX - (rect.left)
+  let percentage = Math.max(0, Math.min(1, clickX / rect.width))
+
+
+  currentVolume = percentage
+  currentAudio.volume = currentVolume
+  volFill.style.width = `${percentage * 100}%`
+})
+
+volBar.addEventListener('mouseup',(e)=>{
+  isVolDragging = false
+})
+
+volBar.addEventListener('click',(e)=>{
+  if(!currentAudio) return
+
+  let rect = volBar.getBoundingClientRect()
+  let clickX = e.clientX - rect.left
+  let percentage = Math.max(0, Math.min(1, clickX / rect.width))
+
+  currentVolume = percentage
+  currentAudio.volume = currentVolume
+  volFill.style.width = `${percentage * 100}%`
 })
