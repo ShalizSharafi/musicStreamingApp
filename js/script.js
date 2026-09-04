@@ -228,6 +228,8 @@ function musicPlay(container,e,cardSelector){
   sound.addEventListener('timeupdate',()=>{
     // console.log(sound.currentTime)
     playerElapsed.innerText = formatTime(sound.currentTime)
+    let percentage = ((sound.currentTime) / (sound.duration)) *100
+    seekFill.style.width = `${percentage}%`
   })
 
 
@@ -618,3 +620,33 @@ function updatePlayerBar(card) {
 }
 
 
+//////seekbar
+let isDragging = false
+seekBar.addEventListener('click',(e)=>{
+  let rect = seekBar.getBoundingClientRect()
+  let clickX = e.clientX - (rect.left)
+  let percentage = clickX / rect.width
+
+  currentAudio.currentTime = percentage * (currentAudio.duration)
+})
+
+seekBar.addEventListener('mousedown',(e)=>{
+  isDragging = true
+  console.log('is dragging')
+})
+
+seekBar.addEventListener('mousemove',(e)=>{
+  if(! isDragging) return
+  let rect = seekBar.getBoundingClientRect()
+  let clickX = e.clientX - (rect.left)
+  
+  let percentage = clickX / rect.width
+
+  currentAudio.currentTime = percentage * currentAudio.duration
+})
+
+seekBar.addEventListener('mouseup',(e)=>{
+  if (!currentAudio) return
+  isDragging = false
+})
+// console.log(currentAudio)
