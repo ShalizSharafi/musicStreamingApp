@@ -212,13 +212,18 @@ pickRow.addEventListener('click',(e)=>{
    musicPlay(pickRow,e,'.pick-card')
 })
 
+let currentCardSelector = null
+let activeCard = null 
+
+
 function musicPlay(container,e,cardSelector){
   let playBtn = e.target.closest('.playBtn')
   if(!playBtn) return
+  currentCardSelector = cardSelector
   let allCards = container.querySelectorAll(cardSelector)
   let currentCard = playBtn.closest(cardSelector)
   if(!currentCard) return
-
+  activeCard = currentCard
   updatePlayerBar(currentCard)
 
   if(heroSound) heroSound.pause()
@@ -645,7 +650,7 @@ seekBar.addEventListener('mousedown',(e)=>{
     pausePlayerPlayBtnIcon(playerPlayBtn)
 }
   currentAudio.pause()
-
+ pauseGif() 
 })
 
 seekBar.addEventListener('mousemove',(e)=>{
@@ -676,13 +681,25 @@ seekBar.addEventListener('mouseup',(e)=>{
 
 playerPlayBtn.addEventListener('click',(e)=>{
   if(! currentAudio) return
+    let cardPlayBtn = activeCard ? activeCard.querySelector('.playBtn') : null
   // currentAudio.paused ? currentAudio.play() : currentAudio.pause()
+  let currentCard = currentContainer.querySelector('[data-playing="true"]')
   if(currentAudio.paused){
     currentAudio.play()
     playPlayerPlayBtnIcon(playerPlayBtn)
+     playGif()
+     if(activeCard){
+      activeCard.setAttribute('data-playing','true')
+      cardPlayBtn.innerHTML = `<img src="./images/playGif.gif" class="w-full h-full object-cover">`
+    }
   }else{
     currentAudio.pause()
     pausePlayerPlayBtnIcon(playerPlayBtn)
+      pauseGif()
+    if(activeCard){
+      activeCard.setAttribute('data-playing','false')
+      resetIcon(cardPlayBtn)
+    }
   }
 })
 
@@ -697,3 +714,16 @@ function playPlayerPlayBtnIcon(x){
   <svg id="pb-play-icon" viewBox="0 0 24 24" fill="black"><path d="M7 5l13 7-13 7z"/></svg>
   `
 }
+
+/////player previous and next btns
+
+
+playerNext.addEventListener('click',(e)=>{
+  let allCards = currentContainer.querySelectorAll(currentCardSelector)
+  let currentCard = currentContainer.querySelector('[data-playing="true"]')
+  let currentIndex = [...allCards].indexOf(activeCard)
+  let nextIndex = currentIndex + 1
+  let nextCard = allCards[nextIndex]
+  if (!allCards[nextIndex]) return
+  nextCard.querySelector('.playBtn').click()
+})
