@@ -420,6 +420,9 @@ function musicPlay(container,e,cardSelector){
   let allCards = container.querySelectorAll(cardSelector)
   let currentCard = playBtn.closest(cardSelector)
   if(!currentCard) return
+
+  pauseAllGridSounds()
+
   activeCard = currentCard
   updatePlayerBar(currentCard)
 
