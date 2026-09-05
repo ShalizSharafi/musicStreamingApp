@@ -53,7 +53,7 @@
         <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M21 8.25c0-2.485-2.099-4.5-4.688-4.5-1.935 0-3.597 1.126-4.312 2.733-.715-1.607-2.377-2.733-4.313-2.733C5.1 3.75 3 5.765 3 8.25c0 7.22 9 12 9 12s9-4.78 9-12Z"/></svg>
         Liked songs
       </a>
-      <a href="#" class="side-item">
+      <a href="#" class="side-item" id="playlistsLink">
         <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M8.25 6.75h12M8.25 12h12m-12 5.25h12"/><circle cx="4" cy="6.75" r="1"/><circle cx="4" cy="12" r="1"/><circle cx="4" cy="17.25" r="1"/></svg>
         Playlists
       </a>
@@ -107,7 +107,7 @@
         <div class="slide-body">
           <div class="slide-eyebrow">Featured · Nocturne Sessions</div>
           <h1 class="slide-title">Mira Voss</h1>
-          <p class="slide-desc">Six tracks built for the hour after everyone else has gone quiet — warm synth pads, tape hiss, and a voice that barely rises above a whisper.</p>
+          <p class="slide-desc">American singer-songwriter, musician, and record producer. His initial exposure came through the viral success of his song covers uploaded to YouTube. Puth signed with the record label eleveneleven in 2011</p>
           <div class="slide-actions">
             <button class="slide-play" data-play-hero="0">
               <svg viewBox="0 0 24 24" fill="currentColor"><path d="M7 5l13 7-13 7z"/></svg>
@@ -128,7 +128,7 @@
         <div class="slide-body">
           <div class="slide-eyebrow">New release · Static &amp; Rain EP</div>
           <h1 class="slide-title">Hollow Coast</h1>
-          <p class="slide-desc">Four tracks recorded during a week of storms on the coast — distant thunder folded into the low end of every mix.</p>
+          <p class="slide-desc">Gracie Madigan Abrams (/ˈeɪbrəmz/; born September 7, 1999) is an American singer and songwriter.</p>
           <div class="slide-actions">
             <button class="slide-play" data-play-hero="1">
               <svg viewBox="0 0 24 24" fill="currentColor"><path d="M7 5l13 7-13 7z"/></svg>
@@ -149,7 +149,7 @@
         <div class="slide-body">
           <div class="slide-eyebrow">Charting · Slow Burn</div>
           <h1 class="slide-title">Juno Prentice</h1>
-          <p class="slide-desc">Three weeks at the top of the late-night chart, carried by a chorus built entirely from a single held note.</p>
+          <p class="slide-desc">An influential figure in popular culture, Swift is known for her autobiographical songwriting and artistic reinventions. She is the highest-grossing live music artist, the wealthiest female musician, and one of the best-selling music artists of all time.</p>
           <div class="slide-actions">
             <button class="slide-play" data-play-hero="2">
               <svg viewBox="0 0 24 24" fill="currentColor"><path d="M7 5l13 7-13 7z"/></svg>
@@ -270,6 +270,17 @@
     <h2 class="sec-title">Liked songs</h2>
   </div>
   <div class="grid-cards" id="likedSectionGrid"></div>
+</section>
+
+<!-- //////playlist.  _+_+_+_+_+_+_+_++_+_+_++_+_+_+_+_+)_()&(&*)_(*)(^*&*)_^*&  _+_+_+_+_+_+_+_++_+_+_++_+_+_+_+_+)_()&(&*)_(*)(^*&*)_^*&   -->
+
+<section class="sec hidden" id="playlistsSection">
+  <div class="sec-head">
+    <h2 class="sec-title">Playlists</h2>
+    <button id="createPlaylistBtn">+ Create playlist</button>
+  </div>
+
+  <div id="playlistsGrid"></div>
 </section>
 
 

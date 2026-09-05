@@ -190,7 +190,7 @@
     transform: scale(1);
   }
   .slide-art {
-    @apply absolute inset-0 -z-1 bg-panel;
+    @apply absolute inset-0 -z-1 bg-panel ;
   }
   .slide-art::after {
     content: "";
@@ -207,7 +207,7 @@
     @apply font-mono text-[11.5px] tracking-widest uppercase text-mist mb-3;
   }
   .slide-title {
-    @apply text-[46px] font-extrabold leading-[1.05] tracking-tight mb-3;
+    @apply text-[46px] font-extrabold leading-[1.05] tracking-tight mb-3 text-white;
   }
   .slide-desc {
     @apply text-[14.5px] text-paper/70 mb-6 max-w-110;

@@ -71,6 +71,13 @@ const likedSection = document.getElementById('likedSection')
 const likedGrid = document.getElementById('likedSectionGrid')
 const likedSongsLink = document.getElementById('likedSongsLink')
 
+//////playlist
+
+const playlistsLink = document.getElementById('playlistsLink')
+const playlistsSection = document.getElementById('playlistsSection')
+const createPlaylistBtn = document.getElementById('createPlaylistBtn')
+const playlistsGrid = document.getElementById('playlistsGrid')
+
 // header bg chnage while scrolling  _+_+_+_+_+_+_+_++_+_+_++_+_+_+_+_+)_()&(&*)_(*)(^*&*)_^*& _+_+_+_+_+_+_+_++_+_+_++_+_+_+_+_+)_()&(&*)_(*)(^*&*)_^*&  _+_+_+_+_+_+_+_++_+_+_++_+_+_+_+_+)_()&(&*)_(*)(^*&*)_
 addEventListener('scroll',()=>{
   let topbarHeight = topbar.clientHeight
@@ -102,18 +109,18 @@ navBar.addEventListener('click',(e)=>{
  const musicArray = [
         { id: '0',
         artist: 'Charlie Puth',
-        trackName: 'Attention',
-        duration: '3:32',
-        src: './music/Charlie Puth Attention.mp3',
-       imgSrc:'./images/attention.jpeg'
+        trackName: 'Cry',
+        duration: '3:07',
+        src: './music/cry.mp3',
+       imgSrc:'./images/charlieputh1.jpg'
        },
 
         { id: '1',
-        artist: 'Taylor Swift',
-        trackName: 'Delicate',
-        duration: '3:52',
-        src: './music/Delicate.mp3',
-       imgSrc:'./images/delicate.jpeg'
+        artist: 'The Kid Laroi',
+        trackName: 'STAY',
+        duration: '2:11',
+        src: './music/stay.mp3',
+       imgSrc:'./images/stay.jpg'
        },
         
        
@@ -132,48 +139,192 @@ navBar.addEventListener('click',(e)=>{
       src: './music/Old Me.mp3',
      imgSrc:'./images/oldme.jpeg'
      },
+
           { id: '4',
-        artist: 'Elton John',
-        trackName: 'The One',
-        duration: '6:04',
-        src: './music/The One.mp3',
-       imgSrc:'./images/attention.jpeg'
+        artist: 'Taylor Swift',
+        trackName: 'Cruel Summer',
+        duration: '2:58',
+        src: './music/Taylor Swift Cruel Summer.mp3',
+       imgSrc:'./images/taylor1.webp'
        },
 
           { id: '5',
         artist: "Why Don't We",
         trackName: 'Cold in LA',
-        duration: '3:26',
+        duration: '3:27',
         src: './music/Cold in LA .mp3',
-       imgSrc:'./images/attention.jpeg'
+       imgSrc:'./images/cold.jpg'
        },
 
           { id: '6',
         artist: 'Charlie Puth',
-        trackName: 'Home',
+        trackName: 'Attention',
         duration: '3:45',
-        src: './music/Home.mp3',
-       imgSrc:'./images/home.jpg'
+        src: './music/Charlie Puth Attention.mp3',
+       imgSrc:'./images/attention.jpeg'
        },
 
           { id: '7',
+        artist: 'The 1975',
+        trackName: 'Somebody Else',
+        duration: '4:26',
+        src: './music/the-1975-somebody-else_(get-tune.net).mp3',
+      imgSrc:'./images/images (2).jpeg'},
+
+         { id: '8',
+        artist: 'Dan & Shay',
+        trackName: 'Tequila',
+        duration: '3:16',
+        src: './music/ABBA – Dancing Queen.mp3',
+      imgSrc:'./images/tequila.jpg'},
+
+         { id: '9',
+        artist: 'Eminem feat. Rihanna',
+        trackName: 'Love The Way You Lie',
+        duration: '4:23',
+        src: './music/Eminem Love The Way You Lie Ft Rihanna.mp3',
+      imgSrc:'./images/eminem.jpeg'},
+
+         { id: '10',
+        artist: 'Marc Anthony',
+        trackName: 'When I Dream At Night',
+        duration: '4:20',
+        src: './music/Marc Anthony - When I Dream At Night.mp3',
+      imgSrc:'./images/images (4).jpeg'},
+
+         { id: '11',
+        artist: 'Charlie Puth',
+        trackName: 'Cheating on You',
+        duration: '3:21',
+        src: './music/Charlie Puth - Cheating on You [Official Video].mp3',
+      imgSrc:'./images/home.jpg'},
+
+        { id: '12',
+        artist: 'Morgan Wallen',
+        trackName:'Sand in My Boots',
+        duration: '3:22',
+        src: './music/Morgan-Wallen-Sand-in-My-Boots-320.mp3',
+      imgSrc:'./images/morganw.jpeg'},
+
+        { id: '13',
+        artist: "Why Don't We",
+        trackName: 'Falling',
+        duration: '3:36',
+        src: './music/Why Don t We - Fallin  (Adrenaline).mp3',
+      imgSrc:'./images/whydont.jpeg'},
+        
+
+        { id: '14',
+        artist: 'Charlie Puth',
+        trackName: 'Smells Like Me',
+        duration: '3:24',
+        src: './music/Charlie Puth - Smells Like Me.mp3',
+      imgSrc:'./images/covercharlie 2.JPG'},
+
+       { id: '15',
+        artist: 'Gracie Abrams',
+        trackName: 'Mess it Up',
+        duration: '2:52',
+        src: './music/Gracie Abrams - Mess It Up (Official Video).mp3',
+      imgSrc:'./images/gracie2.jpg'},
+
+        { id: '16',
+        artist: 'Taylor Swift',
+        trackName: 'Call It What You Want',
+        duration: '3:23',
+        src: './music/Call it what you want.mp3',
+      imgSrc:'./images/images (3).jpeg'},
+
+
+        { id: '17',
+        artist: 'USA For Africa',
+        trackName: 'We are The World',
+        duration: '7:07',
+        src: './music/U.S.A.-for-Africa-We-Are-the-World-320.mp3',
+      imgSrc:'./images/usafor.jpeg'},
+
+
+        { id: '18',
+        artist: 'Marc Anthony',
+        trackName: 'You Sang To Me',
+        duration: '5:47',
+        src: './music/F833824 - Marc Anthony - You Sang To Me .mp3',
+      imgSrc:'./images/marcanthony.jpeg'},
+
+
+        { id: '19',
+        artist: 'Elton John & George Micheal',
+        trackName:"Don't Let The Sun Go Down On Me",
+        duration: '5:47',
+        src: './music/sun go down on me.mp3',
+      imgSrc:'./images/eg.jpg'},
+
+        { id: '20',
+        artist: 'Chicago',
+        trackName: 'If You Leave Me Now',
+        duration: '3:56',
+        src: './music/Chicago - If You Leave Me Now.mp3',
+      imgSrc:'./images/chicago.jpeg'},
+
+        { id: '21',
         artist: 'ABBA',
         trackName: 'Dancing Queen',
         duration: '3:53',
-        src: './music/ABBA – Dancing Queen.mp3'}
+        src: './music/ABBA – Dancing Queen.mp3',
+      imgSrc:'./images/dancingq.jpeg'},
+
+
+        { id: '22',
+        artist: 'Halsey,Khalid',
+        trackName: 'Eastside',
+        duration: '2:53',
+        src: './music/eastside.mp3',
+      imgSrc:'./images/east.jpeg'},
+
+
+        { id: '23',
+        artist: 'Charlie Puth',
+        trackName: 'Loser',
+        duration: '3:24',
+        src: './music/Loser - Charlie Puth (320).mp3',
+      imgSrc:'./images/charchar.JPG'},
+
+
+        { id: '24',
+        artist: 'The 1975',
+        trackName: "It's Not Living if It's ...",
+        duration: '4:08',
+        src: './music/The 1975 - Its Not Living (If Its Not With You).mp3',
+      imgSrc:'./images/notliving.png'},
+
+
+        { id: '25',
+        artist: 'Taylor Swift',
+        trackName: 'August',
+        duration: '4:21',
+        src: './music/august.mp3',
+      imgSrc:'./images/taylor4.avif'},
+
+       { id: '26',
+        artist: '5 Second Of Summer',
+        trackName: 'Easier',
+        duration: '2:37',
+        src: './music/Easier CD 1 TRACK 1 (320).mp3',
+      imgSrc:'./images/easier.png'},
+        
       ]
 
-let newMusic =musicArray.slice(0,6)
+let newMusic =musicArray.slice(0,8)
 newMusic.forEach((item)=>{
      cardGenerator(item,newMusicGrid)
 })
 
-let popularMusic = musicArray.slice(0,5)
+let popularMusic = musicArray.slice(5,20)
 popularMusic.forEach((item)=>{
   cardGenerator(item,popularGrid)
 })
 
-let moodMusic = musicArray.slice(0,4)
+let moodMusic = musicArray.slice(15,22)
 moodMusic.forEach((item)=>{
   cardGenerator(item,moodGrid)
 })
@@ -437,7 +588,7 @@ seeMoreBtn.addEventListener('click',()=>{
 
 ///  quick picks _+_+_+_+_+_+_+_++_+_+_++_+_+_+_+_+)_()&(&*)_(*)(^*&*)_^*&  _+_+_+_+_+_+_+_++_+_+_++_+_+_+_+_+)_()&(&*)_(*)(^*&*)_^*&
 
-let quickMuisc = musicArray.slice(0,7)
+let quickMuisc = musicArray.slice(20,26)
 quickMuisc.forEach((item)=>{
  quickPickGenerator(item,pickRow)
 })
@@ -468,7 +619,7 @@ container.appendChild(quickBlocks)
 
 /////generate artists
 
-let artists = musicArray.slice(0,6)
+let artists = musicArray.slice(14,22)
 artists.forEach((a)=>{
   let artistCard = document.createElement('div')
   artistCard.classList.add('artist-card')
@@ -486,7 +637,7 @@ artists.forEach((a)=>{
 
 
 
-let trendMusic = musicArray.slice(0,7)
+let trendMusic = musicArray.slice(1,12)
 trendMusic.forEach((val,i)=>{
   let trendRow = document.createElement('div')
   trendRow.classList.add('trend-row')
@@ -567,7 +718,7 @@ heroSection.addEventListener('mouseleave',()=>{
   restartAutoPlay()
 })
 
-let heroMusic = musicArray.slice(0,3)
+let heroMusic = musicArray.slice(14,17)
 
 let heroBtns = document.querySelectorAll('[data-play-hero]')
 let heroSound = null
@@ -635,7 +786,7 @@ function pauseAllGridSounds(){
   document.querySelectorAll('audio').forEach((a)=>a.pause())
 }
 
-const heroImages=['./images/hero1.png','./images/hero2.png','./images/hero3.png']
+const heroImages=['./images/piano.jpg','./images/gr.avif','./images/taylor13.jpeg']
 
 heroMusic.forEach((song,i)=>{
   let selectedSlide = document.querySelector(`.slide[data-slide="${i}"]`)
@@ -644,7 +795,7 @@ heroMusic.forEach((song,i)=>{
 
   title.innerText = song.artist
   artImg.src=heroImages[i]
- 
+  artImg.style.objectPosition='center'
   console.log(selectedSlide)
 })
 
@@ -947,3 +1098,4 @@ artistsLink.addEventListener('click',(e)=>{
      document.getElementById('artists').scrollIntoView({ behavior: 'smooth' })
   }, 0);
 })
+
