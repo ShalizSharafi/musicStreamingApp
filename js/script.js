@@ -175,7 +175,7 @@ navBar.addEventListener('click',(e)=>{
         artist: 'Dan & Shay',
         trackName: 'Tequila',
         duration: '3:16',
-        src: './music/ABBA – Dancing Queen.mp3',
+        src: './music/Dan-Shay-Tequila-320.mp3',
       imgSrc:'./images/tequila.jpg'},
 
          { id: '9',
@@ -723,25 +723,58 @@ let heroMusic = musicArray.slice(14,17)
 let heroBtns = document.querySelectorAll('[data-play-hero]')
 let heroSound = null
 let heroBtn = null
+let currentHeroSong = null
 heroBtns.forEach((btn)=>{
   btn.addEventListener('click',()=>{
     let btnVal = Number(btn.getAttribute('data-play-hero'))
     let song = heroMusic[btnVal]
-    if(heroSound && heroBtn === btnVal) {
-      if(heroSound.paused){
-        heroSound.play()
+    if(currentAudio && heroBtn === btnVal) {
+      if(currentAudio.paused){
+        currentAudio.play()
         playSlideIcon(btn)
-      }else{
-        heroSound.pause()
-        resetSlideIcon(btn)
+         pausePlayerPlayBtnIcon(playerPlayBtn)
+         
+        }else{
+          currentAudio.pause()
+          resetSlideIcon(btn)
+          playPlayerPlayBtnIcon(playerPlayBtn)
+           
+
       }
       return
     }
 
-    if(heroSound) heroSound.pause()
+    if(currentAudio) currentAudio.pause()
+      activeCard = null
+    currentHeroSong = song
     pauseAllGridSounds()
-    heroSound = new Audio(song.src)
-    heroSound.play()
+    currentAudio = new Audio(song.src)
+    currentAudio.play()
+    currentAudio.volume = currentVolume
+    currentAudio.addEventListener('timeupdate',()=>{
+      playerElapsed.innerText = formatTime(currentAudio.currentTime)
+      let percentage = (currentAudio.currentTime / currentAudio.duration) * 100
+      seekFill.style.width = `${percentage}%`
+    })
+
+    if(currentAudio.readyState >= 1){
+      playerDuration.innerText = formatTime(currentAudio.duration)
+    }else{
+      currentAudio.addEventListener('loadedmetadata', () => {
+    playerDuration.innerText = formatTime(currentAudio.duration)
+  }, { once: true })
+    }
+
+    playerArtist.innerText=song.artist
+    playerTilte.innerText = song.trackName
+    playerImg.src=song.imgSrc
+
+    let liked = JSON.parse(localStorage.getItem('likedSongs')) || []
+    let isLiked = liked.includes(song.id)
+    playerLikeBtn.classList.toggle('is-liked',isLiked)
+    playerLikeBtn.children[0].classList.toggle('likeFill',isLiked)
+
+
     heroBtn = btnVal
     heroNowPlaying(song)
     playSlideIcon(btn)
@@ -913,26 +946,33 @@ seekBar.addEventListener('mouseup',(e)=>{
 
 /////player btns
 
+
 playerPlayBtn.addEventListener('click',(e)=>{
   if(! currentAudio) return
-    let cardPlayBtn = activeCard ? activeCard.querySelector('.playBtn') : null
-  // currentAudio.paused ? currentAudio.play() : currentAudio.pause()
-  let currentCard = currentContainer.querySelector('[data-playing="true"]')
+  let cardPlayBtn = activeCard ? activeCard.querySelector('.playBtn') : null
+  let heroPlayBtn = currentHeroSong ? document.querySelector(`[data-play-hero="${heroBtn}"]`) : null
+
   if(currentAudio.paused){
     currentAudio.play()
     playPlayerPlayBtnIcon(playerPlayBtn)
-     playGif()
-     if(activeCard){
+    playGif()
+    if(activeCard){
       activeCard.setAttribute('data-playing','true')
       cardPlayBtn.innerHTML = `<img src="./images/playGif.gif" class="w-full h-full object-cover">`
+    }
+    if(heroPlayBtn){
+      playSlideIcon(heroPlayBtn)
     }
   }else{
     currentAudio.pause()
     pausePlayerPlayBtnIcon(playerPlayBtn)
-      pauseGif()
+    pauseGif()
     if(activeCard){
       activeCard.setAttribute('data-playing','false')
       resetIcon(cardPlayBtn)
+    }
+    if(heroPlayBtn){
+      resetSlideIcon(heroPlayBtn)
     }
   }
 })
@@ -951,9 +991,17 @@ function playPlayerPlayBtnIcon(x){
 
 /////player previous and next btns
 
+
+
 playerNext.addEventListener('click',(e)=>{
+  if(currentHeroSong){
+    let nextIndex = (heroBtn + 1) % heroMusic.length
+    let nextBtn = document.querySelector(`[data-play-hero="${nextIndex}"]`)
+    nextBtn.click()
+    return
+  }
+
   let allCards = currentContainer.querySelectorAll(currentCardSelector)
-  let currentCard = currentContainer.querySelector('[data-playing="true"]')
   let currentIndex = [...allCards].indexOf(activeCard)
   let nextIndex = currentIndex + 1
   let nextCard = allCards[nextIndex]
@@ -961,7 +1009,16 @@ playerNext.addEventListener('click',(e)=>{
   nextCard.querySelector('.playBtn').click()
 })
 
+
+
 playerPrev.addEventListener('click',(e)=>{
+  if(currentHeroSong){
+    let prevIndex = (heroBtn - 1 + heroMusic.length) % heroMusic.length
+    let prevBtn = document.querySelector(`[data-play-hero="${prevIndex}"]`)
+    prevBtn.click()
+    return
+  }
+
   let allcards = currentContainer.querySelectorAll(currentCardSelector)
   let currentIndex = [...allcards].indexOf(activeCard)
   let previousIndex = currentIndex - 1
@@ -1010,9 +1067,8 @@ volBar.addEventListener('click',(e)=>{
 
 
 playerLikeBtn.addEventListener('click',()=>{
-  if(!activeCard) return
-
-  let temp = activeCard.getAttribute('data-liked')
+  if(activeCard) {
+    let temp = activeCard.getAttribute('data-liked')
   let newVal = temp === 'true' ? 'false' : 'true'
   activeCard.setAttribute('data-liked', newVal)
 
@@ -1023,8 +1079,29 @@ playerLikeBtn.addEventListener('click',()=>{
   if (cardLikeBtn) {
     cardLikeBtn.children[0].classList.toggle('likeFill', newVal === 'true')
   }
+   saveLikedSong(activeCard.getAttribute('data-id'), newVal === 'true')   
+   return
+  }
 
-    saveLikedSong(activeCard.getAttribute('data-id'), newVal === 'true')   
+  if(currentHeroSong){
+    let liked = JSON.parse(localStorage.getItem('likedSongs')) || []
+    let isLiked = liked.includes(currentHeroSong.id)
+    let newVal = !isLiked
+
+    saveLikedSong(currentHeroSong.id, newVal)
+    playerLikeBtn.classList.toggle('is-liked', newVal)
+    playerLikeBtn.children[0].classList.toggle('likeFill', newVal)
+
+     let heroBtnEl = document.querySelector(`[data-save-hero="${heroBtn}"]`)
+    if (heroBtnEl){
+      heroBtnEl.classList.toggle('is-liked', newVal)
+      heroBtnEl.children[0].classList.toggle('likeFill', newVal)
+    }
+
+
+
+  }
+   
 
 })
 
