@@ -1140,7 +1140,11 @@ let likedSongsData = musicArray.filter(song => likedIds.includes(song.id))
   searchSection.classList.remove('is-visible')
 
   sec.forEach((s)=>{
-    if(s !== likedSection) s.style.display='none'
+    if(s !== likedSection) {
+      s.style.display='none'
+    }else{
+      s.style.display=''
+    }
   })
    heroSection.style.display = 'none'
 })
