@@ -941,6 +941,7 @@ seekBar.addEventListener('click',(e)=>{
 
 let wasPlaying = false
 seekBar.addEventListener('mousedown',(e)=>{
+  const heroPlayBtn = currentHeroSong ? document.querySelector(`[data-play-hero="${heroBtn}"]`) : null
   if(! currentAudio) return
   isDragging = true
   // console.log('is dragging')
@@ -988,6 +989,8 @@ document.addEventListener('mousemove',(e)=>{
 })
 
 document.addEventListener('mouseup', () => {
+  const heroPlayBtn = currentHeroSong ? document.querySelector(`[data-play-hero="${heroBtn}"]`) : null
+
   if (!isDragging) return
   isDragging = false
   if (!currentAudio) return
