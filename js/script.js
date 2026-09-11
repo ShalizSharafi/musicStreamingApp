@@ -742,7 +742,9 @@ heroBtns.forEach((btn)=>{
     let song = heroMusic[btnVal]
     if(currentAudio && heroBtn === btnVal) {
       if(currentAudio.paused){
-        currentAudio.play()
+        // currentAudio.play()
+        console.log("trying to play", currentAudio.src)
+currentAudio.play().catch(err => console.log(err))
         playSlideIcon(btn)
          pausePlayerPlayBtnIcon(playerPlayBtn)
          
