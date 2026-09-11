@@ -774,6 +774,8 @@ currentAudio.play().catch(err => console.log(err))
     currentHeroSong = song
     pauseAllGridSounds()
     currentAudio = new Audio(song.src)
+    currentAudio.preload = "auto"
+
     currentAudio.play()
     currentAudio.volume = currentVolume
     currentAudio.addEventListener('timeupdate',()=>{
