@@ -421,6 +421,14 @@ function musicPlay(container,e,cardSelector){
   let currentCard = playBtn.closest(cardSelector)
   if(!currentCard) return
 
+  if(currentHeroSong && currentAudio){
+    currentAudio.pause()
+    let heroBtnEl = document.querySelector(`[data-play-hero="${heroBtn}"]`)
+    if(heroBtnEl) resetSlideIcon(heroBtnEl)
+  }
+currentHeroSong = null
+heroBtn = null
+
   pauseAllGridSounds()
 
   activeCard = currentCard
@@ -430,7 +438,7 @@ function musicPlay(container,e,cardSelector){
   playerLikeBtn.classList.toggle('is-liked', isLiked)
   playerLikeBtn.children[0].classList.toggle('likeFill', isLiked)
 
-  if(heroSound) heroSound.pause()
+  // if(heroSound) heroSound.pause()
 
   let sound = currentCard.querySelector('audio')
 
@@ -727,6 +735,7 @@ let heroBtns = document.querySelectorAll('[data-play-hero]')
 let heroSound = null
 let heroBtn = null
 let currentHeroSong = null
+
 heroBtns.forEach((btn)=>{
   btn.addEventListener('click',()=>{
     let btnVal = Number(btn.getAttribute('data-play-hero'))
@@ -747,7 +756,18 @@ heroBtns.forEach((btn)=>{
       return
     }
 
-    if(currentAudio) currentAudio.pause()
+    if(currentAudio){
+  currentAudio.pause()
+  currentAudio.currentTime = 0
+}
+
+ if (currentHeroSong && heroBtn !== null) {
+      let prevBtn = document.querySelector(`[data-play-hero="${heroBtn}"]`)
+      if (prevBtn) resetSlideIcon(prevBtn)
+    }
+
+
+
       activeCard = null
     currentHeroSong = song
     pauseAllGridSounds()
@@ -819,7 +839,15 @@ function heroNowPlaying(song){
 }
 
 function pauseAllGridSounds(){
-  document.querySelectorAll('audio').forEach((a)=>a.pause())
+  document.querySelectorAll('audio').forEach((a)=>{
+    a.pause()
+    a.currentTime = 0
+  })
+  document.querySelectorAll('.track-card, .trend-row, .pick-card').forEach((card)=>{
+    card.setAttribute('data-playing','false')
+    let btn = card.querySelector('.playBtn')
+    if(btn) resetIcon(btn)
+  })
 }
 
 const heroImages=['./images/piano.jpg','./images/gr.avif','./images/taylor13.jpeg']
@@ -898,6 +926,7 @@ function updatePlayerBar(card) {
 //////seekbar
 let isDragging = false
 seekBar.addEventListener('click',(e)=>{
+    if (!currentAudio || !isFinite(currentAudio.duration)) return
   let rect = seekBar.getBoundingClientRect()
   let clickX = e.clientX - (rect.left)
   let percentage = clickX / rect.width
@@ -921,31 +950,54 @@ seekBar.addEventListener('mousedown',(e)=>{
 }
   currentAudio.pause()
  pauseGif() 
+  if (heroPlayBtn) resetSlideIcon(heroPlayBtn)
 })
 
-seekBar.addEventListener('mousemove',(e)=>{
-  if(! isDragging) return
-  let rect = seekBar.getBoundingClientRect()
-  let clickX = e.clientX - (rect.left)
+// seekBar.addEventListener('mousemove',(e)=>{
+//   if(! isDragging) return
+//   let rect = seekBar.getBoundingClientRect()
+//   let clickX = e.clientX - (rect.left)
   
-  let percentage = clickX / rect.width
+//   let percentage = clickX / rect.width
 
+//   currentAudio.currentTime = percentage * currentAudio.duration
+// })
+
+// seekBar.addEventListener('mouseup',(e)=>{
+//    if (!currentAudio) return
+//     isDragging = false
+
+//    if (wasPlaying) {
+//       currentAudio.play()
+//       playPlayerPlayBtnIcon(playerPlayBtn)
+//     } else {
+//       pausePlayerPlayBtnIcon(playerPlayBtn)
+//     }
+
+// })
+
+document.addEventListener('mousemove',(e)=>{
+  if(! isDragging || !currentAudio || !isFinite(currentAudio.duration)) return
+  let rect = seekBar.getBoundingClientRect()
+  let percentage = Math.max(0, Math.min(1, (e.clientX - rect.left) / rect.width))
   currentAudio.currentTime = percentage * currentAudio.duration
 })
 
-seekBar.addEventListener('mouseup',(e)=>{
-   if (!currentAudio) return
-    isDragging = false
-
-   if (wasPlaying) {
-      currentAudio.play()
-      playPlayerPlayBtnIcon(playerPlayBtn)
-    } else {
-      pausePlayerPlayBtnIcon(playerPlayBtn)
-    }
-
+document.addEventListener('mouseup', () => {
+  if (!isDragging) return
+  isDragging = false
+  if (!currentAudio) return
+  if (wasPlaying) {
+    currentAudio.play()
+    playPlayerPlayBtnIcon(playerPlayBtn)
+    playGif()
+     if (heroPlayBtn) playSlideIcon(heroPlayBtn)  
+  } else {
+    pausePlayerPlayBtnIcon(playerPlayBtn)
+    pauseGif()
+    if (heroPlayBtn) resetSlideIcon(heroPlayBtn) 
+  }
 })
-
 
 /////player btns
 
