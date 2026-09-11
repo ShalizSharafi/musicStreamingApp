@@ -591,7 +591,7 @@ seeMoreBtn.addEventListener('click',()=>{
 
 ///  quick picks _+_+_+_+_+_+_+_++_+_+_++_+_+_+_+_+)_()&(&*)_(*)(^*&*)_^*&  _+_+_+_+_+_+_+_++_+_+_++_+_+_+_+_+)_()&(&*)_(*)(^*&*)_^*&
 
-let quickMuisc = musicArray.slice(20,26)
+let quickMuisc = musicArray.slice(18,26)
 quickMuisc.forEach((item)=>{
  quickPickGenerator(item,pickRow)
 })
@@ -675,7 +675,7 @@ trendList.appendChild(trendRow)
 ////slider _+_+_+_+_+_+_+_++_+_+_++_+_+_+_+_+)_()&(&*)_(*)(^*&*)_^*&  _+_+_+_+_+_+_+_++_+_+_++_+_+_+_+_+)_()&(&*)_(*)(^*&*)_^*&
 
 let slideIndex = 0
-let slideTimer = null
+let slideTimer = null //setinterval
 let slideDuration = 6000
 restartAutoPlay()
 function goToSlide(i){
